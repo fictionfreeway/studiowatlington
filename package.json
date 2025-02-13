@@ -1,0 +1,25 @@
+{
+  "name": "studiowatlington",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^19.1.5",
+    "@angular/compiler-cli": "^19.1.5",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@angular/core": "^19.1.5",
+    "@angular/platform-browser": "^19.1.5",
+    "@angular/platform-browser-dynamic": "^19.1.5",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.8.1",
+    "zone.js": "^0.15.0"
+  }
+}
