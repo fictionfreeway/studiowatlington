@@ -1,6 +1,8 @@
 // Ensure Zone.js is loaded first
 import 'zone.js';
 
+import './styles.css';
+
 // Explicitly include the JIT compiler
 import '@angular/compiler';
 
