@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": false, // ✅ Fix for Angular decorators
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
@@ -18,7 +18,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Angular Fixes */
+    "experimentalDecorators": true, // ✅ Enables Angular decorators
+    "emitDecoratorMetadata": true // ✅ Required for Angular DI (Dependency Injection)
   },
   "angularCompilerOptions": {
     "strictTemplates": true

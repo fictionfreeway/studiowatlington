@@ -1,5 +1,19 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
+// Ensure Zone.js is loaded first
+import 'zone.js';
 
-bootstrapApplication(AppComponent)
-  .catch(err => console.error(err));
+// Explicitly include the JIT compiler
+import '@angular/compiler';
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
+
+import { AppComponent } from './app/app.component';
+import { appRoutes } from './app/app.routes';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(appRoutes),
+    provideAnimations(),
+  ],
+}).catch(err => console.error(err));
