@@ -1,25 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
+
 #home-container {
-    background: rgb(1,25,54);
+    background: var(--dark-blue);
     background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(1,25,54,1) 72%, rgba(248,180,190,1) 100%);
-    min-height: 100vh;
+    min-height: 95vh;
     min-width: 100vw;
-    padding-top: 5rem;
+    padding-top: 5vh;
+    position: relative;
+}
+
+#jap-name {
+    color: var(--off-white);
+    display: block;
+    font-size: 1rem;
+    margin: 1.5rem auto;
+    text-align: center;
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 300;
 }
 
 #horizontal-logo {
     max-width: 80%;
     width: 75rem;
-    margin:  auto;
+    margin: auto;
     display: block;
-    display: hidden;
 }
 
 #vertical-logo {
     display: none;
 }
 
+#cityscape-container {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: auto; /* Adjust height dynamically based on the SVG */
+    overflow: hidden; /* Prevents any unwanted overflow */
+    display: flex;
+    align-items: flex-end; /* Ensures the SVG aligns to the bottom */
+    pointer-events: none;
+}
 
+.cityscape {
+    width: 100%;
+    /* height: auto; */
+    display: block;
+    object-fit: contain; /* Prevents unnecessary scaling */
+}
+
+/* Mobile responsiveness */
 @media only screen and (max-width: 800px) {
+    #home-container {
+        background: rgb(1,25,54);
+        background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(248,180,190,1) 95%, rgba(1,25,54,1) 100%);
+    }
+
     #horizontal-logo {
         display: none;
     }
@@ -28,6 +64,10 @@
         display: block;
         max-width: 80%;
         width: 75rem;
-        margin:  auto;
+        margin: auto;
+    }
+
+    #cityscape-container {
+        height: auto; /* Prevents extra space on mobile */
     }
 }
