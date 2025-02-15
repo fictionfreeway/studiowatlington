@@ -43,6 +43,18 @@
     opacity: 0.8;
 }
 
+#cassette-container {
+    margin: 5rem auto;
+    width: 100%;
+}
+
+#cassette-container svg {
+    width: 100%;  /* Makes it responsive */
+    height: auto; /* Maintains aspect ratio */
+    max-width: 800px; /* Optional: Prevents it from getting too big */
+    display: block; /* Removes inline white space */
+}
+
 .cityscape {
     width: 100%;
     /* height: auto; */

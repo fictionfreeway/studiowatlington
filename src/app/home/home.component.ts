@@ -40,6 +40,6 @@ export class HomeComponent {
           window.setAttribute('fill', window.getAttribute('fill') === 'black' ? '#fccf03' : 'black');
         }
       });
-    },400); // Change every second
+    },400)
   }
 }
