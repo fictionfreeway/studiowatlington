@@ -86,15 +86,24 @@ export class HomeComponent {
 
   animateWindows() {
     const windows = document.querySelectorAll('.window');
-
+  
     setInterval(() => {
       windows.forEach(window => {
-        if (Math.random() > 0.996) { // 20% chance to toggle each cycle
-          window.setAttribute('fill', window.getAttribute('fill') === 'black' ? '#fccf03' : 'black');
+        if (Math.random() > 0.999) {
+          if (window.classList.contains('window-lit')) {
+            // Turn the window dark
+            window.classList.remove('window-lit');
+            window.classList.add('window-dark');
+          } else {
+            // Light it up with a glow
+            window.classList.remove('window-dark');
+            window.classList.add('window-lit');
+          }
         }
       });
     }, 400);
   }
+  
 
   animatePlane() {
     const plane = document.getElementById('banner-plane-container');
