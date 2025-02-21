@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
 
-@keyframes planeFloat {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); } /* Moves up slightly */
-    100% { transform: translateY(0); } /* Returns to original position */
-}
-
 #home-container {
     background: var(--dark-blue);
     background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(1,25,54,1) 72%, rgba(248,180,190,1) 100%);
@@ -26,6 +20,11 @@
     font-weight: 300;
 }
 
+#horizontal-logo, #vertical-logo {
+    z-index: 15;
+    position: relative;
+}
+
 #horizontal-logo {
     max-width: 80%;
     width: 75rem;
@@ -39,6 +38,7 @@
 
 #cityscape-container {
     width: 100%;
+    min-width: 40rem;
     position: absolute;
     z-index: 10;
     bottom: 0;
@@ -48,7 +48,7 @@
     display: flex;
     align-items: flex-end;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 1;
     max-height: 20rem;
     white-space: nowrap; /* Prevents wrapping */
 }
@@ -65,6 +65,8 @@
     align-items: center; /* ✅ Centers vertically */
     margin: 5rem auto;
     overflow: visible; /* Prevents clipping */
+    z-index: 50;
+    position: relative;
 }
 
 #cassette-container svg {
@@ -86,6 +88,7 @@
   
 #design-tape, #dev-tape {
     transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+    position: relative;
 }
 
 .fly-away-right {
@@ -95,13 +98,39 @@ transform: translateX(250vw) rotate(15deg); /* Move right + slight rotation */
 .fly-away-left {
 transform: translateX(-250vw) rotate(-15deg); /* Move left + slight rotation */
 }
+
+#cloud-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none; /* so user can click through if needed */
+}
+
+.floating-cloud {
+    position: absolute;
+    opacity: 0.8;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+    will-change: transform;
+    animation: planeFloat 10s ease-in-out infinite;
+}
+
+@keyframes planeFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); } /* Moves up slightly */
+    100% { transform: translateY(0); } /* Returns to original position */
+}
+  
+  
+  
   
 
 /* Mobile responsiveness */
 @media only screen and (max-width: 800px) {
     #home-container {
         background: rgb(1,25,54);
-        background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(248,180,190,1) 95%, rgba(1,25,54,1) 100%);
+        background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(1,25,54,1) 35%, rgba(248,180,190,1) 95%, rgba(1,25,54,1) 100%);
     }
 
     #horizontal-logo {
@@ -113,6 +142,10 @@ transform: translateX(-250vw) rotate(-15deg); /* Move left + slight rotation */
         max-width: 80%;
         width: 75rem;
         margin: auto;
+    }
+
+    #cityscape-container {
+        max-height: 25rem;
     }
 
     #cassette-container svg {
