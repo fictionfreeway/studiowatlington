@@ -19,6 +19,8 @@ export class HomeComponent {
 
   private resizeTimeout: any; // Holds timeout ID for debounce
 
+  constructor() {}
+
   ngAfterViewInit() {
     this.loadSVG();
     window.addEventListener('resize', this.handleResize);
