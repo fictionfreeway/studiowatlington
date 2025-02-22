@@ -144,7 +144,7 @@ export class HomeComponent {
         // When flight is done, reset after a delay
         setTimeout(() => {
             resetPlane();
-        }, (duration + 3) * 1000); // Delay before respawn
+        }, (duration + 8) * 1000); // Delay before respawn
     }
 
     resetPlane(); // Start animation loop
@@ -172,10 +172,10 @@ export class HomeComponent {
   animateClouds() {
     if (!this.cloudContainerRef) return;
   
-    // A simple, constant speed in px/second.
-    const CLOUD_SPEED_PX_PER_SEC = 30;
-  
+    const CLOUD_BASE_SPEED_PX_PER_SEC = 30; // Base speed in px/sec
+    const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize); // Convert 1rem to px
     const cloudContainer = this.cloudContainerRef.nativeElement;
+  
     const cloudPaths = [
       '/assets/svg/clouds/Cloud1.svg',
       '/assets/svg/clouds/Cloud2.svg',
@@ -187,7 +187,7 @@ export class HomeComponent {
       '/assets/svg/clouds/Cloud8.svg'
     ];
   
-    const spawnCloud = () => {
+    const spawnCloud = (startOnScreen = false) => {
       const randomIndex = Math.floor(Math.random() * cloudPaths.length);
       const cloudSrc = cloudPaths[randomIndex];
   
@@ -195,68 +195,79 @@ export class HomeComponent {
       cloudEl.src = cloudSrc;
       cloudEl.classList.add('floating-cloud');
   
-      const widthToSet = 1 + Math.random() * 35;
-      cloudEl.style.width = `${widthToSet}rem`;
-      cloudEl.style.height = 'auto'; // Maintain aspect ratio
+      // Random width in rem (minimum 2rem, max 35rem)
+      const widthRem = 2 + Math.random() * 33;
+      cloudEl.style.width = `${widthRem}rem`;
+      cloudEl.style.height = 'auto';
   
-      // Optionally vary z-index based on size (bigger could be "closer" or "behind")
-      if (widthToSet < 12) {
-        cloudEl.style.zIndex = '100'; // in front
-      } else {
-        cloudEl.style.zIndex = '10';   // behind
-      }
+      // Adjust z-index based on size
+      cloudEl.style.zIndex = widthRem < 12 ? '100' : '10'; // Smaller clouds appear in front
   
-      // Absolutely position the cloud
+      // Positioning
       cloudEl.style.position = 'absolute';
-  
-      // Random vertical position within container
       const containerHeight = cloudContainer.clientHeight || 300;
-      const topPos = Math.random() * (containerHeight);
+      const topPos = Math.random() * containerHeight;
       cloudEl.style.top = `${topPos}px`;
   
-      // Place the cloud off-screen on the left initially
-      // We'll use transform to start it even further left
-      cloudEl.style.left = '-0vw';
-      // Start it fully off-screen to the left by a bit more than its width
-      cloudEl.style.transform = `translateX(-${widthToSet + 5}rem)`;
+      // Convert container width to rem
+      const containerWidthPx = cloudContainer.clientWidth;
+      const containerWidthRem = containerWidthPx / rootFontSize;
   
-      // Append it to the container
+      // Slower movement for larger clouds:
+      // - The speed scales **inversely** with cloud size, so large clouds move slower.
+      const cloudSpeedRemPerSec = (CLOUD_BASE_SPEED_PX_PER_SEC / rootFontSize) * (12 / widthRem); 
+  
+      let startXRem;
+      if (startOnScreen) {
+        // Start somewhere random **within** the screen
+        startXRem = Math.random() * (containerWidthRem - widthRem);
+      } else {
+        // Start **off-screen** (normal behavior)
+        startXRem = - (widthRem + 5);
+      }
+      cloudEl.style.left = `${startXRem}rem`;
+  
+      // Calculate full travel distance (from current position to fully off-screen right)
+      const totalTravelDistanceRem = (containerWidthRem - startXRem) + widthRem + 10; // Ensure full exit
+  
+      // Calculate duration based on adjusted speed
+      const crossTime = totalTravelDistanceRem / cloudSpeedRemPerSec;
+  
+      // Append to DOM
       cloudContainer.appendChild(cloudEl);
   
-      // After a tiny delay, set the transition and move it across
+      // Small delay before starting transition
       setTimeout(() => {
-        // Calculate how far it needs to travel: total distance from (just off-screen) to beyond container
-        const containerWidth = cloudContainer.clientWidth;
-        const totalTravelDistance = containerWidth + widthToSet + 100; 
-          // e.g. if containerWidth = 1200 and cloud width ~150 => 1450 px
-  
-        // Time (in seconds) = distance / speed
-        const crossTime = totalTravelDistance / CLOUD_SPEED_PX_PER_SEC;
-  
-        // Apply transition for that computed duration
         cloudEl.style.transition = `transform ${crossTime}s linear`;
+        cloudEl.style.transform = `translateX(${totalTravelDistanceRem}rem)`;
+      }, 50);
   
-        // Move it fully to the right, beyond container
-        cloudEl.style.transform = `translateX(${totalTravelDistance}px)`;
-      }, 50); // small delay so we can set up initial position before transition
-  
-      // Clean up after it drifts out of view
-      // Wait crossTime + a buffer so we don't remove it too early
+      // Remove after it's fully off-screen
       setTimeout(() => {
         if (cloudEl.parentElement === cloudContainer) {
           cloudContainer.removeChild(cloudEl);
         }
-      }, 60000); // 1 min is plenty; or crossTime * 1000 + some buffer
+      }, (crossTime * 1000) + 5000); // Give it extra 5s buffer
     };
   
-    // Spawn new clouds at intervals
-    setInterval(spawnCloud, 8000); // e.g. every 8s
-  
-    // Spawn a few immediately so they're visible right away
-    for (let i = 0; i < 3; i++) {
-      setTimeout(spawnCloud, i * 2000);
+    // Spawn 2/3 of the clouds already **on screen** when the page loads
+    for (let i = 0; i < 2; i++) {
+      spawnCloud(true);
     }
+  
+    // Spawn 1/3 normally (off-screen to the left)
+    for (let i = 0; i < 1; i++) {
+      spawnCloud(false);
+    }
+  
+    // Spawn new clouds at regular intervals
+    setInterval(() => spawnCloud(false), 8000);
   }
+  
+  
+  
+  
+  
   
   
   
