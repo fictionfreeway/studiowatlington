@@ -1,12 +1,9 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/', // This ensures assets load correctly under studiowatlington.com
+  base: './', // ✅ Fix for GitHub Pages - ensures relative paths work
   build: {
-    outDir: 'dist', // Ensures the built files go into 'dist'
-    emptyOutDir: true, // Cleans old files before building
-  },
-  server: {
-    port: 4200, // Optional: Ensures the dev server runs on a familiar port
+    outDir: 'dist', // ✅ Ensure output is in 'dist'
+    emptyOutDir: true, // ✅ Clear old files before building
   },
 });
