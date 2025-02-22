@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 141.06 90.07">
+  <defs>
+    <radialGradient id="radial-gradient" cx="72.61" cy="-.15" fx="72.61" fy="-.15" r="93.61" gradientTransform="translate(0 53.29) scale(1 -.66)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".29" stop-color="#fafdfd"/>
+      <stop offset=".62" stop-color="#ecf6f7"/>
+      <stop offset=".97" stop-color="#d5ebee"/>
+      <stop offset="1" stop-color="#d3eaed"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path d="M139.09,50.67c-2.86-6.02-10-9.79-16.53-8.45-.11-6.86-4.11-13.52-10.11-16.85-5.8-3.22-13.25-3.19-19.05.01.09-1.2.1-2.42,0-3.65-1.02-12.7-12.14-22.18-24.84-21.16-10.12.81-18.19,8.04-20.54,17.37-5.27-2.63-11.11-2.67-15.44.48-3.01,2.19-4.78,5.54-5.29,9.33-1.88-.63-3.92-.9-6.02-.73-8.38.67-14.63,8.01-13.96,16.39.19,2.32.89,4.46,1.98,6.35C3.61,53.07,0,59.41.56,66.39c.78,9.69,9.26,16.92,18.95,16.14,3.72-.3,7.07-1.74,9.75-3.94,2.88,2.39,6.23,4.05,9.67,4.69,6.49,1.2,13.33.65,19.47-1.73,3.36,5.79,11.27,9.1,19.75,7.69,6.07-1.01,11.07-4.23,13.91-8.38.95-.99,1.8-2.07,2.53-3.22,2.98,2.6,6.97,4.06,11.23,3.71,5.14-.41,9.48-3.34,11.91-7.47,6.31,1.78,13.58.03,18.14-4.68,4.64-4.79,6.1-12.5,3.24-18.52Z" style="fill: url(#radial-gradient); stroke: #fff; stroke-miterlimit: 10;"/>
+  </g>
+</svg>
