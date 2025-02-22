@@ -252,8 +252,9 @@ export class HomeComponent {
       }, (crossTime * 1000) + 5000); // Give it extra 5s buffer
     };
   
-    // Spawn 2/3 of the clouds already **on screen** when the page loads
-    for (let i = 0; i < 2; i++) {
+    // Spawn the clouds already **on screen** when the page loads
+    const cloudsToSpawn = Math.min(Math.floor(window.innerWidth / 200), 7);
+    for (let i = 0; i < cloudsToSpawn; i++) {
       spawnCloud(true);
     }
   
