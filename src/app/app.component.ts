@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { trigger, transition, style, animate, query } from '@angular/animations';
+import { trigger, transition, style, animate, query, group } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -14,17 +14,20 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
   animations: [
     trigger('routeAnimations', [
       transition('* <=> *', [
-        // Animate leaving page (slide out left)
-        query(':leave', [
-          style({ transform: 'translateX(0%)', opacity: 1 }),
-          animate('300ms ease-in-out', style({ transform: 'translateX(-100%)', opacity: 0 }))
-        ], { optional: true }),
+        query(':enter, :leave', style({ position: 'absolute', width: '100%' }), { optional: true }),
 
-        // Animate entering page (slide in from right)
-        query(':enter', [
-          style({ transform: 'translateX(100%)', opacity: 0 }),
-          animate('300ms ease-in-out', style({ transform: 'translateX(0%)', opacity: 1 }))
-        ], { optional: true })
+        group([
+          // Slide out current component to the left
+          query(':leave', [
+            animate('300ms ease-in-out', style({ transform: 'translateX(-100%)', opacity: 0 }))
+          ], { optional: true }),
+
+          // Slide in new component from the right
+          query(':enter', [
+            style({ transform: 'translateX(100%)', opacity: 0 }),
+            animate('300ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
+          ], { optional: true })
+        ])
       ])
     ])
   ]

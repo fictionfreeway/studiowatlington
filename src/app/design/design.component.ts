@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-design',
-  standalone: true, // ✅ Standalone component (no module needed)
-  imports: [CommonModule],
+  standalone: true, 
+  imports: [CommonModule, RouterModule],
   template: `
     <section class="page">
       <h1>Design Page</h1>
-      <p>Explore my graphic design work.</p>
+      <a routerLink="">Home</a>
     </section>
   `,
   styles: [`
