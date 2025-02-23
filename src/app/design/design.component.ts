@@ -1,30 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
+
+// Import the external template and styles
+import template from './design.component.html?raw';
+import styles from './design.component.css?inline';
 
 @Component({
-  selector: 'app-design',
-  standalone: true, 
-  imports: [CommonModule, RouterModule],
-  template: `
-    <section class="page">
-      <h1>Design Page</h1>
-      <a routerLink="">Home</a>
-    </section>
-  `,
-  styles: [`
-    .page {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #f5f5f5;
-    }
-    h1 {
-      color: #333;
-    }
-  `]
+  selector: 'app-home',
+  standalone: true, // ✅ Required since we're not using an NgModule
+  imports: [CommonModule, RouterLink, RouterModule], // Allows *ngIf, *ngFor, etc.
+  template: template || '', // ✅ External template
+  styles: [styles || ''] // ✅ External styles (optional)
 })
+
+
 export class DesignComponent {}

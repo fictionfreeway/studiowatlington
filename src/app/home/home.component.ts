@@ -8,8 +8,8 @@ import styles from './home.component.css?inline';
 
 @Component({
   selector: 'app-home',
-  standalone: true, // ✅ Required since we're not using an NgModule
-  imports: [CommonModule, RouterLink, RouterModule], // Allows *ngIf, *ngFor, etc.
+  standalone: true, 
+  imports: [CommonModule, RouterLink, RouterModule],
   template: template || '', // ✅ External template
   styles: [styles || ''] // ✅ External styles (optional)
 })
