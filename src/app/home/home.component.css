@@ -116,10 +116,6 @@ transform: translateX(-250vw) rotate(-15deg); /* Move left + slight rotation */
     50% { transform: translateY(-15px); } /* Moves up slightly */
     100% { transform: translateY(0); } /* Returns to original position */
 }
-  
-  
-  
-  
 
 /* Mobile responsiveness */
 @media only screen and (max-width: 800px) {

@@ -1,0 +1,42 @@
+#design-container {
+    background-color: #FDF5E9;
+}
+
+#horizontal-logo, #vertical-logo {
+    z-index: 15;
+    position: relative;
+}
+
+#horizontal-logo {
+    max-width: 80%;
+    width: 75rem;
+    margin: auto;
+    display: block;
+}
+
+#vertical-logo {
+    display: none;
+}
+
+#design-content {
+    width: 95%;
+    background-color: #fff;
+    border: solid 5px #000;
+    border-radius: 2rem;
+    min-height: 20vh;
+    margin: 5rem auto 5rem auto;
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 800px) {
+    #horizontal-logo {
+        display: none;
+    }
+
+    #vertical-logo {
+        display: block;
+        max-width: 80%;
+        width: 75rem;
+        margin: auto;
+    }
+}

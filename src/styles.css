@@ -57,9 +57,20 @@ table {
 }
 
 .component-container {
-    min-height: 95vh;
+    min-height: 100vh;
     min-width: 100vw;
-    padding-top: 5vh;
     position: relative;
     overflow: hidden;
+}
+
+.links {
+	margin: 1rem auto 5rem auto;
+	text-align: center;
+	color: var(--pink);
+	font-family: 'Tahoma', Arial, sans-serif
+}
+
+.links a {
+	color: var(--pink);
+	text-decoration: none;
 }
