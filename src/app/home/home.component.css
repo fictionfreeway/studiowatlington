@@ -3,11 +3,6 @@
 #home-container {
     background: var(--dark-blue);
     background: linear-gradient(180deg, rgba(1,25,54,1) 0%,rgba(1,25,54,1) 42%, rgb(87, 53, 76) 70%, rgba(248,180,190,1) 100%);
-    min-height: 95vh;
-    min-width: 100vw;
-    padding-top: 5vh;
-    position: relative;
-    overflow: hidden;
 }
 
 #jap-name {

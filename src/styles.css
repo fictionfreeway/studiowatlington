@@ -55,3 +55,11 @@ table {
     --pink: #FEB6BF;
     --gray: #465362;
 }
+
+.component-container {
+    min-height: 95vh;
+    min-width: 100vw;
+    padding-top: 5vh;
+    position: relative;
+    overflow: hidden;
+}
