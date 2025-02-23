@@ -1,3 +1,37 @@
+@keyframes cloudFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); } /* Moves up slightly */
+    100% { transform: translateY(0); } /* Returns to original position */
+}
+
+@keyframes fly-in-from-left {
+    0% {
+      transform: translateX(-120vw);
+      opcacity: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+@keyframes fly-in-from-right {
+    0% {
+      transform: translateX(120vw);
+      opcacity: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
 #design-container {
     background-color: #FDF5E9;
 }
@@ -19,12 +53,59 @@
 }
 
 #design-content {
-    width: 95%;
     background-color: #fff;
+    max-width: 85%;
     border: solid 5px #000;
     border-radius: 2rem;
     min-height: 20vh;
     margin: 5rem auto 5rem auto;
+    padding: 2rem 5%;
+}
+
+#design-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--light-blue);
+    font-size: 3rem;
+}
+
+#design-nav .arrow {
+    -webkit-text-stroke: 1px var(--gray);
+}
+
+#deco-container {
+    max-width: 50rem;
+    margin: 0 auto;
+    position: relative;
+    top: -8rem;
+}
+
+#ui-cloud, #design-cassette-container {
+    position: absolute;
+}
+
+#ui-cloud {
+    z-index: 10;
+    width: 60%;
+    animation: cloudFloat 10s ease-in-out infinite;
+    animation: fly-in-from-left 0.5s ease-out 1s forwards;
+    opacity: 0;
+}
+
+#design-cassette-container {
+    height: auto;
+    width: 65%;
+    transform: rotate(10deg);
+    right: 1rem;
+    z-index: 5;
+    animation: fly-in-from-right 0.5s ease-out 1.2s forwards;
+    opacity: 0;
+}
+
+#design-cassette {
+    width: 100%;
+    height: 100%;
 }
 
 /* Mobile responsiveness */
