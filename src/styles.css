@@ -47,6 +47,11 @@ table {
 	border-spacing: 0;
 }
 
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
+
+
+
 :root {
     --deep-blue: #011936;
     --light-blue: #92E6DA;

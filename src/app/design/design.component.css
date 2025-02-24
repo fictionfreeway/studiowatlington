@@ -54,7 +54,9 @@
 
 #design-content {
     background-color: #fff;
-    max-width: 85%;
+    width: fit-content;
+    min-width: 20rem;
+    max-width: 55%;
     border: solid 5px #000;
     border-radius: 2rem;
     min-height: 20vh;
@@ -68,10 +70,26 @@
     align-items: center;
     color: var(--light-blue);
     font-size: 3rem;
+    margin-bottom: 2rem;
 }
 
 #design-nav .arrow {
     -webkit-text-stroke: 1px var(--gray);
+}
+
+#showcase-title {
+    max-width: 70%;
+    font-family: 'new-kansas', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--gray);
+}
+
+#client-logo img {
+    width: 100%;
+    height: auto;
 }
 
 #deco-container {
@@ -109,15 +127,18 @@
 }
 
 /* Mobile responsiveness */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
     #horizontal-logo {
         display: none;
     }
 
     #vertical-logo {
         display: block;
-        max-width: 80%;
-        width: 75rem;
+        width: 70%;
         margin: auto;
+    }
+
+    #design-content {
+        width: 85%;
     }
 }
