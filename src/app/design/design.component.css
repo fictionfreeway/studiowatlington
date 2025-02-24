@@ -125,6 +125,17 @@
     height: 100%;
 }
 
+#design-images {
+    width: 100%;
+}
+
+#design-images img {
+    max-height: 9rem;
+    max-width: 90%;
+    display: block;
+    margin: 2rem auto;
+}
+
 /* Mobile responsiveness */
 @media only screen and (max-width: 1000px) {
     #horizontal-logo {
