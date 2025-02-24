@@ -106,8 +106,7 @@
 #ui-cloud {
     z-index: 10;
     width: 60%;
-    animation: cloudFloat 10s ease-in-out infinite;
-    animation: fly-in-from-left 0.5s ease-out 1s forwards;
+    animation: fly-in-from-left 0.5s ease-out 1s forwards, cloudFloat 10s ease-in-out 1.5s infinite;
     opacity: 0;
 }
 
