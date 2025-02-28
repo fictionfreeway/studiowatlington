@@ -36,19 +36,17 @@
     background-color: #FDF5E9;
 }
 
-#horizontal-logo, #vertical-logo {
+#desktop-logo, #vertical-logo {
     z-index: 15;
     position: relative;
     cursor: pointer;
 }
 
-#horizontal-logo {
-    max-width: 35%;
-    margin: auto;
+#desktop-logo {
+    max-width: 55%;
+    margin: 0rem auto 6rem auto;
     display: block;
-    position: absolute;
-    top: 5rem;
-    right: 5rem;
+    z-index: 1;
 }
 
 #vertical-logo {
@@ -161,7 +159,7 @@
 }
 
 #design-images img {
-    max-height: 9rem;
+    max-height: 20rem;
     max-width: 90%;
     display: block;
     margin: 2rem auto;
@@ -184,8 +182,8 @@
 
 
 /* Mobile responsiveness */
-@media only screen and (max-width: 1000px) {
-    #horizontal-logo {
+@media (max-aspect-ratio: 1.2/1) {
+    #desktop-logo {
         display: none;
     }
 
@@ -205,13 +203,18 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
     }
 
     #design-content {
         margin: 0rem 0 5rem 0;
-        max-width: 40%;
+        max-width: 30%;
         min-width: 25%;
+    }
+
+    #design-content p {
+        font-size: 1.2rem;
+        line-height: 2rem;
     }
 
     #deco-container {
@@ -219,6 +222,7 @@
         position: relative;
         margin: 5rem 0;
         left: -5%;
+        top: 20rem;
     }
 
     #ui-cloud {
@@ -229,7 +233,7 @@
     #design-cassette-container {
         width: 75%;
         transform: rotate(0);
-        top: -5rem;
+        top: -15rem;
         right: -12rem;
     }
 
