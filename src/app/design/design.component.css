@@ -1,6 +1,6 @@
 @keyframes cloudFloat {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); } /* Moves up slightly */
+    50% { transform: translateY(-2rem); } /* Moves up slightly */
     100% { transform: translateY(0); } /* Returns to original position */
 }
 
@@ -39,6 +39,7 @@
 #horizontal-logo, #vertical-logo {
     z-index: 15;
     position: relative;
+    cursor: pointer;
 }
 
 #horizontal-logo {
@@ -56,7 +57,7 @@
     background-color: #fff;
     width: fit-content;
     min-width: 20rem;
-    max-width: 55%;
+    max-width: 45rem;
     border: solid 5px #000;
     border-radius: 2rem;
     min-height: 20vh;
@@ -73,8 +74,33 @@
     margin-bottom: 2rem;
 }
 
-#design-nav .arrow {
-    -webkit-text-stroke: 1px var(--gray);
+.design-arrow {
+    max-width: 15%;
+    position: relative;
+    
+}
+
+.design-arrow img {
+    width: 80%;
+    height: auto;
+}
+
+#left-arrow, #right-arrow {
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+#left-arrow:hover, #right-arrow:hover, #left-arrow:active, #right-arrow:active, #left-arrow:focus, #right-arrow:focus {
+    transform: rotate(10deg);
+    outline: none;
+}
+
+#left-arrow {
+    transform: rotate(-5deg);
+}
+
+#right-arrow {
+    transform: rotate(-10deg);
 }
 
 #showcase-title {
@@ -135,6 +161,22 @@
     display: block;
     margin: 2rem auto;
 }
+
+#design-text {
+    font-family: 'new-kansas', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    text-align: left;
+    width: 85%;
+    margin: 0 auto 3rem auto;
+}
+
+#design-text p {
+    margin: 1rem 0;
+    text-indent: 1rem;
+}
+
+
 
 /* Mobile responsiveness */
 @media only screen and (max-width: 1000px) {
