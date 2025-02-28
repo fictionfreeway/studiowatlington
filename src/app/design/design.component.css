@@ -56,8 +56,9 @@
 #design-content {
     background-color: #fff;
     width: fit-content;
-    min-width: 20rem;
-    max-width: 45rem;
+    min-width: 60%;
+    max-width: 20rem;
+    overflow: hidden;
     border: solid 5px #000;
     border-radius: 2rem;
     min-height: 20vh;
@@ -123,6 +124,7 @@
     margin: 0 auto;
     position: relative;
     top: -8rem;
+    pointer-events: none;
 }
 
 #ui-cloud, #design-cassette-container {
@@ -149,6 +151,7 @@
 #design-cassette {
     width: 100%;
     height: 100%;
+    transform: rotate(10deg);
 }
 
 #design-images {
@@ -192,5 +195,43 @@
 
     #design-content {
         width: 85%;
+    }
+}
+
+@media (min-aspect-ratio: 1.2/1) {
+    #design-flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #design-content {
+        margin: 10rem 0 5rem 0;
+        max-width: 40%;
+        min-width: 25%;
+    }
+
+    #deco-container {
+        width: 40%;
+        position: relative;
+        margin: 5rem 0;
+        left: -5%;
+    }
+
+    #ui-cloud {
+        width: 100%;
+        top: -2rem;
+    }
+
+    #design-cassette-container {
+        width: 75%;
+        transform: rotate(0);
+        top: -5rem;
+        right: -12rem;
+    }
+
+    #design-cassette {
+        transform: rotate(20deg);
     }
 }
