@@ -120,11 +120,8 @@
 }
 
 #deco-container {
-    max-width: 50rem;
-    margin: 0 auto;
-    position: relative;
-    top: -8rem;
     pointer-events: none;
+    z-index: 1;
 }
 
 #ui-cloud, #design-cassette-container {
@@ -136,22 +133,22 @@
     width: 60%;
     animation: fly-in-from-left 0.5s ease-out 1s forwards, cloudFloat 10s ease-in-out 1.5s infinite;
     opacity: 0;
+    width: 30%;
+    top: -2rem;
+    left: 10%;
 }
 
 #design-cassette-container {
-    height: auto;
-    width: 65%;
-    transform: rotate(10deg);
-    right: 1rem;
-    z-index: 5;
     animation: fly-in-from-right 0.5s ease-out 1.2s forwards;
     opacity: 0;
+    width: 30%;
+    top: 25rem;
+    right: 5%;
 }
 
 #design-cassette {
     width: 100%;
-    height: 100%;
-    transform: rotate(10deg);
+    height: auto;
 }
 
 #design-images {
@@ -178,6 +175,14 @@
     margin: 1rem 0;
     text-indent: 1rem;
 }
+
+#deco-container {
+    width: 100%;
+    position: absolute;
+    margin: 5rem 0;
+}
+
+
 
 
 
@@ -215,29 +220,5 @@
     #design-content p {
         font-size: 1.2rem;
         line-height: 2rem;
-    }
-
-    #deco-container {
-        width: 40%;
-        position: relative;
-        margin: 5rem 0;
-        left: -5%;
-        top: 20rem;
-    }
-
-    #ui-cloud {
-        width: 100%;
-        top: -2rem;
-    }
-
-    #design-cassette-container {
-        width: 75%;
-        transform: rotate(0);
-        top: -15rem;
-        right: -12rem;
-    }
-
-    #design-cassette {
-        transform: rotate(20deg);
-    }
+    }   
 }
