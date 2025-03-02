@@ -1,10 +1,19 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: './', // ✅ Fix for GitHub Pages - ensures relative paths work
+  // Sets the base URL for the project. Using './' ensures relative paths work correctly, 
+  // which is particularly useful for static hosting like GitHub Pages.
+  base: './',
+
   build: {
-    outDir: 'dist', // ✅ Ensure output is in 'dist'
-    emptyOutDir: true, // ✅ Clear old files before building
+    // Defines the output directory for the built files.
+    outDir: 'dist',
+
+    // Ensures the output directory is cleared before building to remove outdated files.
+    emptyOutDir: true,
   },
-  assetsInclude: ['**/*.html'], // ✅ Include HTML and CSS files
+
+  // Includes only HTML files within the 'assets' folder as assets. 
+  // This allows additional template files to be processed while ensuring index.html remains functional.
+  assetsInclude: ['assets/**/*.html'],
 });
