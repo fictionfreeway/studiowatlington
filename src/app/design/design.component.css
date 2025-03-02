@@ -130,14 +130,14 @@
     opacity: 0;
     width: 30%;
     top: 40rem;
-    left: -8%;
+    left: -14%;
 }
 
 #design-cassette-container {
     animation: fly-in-from-right 0.5s ease-out 1.2s forwards;
     opacity: 0;
     width: 30%;
-    right: -10%;
+    right: -13%;
     bottom: 8rem;
 }
 
