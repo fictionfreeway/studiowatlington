@@ -22,9 +22,10 @@ export class DesignComponent implements OnInit {
 
   private sanitizer = inject(DomSanitizer);
 
+  // file names are used as titles in template with all "_" replaced with " "
   ngOnInit(): void {
     const templatePaths = [
-      '/assets/showcases/pes-40.html',
+      '/assets/showcases/PES_40th_Anniversary_Campaign.html',
       '/assets/showcases/template2.html',
       '/assets/showcases/template3.html',
     ]; // Manually list HTML files, or generate dynamically if possible
@@ -43,8 +44,8 @@ export class DesignComponent implements OnInit {
   }
 
   extractFileName(path: string): string {
-    return path.split('/').pop()?.replace('.html', '') || 'unknown';
-  }
+    return path.split('/').pop()?.replace('.html', '').replace(/_/g, ' ') || 'unknown';
+}
 
   showNextTemplate(): void {
     this.transitionClass = 'slide-out-left';
