@@ -119,11 +119,6 @@
     height: auto;
 }
 
-#deco-container {
-    pointer-events: none;
-    z-index: 1;
-}
-
 #ui-cloud, #design-cassette-container {
     position: absolute;
 }
@@ -134,21 +129,23 @@
     animation: fly-in-from-left 0.5s ease-out 1s forwards, cloudFloat 10s ease-in-out 1.5s infinite;
     opacity: 0;
     width: 30%;
-    top: -2rem;
-    left: 10%;
+    top: 40rem;
+    left: -8%;
 }
 
 #design-cassette-container {
     animation: fly-in-from-right 0.5s ease-out 1.2s forwards;
     opacity: 0;
     width: 30%;
-    top: 25rem;
-    right: 5%;
+    right: -10%;
+    bottom: 8rem;
 }
 
 #design-cassette {
-    width: 100%;
+    width: 80%;
     height: auto;
+    transform: rotate(20deg);
+    
 }
 
 #design-images {
@@ -179,7 +176,19 @@
 #deco-container {
     width: 100%;
     position: absolute;
-    margin: 5rem 0;
+    margin: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 1;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#design-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 
@@ -204,12 +213,6 @@
 }
 
 @media (min-aspect-ratio: 1.2/1) {
-    #design-flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-    }
 
     #design-content {
         margin: 0rem 0 5rem 0;
@@ -220,5 +223,15 @@
     #design-content p {
         font-size: 1.2rem;
         line-height: 2rem;
-    }   
+    }
+    
+    #ui-cloud {
+        top: 25rem;
+        left: 6%;
+    }
+
+    #design-cassette-container {
+        bottom: 5rem;
+        right: 5%;
+    }
 }
