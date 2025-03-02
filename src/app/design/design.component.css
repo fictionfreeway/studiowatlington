@@ -44,7 +44,7 @@
 
 #desktop-logo {
     max-width: 55%;
-    margin: 0rem auto 6rem auto;
+    margin: 0rem auto 1rem auto;
     display: block;
     z-index: 1;
 }
@@ -204,10 +204,11 @@
     #vertical-logo {
         display: block;
         width: 70%;
-        margin: auto;
+        margin: 0 auto 1rem auto;
     }
 
     #design-content {
+        margin-top: 0;
         width: 85%;
     }
 }
