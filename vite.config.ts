@@ -6,4 +6,5 @@ export default defineConfig({
     outDir: 'dist', // ✅ Ensure output is in 'dist'
     emptyOutDir: true, // ✅ Clear old files before building
   },
+  assetsInclude: ['**/*.html'], // ✅ Include HTML and CSS files
 });
