@@ -17,6 +17,8 @@ import styles from './design.component.css?inline';
 })
 export class DesignComponent implements OnInit {
   templates: { name: string; content: SafeHtml }[] = [];
+  currentTemplateIndex: number = 0;
+  transitionClass: string = '';
 
   private sanitizer = inject(DomSanitizer);
 
@@ -42,5 +44,21 @@ export class DesignComponent implements OnInit {
 
   extractFileName(path: string): string {
     return path.split('/').pop()?.replace('.html', '') || 'unknown';
+  }
+
+  showNextTemplate(): void {
+    this.transitionClass = 'slide-out-left';
+    setTimeout(() => {
+      this.currentTemplateIndex = (this.currentTemplateIndex + 1) % this.templates.length;
+      this.transitionClass = 'slide-in-right';
+    }, 500);
+  }
+
+  showPreviousTemplate(): void {
+    this.transitionClass = 'slide-out-right';
+    setTimeout(() => {
+      this.currentTemplateIndex = (this.currentTemplateIndex - 1 + this.templates.length) % this.templates.length;
+      this.transitionClass = 'slide-in-left';
+    }, 500);
   }
 }
