@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -11,6 +11,7 @@ import styles from './design.component.css?inline';
   selector: 'app-design',
   standalone: true, // ✅ Required since we're not using an NgModule
   imports: [CommonModule, RouterLink, RouterModule], // Allows *ngIf, *ngFor, etc.
+  encapsulation: ViewEncapsulation.None, // ✅ Disable encapsulation
   template: template || '', // ✅ External template
   styles: [styles || ''] // ✅ External styles (optional)
 })

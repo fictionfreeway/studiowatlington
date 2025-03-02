@@ -152,7 +152,7 @@
     width: 100%;
 }
 
-#design-images img {
+.design-image {
     max-height: 20rem;
     max-width: 90%;
     display: block;
