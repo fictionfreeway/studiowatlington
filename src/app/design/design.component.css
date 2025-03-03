@@ -214,28 +214,20 @@
     
 }
 
-#design-images {
-    width: 100%;
-}
-
 .design-image {
     max-height: 20rem;
     max-width: 90%;
     display: block;
-    margin: 2rem auto;
+    margin: 3rem auto;
 }
 
-#design-text {
+.showcase-group p {
     font-family: 'new-kansas', sans-serif;
     font-size: 0.9rem;
     line-height: 1.2rem;
     text-align: left;
     width: 85%;
     margin: 0 auto 3rem auto;
-}
-
-#design-text p {
-    margin: 1rem 0;
     text-indent: 1rem;
 }
 
