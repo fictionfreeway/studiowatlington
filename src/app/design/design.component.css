@@ -315,10 +315,12 @@
     #ui-cloud {
         top: 25rem;
         left: 6%;
+        width: 25%;
     }
 
     #design-cassette-container {
         bottom: 5rem;
         right: 5%;
+        width: 25%;
     }
 }
