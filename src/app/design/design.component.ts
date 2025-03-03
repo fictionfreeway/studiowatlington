@@ -25,8 +25,8 @@ export class DesignComponent implements OnInit {
   // file names are used as titles in template with all "_" replaced with " "
   ngOnInit(): void {
     const templatePaths = [
+      '/assets/showcases/Design.html',
       '/assets/showcases/PES_40th_Anniversary_Campaign.html',
-      '/assets/showcases/template2.html',
       '/assets/showcases/template3.html',
     ]; // Manually list HTML files, or generate dynamically if possible
 
