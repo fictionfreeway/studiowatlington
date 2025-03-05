@@ -283,6 +283,7 @@
         display: block;
         width: 70%;
         margin: 0 auto 1rem auto;
+        max-width: 40rem;
     }
 
     #design-content {
