@@ -130,14 +130,19 @@
     min-height: 20vh;
     margin: 5rem auto 5rem auto;
     padding: 2rem 5%;
+    position: relative;
 }
 
 #design-nav {
     display: flex;
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
     justify-content: space-between;
     align-items: center;
     color: var(--light-blue);
     font-size: 3rem;
+    padding: 0 1.5rem;
 }
 
 .design-arrow {
@@ -177,6 +182,7 @@
     font-size: 1.5rem;
     text-align: center;
     color: var(--gray);
+    margin-bottom: 2rem;
 }
 
 #client-logo img {
@@ -210,7 +216,19 @@
     width: 80%;
     height: auto;
     transform: rotate(20deg);
-    
+}
+
+/* styles for 'design.html' showcase template */
+
+#design-showcase-header {
+  font-family: 'new-kansas', sans-serif;
+  font-size: 3rem;
+  text-align: left;
+  line-height: 3rem;
+  width: fit-content;
+  margin: 1rem auto 1rem auto;
+  color: var(--deep-blue);
+  font-weight: 800;
 }
 
 .design-image {
@@ -293,6 +311,11 @@
 
 @media (min-aspect-ratio: 1.2/1) {
 
+  #design-showcase-header {
+    text-align: right;
+    width: 90%;
+  }
+
     #design-content {
         margin: 0rem 0 5rem 0;
         max-width: 30%;
@@ -314,5 +337,16 @@
         bottom: 5rem;
         right: 5%;
         width: 25%;
+    }
+
+    #design-header-img {
+      margin: 0; 
+      position: absolute; 
+      width: 60%; 
+      height: auto;
+    }
+
+    #filler-div {
+      height: 15rem;
     }
 }
