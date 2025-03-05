@@ -138,7 +138,6 @@
     align-items: center;
     color: var(--light-blue);
     font-size: 3rem;
-    margin-bottom: 2rem;
 }
 
 .design-arrow {
@@ -218,7 +217,7 @@
     max-height: 20rem;
     max-width: 90%;
     display: block;
-    margin: 3rem auto;
+    margin: 2rem auto;
 }
 
 .showcase-group p {

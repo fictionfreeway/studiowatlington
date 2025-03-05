@@ -16,7 +16,7 @@ import styles from './design.component.css?inline';
   styles: [styles || ''] // ✅ External styles (optional)
 })
 export class DesignComponent implements OnInit {
-  templates: { name: string; content: SafeHtml }[] = [];
+  templates: { content: SafeHtml }[] = [];
   currentTemplateIndex: number = 0;
   transitionClass: string = '';
 
@@ -35,17 +35,13 @@ export class DesignComponent implements OnInit {
         .then((response) => response.text())
         .then((content) => {
           const sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(content); // ✅ Sanitize HTML
-          this.templates.push({ name: this.extractFileName(path), content: sanitizedContent });
+          this.templates.push({ content: sanitizedContent });
         })
         .catch((error) => {
           console.error('Error loading template:', path, error);
         });
     });
   }
-
-  extractFileName(path: string): string {
-    return path.split('/').pop()?.replace('.html', '').replace(/_/g, ' ') || 'unknown';
-}
 
   showNextTemplate(): void {
     this.transitionClass = 'slide-out-left';
