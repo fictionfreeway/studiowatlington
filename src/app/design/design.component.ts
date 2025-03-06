@@ -3,44 +3,49 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
-// Import the external template and styles
 import template from './design.component.html?raw';
 import styles from './design.component.css?inline';
 
 @Component({
   selector: 'app-design',
-  standalone: true, // ✅ Required since we're not using an NgModule
-  imports: [CommonModule, RouterLink, RouterModule], // Allows *ngIf, *ngFor, etc.
-  encapsulation: ViewEncapsulation.None, // ✅ Disable encapsulation
-  template: template || '', // ✅ External template
-  styles: [styles || ''] // ✅ External styles (optional)
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterModule],
+  encapsulation: ViewEncapsulation.None,
+  template: template || '',
+  styles: [styles || '']
 })
 export class DesignComponent implements OnInit {
   templates: { content: SafeHtml }[] = [];
-  currentTemplateIndex: number = 0;
-  transitionClass: string = '';
+  currentTemplateIndex = 0;
+  transitionClass = '';
 
   private sanitizer = inject(DomSanitizer);
 
-  // file names are used as titles in template with all "_" replaced with " "
   ngOnInit(): void {
+    // Load your external showcases
     const templatePaths = [
       '/assets/showcases/Design.html',
       '/assets/showcases/PES_40th_Anniversary_Campaign.html',
       '/assets/showcases/template3.html',
-    ]; // Manually list HTML files, or generate dynamically if possible
+    ];
 
     templatePaths.forEach((path) => {
       fetch(path)
         .then((response) => response.text())
         .then((content) => {
-          const sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(content); // ✅ Sanitize HTML
+          const sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(content);
           this.templates.push({ content: sanitizedContent });
         })
         .catch((error) => {
           console.error('Error loading template:', path, error);
         });
     });
+
+    // 1) Attach idle bounce class on init (so it teases automatically)
+    const rightArrow = document.getElementById('right-arrow');
+    if (rightArrow) {
+      rightArrow.classList.add('arrow-idle-bounce');
+    }
   }
 
   showNextTemplate(): void {
@@ -48,14 +53,58 @@ export class DesignComponent implements OnInit {
     setTimeout(() => {
       this.currentTemplateIndex = (this.currentTemplateIndex + 1) % this.templates.length;
       this.transitionClass = 'slide-in-right';
-    }, 500);
+    }, 400);
   }
 
   showPreviousTemplate(): void {
     this.transitionClass = 'slide-out-right';
     setTimeout(() => {
-      this.currentTemplateIndex = (this.currentTemplateIndex - 1 + this.templates.length) % this.templates.length;
+      this.currentTemplateIndex =
+        (this.currentTemplateIndex - 1 + this.templates.length) % this.templates.length;
       this.transitionClass = 'slide-in-left';
-    }, 500);
+    }, 400);
+  }
+
+
+  // ─────────────────────────────────────────────────────────────────
+  //  BOUNCE ARROW METHODS (imperative approach)
+  // ─────────────────────────────────────────────────────────────────
+
+  bounceLeftArrow(): void {
+    const leftArrow = document.getElementById('left-arrow');
+    if (!leftArrow) return;
+
+    // Remove the class if it’s still lingering
+    leftArrow.classList.remove('left-arrow-clicked');
+
+    // Force a reflow, so we can re-trigger the animation
+    void leftArrow.offsetWidth;
+
+    // Add the class to start the animation
+    leftArrow.classList.add('left-arrow-clicked');
+
+    // Remove class after animation completes (300ms)
+    setTimeout(() => {
+      leftArrow.classList.remove('left-arrow-clicked');
+    }, 300);
+  }
+
+  // 2) On click, permanently remove idle bounce, run click bounce once.
+  bounceRightArrow(): void {
+    const rightArrow = document.getElementById('right-arrow');
+    if (!rightArrow) return;
+
+    // Remove idle bounce class
+    rightArrow.classList.remove('arrow-idle-bounce');
+    // Force reflow so new animation can start fresh
+    void rightArrow.offsetWidth;
+
+    // Add click bounce class
+    rightArrow.classList.add('right-arrow-clicked');
+
+    // (Optional) remove click bounce class after 300ms
+    setTimeout(() => {
+      rightArrow.classList.remove('right-arrow-clicked');
+    }, 300);
   }
 }

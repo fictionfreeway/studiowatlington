@@ -19,7 +19,7 @@
 @keyframes fly-in-from-left {
   0% {
     transform: translateX(-120vw);
-    opcacity: 0;
+    opacity: 0;
   }
   1% {
     opacity: 1;
@@ -33,7 +33,7 @@
 @keyframes fly-in-from-right {
   0% {
     transform: translateX(120vw);
-    opcacity: 0;
+    opacity: 0;
   }
   1% {
     opacity: 1;
@@ -65,56 +65,142 @@
     opacity: 0;
   }
 }
-
+/* ============================================================
+   SLIDE IN FROM LEFT (less bounce, small snap)
+   ------------------------------------------------------------
+   - Starts off-screen to the left, quickly moves to center
+   - Slight scale for a crisp "click" feel
+   - Tiny final snap to lock into place
+============================================================ */
 @keyframes slide-in-left {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-120%) scale(0.95);
     opacity: 0;
   }
-  100% {
-    transform: translateX(0);
+  /* By 70%, we've fully arrived on screen */
+  70% {
+    transform: translateX(0) scale(1);
     opacity: 1;
+  }
+  /* Small snap backward */
+  85% {
+    transform: translateX(-1%) scale(0.98);
+  }
+  /* Final lock-in */
+  100% {
+    transform: translateX(0) scale(1);
   }
 }
 
+/* ============================================================
+   SLIDE IN FROM RIGHT (less bounce, small snap)
+============================================================ */
 @keyframes slide-in-right {
   0% {
-    transform: translateX(100%);
+    transform: translateX(120%) scale(0.95);
     opacity: 0;
   }
-  100% {
-    transform: translateX(0);
+  70% {
+    transform: translateX(0) scale(1);
     opacity: 1;
+  }
+  85% {
+    transform: translateX(1%) scale(0.98);
+  }
+  100% {
+    transform: translateX(0) scale(1);
   }
 }
 
+/* ============================================================
+   SLIDE OUT TO LEFT (less bounce, small snap)
+   ------------------------------------------------------------
+   - Quick slight "push" before sliding away
+   - Minimal scale change to keep it snappy
+============================================================ */
 @keyframes slide-out-left {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
     opacity: 1;
   }
+  /* Tiny forward nudge */
+  20% {
+    transform: translateX(1%) scale(1.02);
+  }
+  /* Start sliding away & fading out */
+  50% {
+    transform: translateX(-3%) scale(0.95);
+    opacity: 0.9;
+  }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-120%) scale(0.9);
     opacity: 0;
   }
 }
 
+/* ============================================================
+   SLIDE OUT TO RIGHT (less bounce, small snap)
+============================================================ */
 @keyframes slide-out-right {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
     opacity: 1;
   }
+  20% {
+    transform: translateX(-1%) scale(1.02);
+  }
+  50% {
+    transform: translateX(3%) scale(0.95);
+    opacity: 0.9;
+  }
   100% {
-    transform: translateX(100%);
+    transform: translateX(120%) scale(0.9);
     opacity: 0;
   }
 }
 
+
+
+
+/* EXACT recreation of old rotations but triggered once on click */
+@keyframes arrow-click-left {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes arrow-click-right {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* 1) Keyframes for the idle "tease" every 10s */
+@keyframes arrowIdleTease {
+  0%   { transform: rotate(-10deg); }
+  2%   { transform: rotate(2deg); }
+  4%   { transform: rotate(-4deg); }
+  6%   { transform: rotate(2deg); }
+  8%   { transform: rotate(-10deg); }
+  20%  { transform: rotate(-10deg); }
+  100% { transform: rotate(-10deg); }
+}
 
 /*======================================================================
   2) GENERAL LAYOUT & CONTAINERS
   ----------------------------------------------------------------------
-  This is where we style the major layout containers and backgrounds.
 ======================================================================*/
 
 #design-container {
@@ -137,7 +223,7 @@
   border: solid 5px #000;
   border-radius: 2rem;
   min-height: 20vh;
-  margin: 5rem auto 5rem auto;
+  margin: 5rem auto;
   padding: 2rem 5%;
   position: relative;
 }
@@ -153,11 +239,9 @@
   min-height: 100%;
 }
 
-
 /*======================================================================
   3) LOGOS & LINKS
   ----------------------------------------------------------------------
-  Manage your logo styling here, plus any top links or global nav items.
 ======================================================================*/
 
 #desktop-logo,
@@ -169,20 +253,27 @@
 
 #desktop-logo {
   max-width: 55%;
-  margin: 0rem auto 1rem auto;
+  margin: 0 auto 1rem auto;
   display: block;
   z-index: 1;
+  max-width: 55rem;
 }
 
 #vertical-logo {
   display: none;
 }
 
+.links {
+  /* Add styles if needed */
+}
+
+.links a {
+  /* Add styles if needed */
+}
 
 /*======================================================================
   4) NAVIGATION ARROWS
   ----------------------------------------------------------------------
-  Styles for the left/right arrows that help navigate the showcases.
 ======================================================================*/
 
 #design-nav {
@@ -200,6 +291,7 @@
 .design-arrow {
   max-width: 15%;
   position: relative;
+  cursor: pointer;
 }
 
 .design-arrow img {
@@ -207,35 +299,29 @@
   height: auto;
 }
 
-#left-arrow,
-#right-arrow {
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
-}
-
-#left-arrow:hover,
-#right-arrow:hover,
-#left-arrow:active,
-#right-arrow:active,
-#left-arrow:focus,
-#right-arrow:focus {
-  transform: rotate(10deg);
-  outline: none;
-}
-
+/* Default angles from your old hover state */
 #left-arrow {
   transform: rotate(-5deg);
 }
-
 #right-arrow {
   transform: rotate(-10deg);
 }
 
+.arrow-idle-bounce {
+  animation: arrowIdleTease 10s ease-in-out 4s infinite;
+}
+
+/* Classes toggled via TS for a single-run animation on click */
+.left-arrow-clicked {
+  animation: arrow-click-left 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+.right-arrow-clicked {
+  animation: arrow-click-right 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
 
 /*======================================================================
   5) SPECIAL OBJECTS (SVGs, Floaters, etc.)
   ----------------------------------------------------------------------
-  Styles for the cloud, cassette, and other fun floating elements.
 ======================================================================*/
 
 #ui-cloud,
@@ -268,27 +354,22 @@
   transform: rotate(20deg);
 }
 
-
 /*======================================================================
   6) SHOWCASE TEMPLATE ELEMENTS
   ----------------------------------------------------------------------
-  Styles that specifically belong to your 'design.html' content, such as
-  headers, paragraphs, images, etc.
 ======================================================================*/
 
-/* Header & text for the design showcase page */
 #design-showcase-header {
   font-family: 'new-kansas', sans-serif;
   font-size: 3rem;
   text-align: left;
   line-height: 3rem;
   width: fit-content;
-  margin: 1rem auto 1rem auto;
+  margin: 1rem auto;
   color: var(--deep-blue);
   font-weight: 800;
 }
 
-/* Images used within the design showcases */
 .design-image {
   max-height: 25rem;
   max-width: 90%;
@@ -296,7 +377,6 @@
   margin: 2rem auto;
 }
 
-/* Additional text paragraphs for the showcases */
 .showcase-group p {
   font-family: 'new-kansas', sans-serif;
   font-size: 0.9rem;
@@ -308,7 +388,6 @@
   text-indent: 1rem;
 }
 
-/* Filler div in the design.html for spacing */
 #filler-div {
   height: 15rem;
 }
@@ -323,7 +402,6 @@
   top: 8rem;
 }
 
-/* Additional ID or class for optional title usage */
 #showcase-title {
   max-width: 70%;
   font-family: 'new-kansas', sans-serif;
@@ -340,42 +418,38 @@
   height: auto;
 }
 
-
 /*======================================================================
   7) TEMPLATE CONTENT TRANSITIONS
   ----------------------------------------------------------------------
-  Class-based transitions for Angular or manual content switching.
 ======================================================================*/
 
 .template-content {
-  animation: slide-in 0.5s ease-in-out;
+  animation: slide-in 0.4s ease-in-out;
 }
 
 .template-content.ng-leave {
-  animation: slide-out 0.5s ease-in-out;
+  animation: slide-out 0.4s ease-in-out;
 }
 
 .slide-in-left {
-  animation: slide-in-left 0.5s ease-in-out;
+  animation: slide-in-left 0.4s ease-in-out;
 }
 
 .slide-in-right {
-  animation: slide-in-right 0.5s ease-in-out;
+  animation: slide-in-right 0.4s ease-in-out;
 }
 
 .slide-out-left {
-  animation: slide-out-left 0.5s ease-in-out;
+  animation: slide-out-left 0.4s ease-in-out;
 }
 
 .slide-out-right {
-  animation: slide-out-right 0.5s ease-in-out;
+  animation: slide-out-right 0.4s ease-in-out;
 }
-
 
 /*======================================================================
   8) RESPONSIVE MEDIA QUERIES
   ----------------------------------------------------------------------
-  Keep mobile & desktop queries last. Adjust them as needed.
 ======================================================================*/
 
 /* Mobile responsiveness */
@@ -387,7 +461,7 @@
     display: block;
     width: 70%;
     margin: 0 auto 1rem auto;
-    max-width: 40rem;
+    max-width: 30rem;
   }
   #design-content {
     margin-top: 0;
