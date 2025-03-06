@@ -232,7 +232,7 @@
 }
 
 .design-image {
-    max-height: 20rem;
+    max-height: 25rem;
     max-width: 90%;
     display: block;
     margin: 2rem auto;
@@ -244,6 +244,7 @@
     line-height: 1.2rem;
     text-align: left;
     width: 85%;
+    max-width: 40rem;
     margin: 0 auto 3rem auto;
     text-indent: 1rem;
 }
@@ -311,20 +312,24 @@
 
 @media (min-aspect-ratio: 1.2/1) {
 
-  #design-showcase-header {
-    text-align: right;
-    width: 90%;
-  }
+    #design-showcase-header {
+      text-align: right;
+      width: 90%;
+      max-width: 40rem;
+      margin-bottom: 5rem;
+      margin-top: 10rem;
+    }
 
     #design-content {
         margin: 0rem 0 5rem 0;
         max-width: 30%;
         min-width: 25%;
+        width: 30%;
     }
 
     #design-content p {
         font-size: 1.2rem;
-        line-height: 2rem;
+        line-height: 2.5rem;
     }
     
     #ui-cloud {
@@ -343,7 +348,10 @@
       margin: 0; 
       position: absolute; 
       width: 60%; 
-      height: auto;
+      max-width: 40rem;
+      max-height: fit-content;
+      right: 35%;
+      top: 8rem;
     }
 
     #filler-div {
