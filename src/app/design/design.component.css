@@ -424,7 +424,12 @@
   position: relative;
   margin: 3rem auto 1rem auto;
   width: 85%;
-  padding-top: 2rem;
+  padding-top: 7rem;
+  max-width: 25rem;
+  background-image: url('assets/images/fireworks.png');
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat
 }
 
 .card {
