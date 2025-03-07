@@ -217,8 +217,8 @@
 #design-content {
   background-color: #fff;
   width: fit-content;
-  min-width: 60%;
-  max-width: 20rem;
+  min-width: 20rem;
+  max-width: 40rem;
   overflow: hidden;
   border: solid 5px #000;
   border-radius: 2rem;
@@ -286,6 +286,7 @@
   color: var(--light-blue);
   font-size: 3rem;
   padding: 0 1.5rem;
+  z-index: 100;
 }
 
 .design-arrow {
@@ -416,6 +417,19 @@
 #client-logo img {
   width: 100%;
   height: auto;
+}
+
+/* PES showcase styles */
+#pes-header {
+  display: block;
+  width: 60%;
+  font-family: 'new-kansas', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 3rem;
+  margin: 3rem auto 1rem auto;
+  color: var(--deep-blue);
+  font-weight: 800;
 }
 
 /*======================================================================
