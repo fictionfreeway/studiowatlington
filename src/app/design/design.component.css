@@ -420,16 +420,42 @@
 }
 
 /* PES showcase styles */
+#pes-header-container {
+  position: relative;
+  margin: 3rem auto 1rem auto;
+  width: 85%;
+  padding-top: 2rem;
+}
+
+.card {
+  display: inline-block;  
+  background-color: #fff;
+  padding: 1rem 0 1rem 1rem;
+  border: 2px solid #ddd;
+  transform: rotate(5deg);
+  box-shadow: 10px 10px 0 #555; 
+  width: 45%;
+  position: absolute;
+  z-index: 1;
+  bottom: 2rem;
+  right: 0rem;
+}
+
+#pes-header-container img {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
 #pes-header {
-  display: block;
-  width: 60%;
   font-family: 'new-kansas', sans-serif;
   font-size: 2rem;
-  text-align: center;
+  text-align: left;
   line-height: 3rem;
   margin: 3rem auto 1rem auto;
   color: var(--deep-blue);
   font-weight: 800;
+  z-index: 5;
 }
 
 /*======================================================================
