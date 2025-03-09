@@ -1,9 +1,22 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterModule } from '@angular/router';
+
+import template from './development.component.css?raw';
+import styles from './development.component.css?raw';
 
 @Component({
-  selector: 'development',
+  selector: 'app-development',
   standalone: true,
-  templateUrl: './development.component.html',
-  styleUrls: ['./development.component.css']
+  template: template || '',
+  styles: [styles || '']
 })
-export class MyNewComponent { }
+
+
+export class DevelopmentComponent {
+
+  ngOnInit() {
+    console.log('DevelopmentComponent initialized');
+  }
+ 
+}
