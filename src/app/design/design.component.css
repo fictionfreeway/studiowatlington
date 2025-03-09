@@ -422,14 +422,14 @@
 /* PES showcase styles */
 #pes-header-container {
   position: relative;
-  margin: 3rem auto 1rem auto;
+  margin: 3rem auto 3rem auto;
   width: 85%;
   padding-top: 7rem;
   max-width: 25rem;
   background-image: url('assets/images/fireworks.png');
   background-size: contain;
-  background-position: top;
-  background-repeat: no-repeat
+  background-position: right;
+  background-repeat: no-repeat;
 }
 
 .card {
