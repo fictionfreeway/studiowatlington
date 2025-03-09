@@ -1,0 +1,15 @@
+#dev-container {
+    background-color: var(--pink);
+    position: relative;
+}
+
+#whiteboard-container {
+    background-image: url('assets/images/whiteboard-mobile.png');
+    background-size: contain;
+    height: 75%;
+    width: 350%;
+    position: absolute;
+    top: 50%;
+    left: 3rem;
+    transform: translateY(-50%);
+}
