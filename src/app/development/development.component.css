@@ -1,3 +1,9 @@
+@keyframes sketchJitter {
+    0% { transform: translateX(0) rotate(-1deg); }
+    50% { transform: translateX(0) rotate(0); }
+    100% { transform: translateX(0) rotate(-1deg); }
+}
+
 #dev-container {
     background-color: var(--pink);
     position: relative;
@@ -5,11 +11,46 @@
 
 #whiteboard-container {
     background-image: url('assets/images/whiteboard-mobile.png');
-    background-size: contain;
-    height: 75%;
-    width: 350%;
+    background-size: cover;
+    min-height: 75vh;
+    min-width: 85%;
     position: absolute;
     top: 50%;
-    left: 3rem;
+    left: 15%;
     transform: translateY(-50%);
+    font-family: "ff-providence-sans-web-pro", sans-serif;
 }
+
+#whiteboard-container h2 {
+    text-align: center;
+    margin-top: 8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-top: 1rem;
+    line-height: 2rem;
+}
+
+#whiteboard-container h4 {
+    text-align: right;
+    transform: rotate(4deg);
+    font-size: 0.8rem;
+    margin: 0 2rem 0 0;
+}
+
+#whiteboard-container ul {
+    margin: 3rem auto 0 auto;
+    width: 75%;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+#whiteboard-container li {
+    margin: 1.5rem 0;
+    cursor: pointer;
+    width: fit-content
+}
+
+#whiteboard-container li:hover {
+    animation: sketchJitter 0.5s infinite steps(1, end);
+}
+  

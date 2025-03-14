@@ -16,6 +16,13 @@ import styles from './development.component.css?inline';
 
 export class DevelopmentComponent {
 
+  showcases = [
+    {title: 'BRRL Events'},
+    {title: 'Blue Ridge Regional Library'}, 
+    {title: 'Bellevue University'}, 
+    {title: 'Github'}
+  ];
+
   ngOnInit() {
     console.log('DevelopmentComponent initialized');
   }

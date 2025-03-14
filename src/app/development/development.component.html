@@ -5,6 +5,10 @@
         <a routerLink="/clients">RETURNING CLIENTS</a>
     </div>
     <div id="whiteboard-container">
-        
+        <h2>Designed, Developed, Delivered</h2>
+        <h4>&#40;click a project for more info&#41;</h4>
+        <ul>
+            <li *ngFor="let item of showcases">{{ item.title }}</li>
+        </ul>
     </div>
 </div>
