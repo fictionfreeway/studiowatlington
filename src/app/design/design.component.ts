@@ -26,7 +26,7 @@ export class DesignComponent implements OnInit {
     const templatePaths = [
       '/assets/showcases/Design.html',
       '/assets/showcases/PES_40th_Anniversary_Campaign.html',
-      '/assets/showcases/template3.html',
+      '/assets/showcases/BRRL_Design.html',
     ];
 
     templatePaths.forEach((path) => {

@@ -463,6 +463,25 @@
   z-index: 5;
 }
 
+/* BRRL showcase styles */
+
+#brrl-header-container {
+  position: relative;
+  margin: 3rem auto 3rem auto;
+  width: 85%;
+}
+
+#brrl-showcase-header {
+  font-family: 'new-kansas', sans-serif;
+  font-size: 2rem;
+  text-align: left;
+  line-height: 3rem;
+  margin: 3rem auto 1rem auto;
+  color: var(--deep-blue);
+  font-weight: 800;
+  z-index: 5;
+}
+
 /*======================================================================
   7) TEMPLATE CONTENT TRANSITIONS
   ----------------------------------------------------------------------
