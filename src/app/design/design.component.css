@@ -468,13 +468,13 @@
 #brrl-header-container {
   position: relative;
   margin: 3rem auto 3rem auto;
-  width: 85%;
+  width: 65%;
 }
 
 #brrl-showcase-header {
   font-family: 'new-kansas', sans-serif;
   font-size: 2rem;
-  text-align: left;
+  text-align: center;
   line-height: 3rem;
   margin: 3rem auto 1rem auto;
   color: var(--deep-blue);
@@ -482,17 +482,34 @@
   z-index: 5;
 }
 
-/* social_design  */
+/* social_design showcase styles */
+
+#social-design-header-container {
+  position: relative;
+  margin: 0 auto 3rem auto;
+  width: 75%;
+}
 
 #social-design-showcase-header {
   font-family: 'new-kansas', sans-serif;
   font-size: 2rem;
-  text-align: right;
+  text-align: left;
   line-height: 3rem;
-  margin: 3rem auto 1rem auto;
+  margin-top: 3rem;
+  padding-top: 8rem;
   color: var(--deep-blue);
   font-weight: 800;
   z-index: 5;
+  position: relative;
+}
+
+#social-design-header-image {
+  width: 75%;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  right: -1rem;
+  top: 0;
 }
 
 /*======================================================================
@@ -587,5 +604,10 @@
   #design-header-img {
     right: 35%;
     top: 8rem;
+  }
+  #social-design-header-image {
+    width: 45%;
+    right: 1rem;
+    top: 2rem;
   }
 }
