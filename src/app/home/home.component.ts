@@ -8,35 +8,50 @@ import styles from './home.component.css?inline';
 
 @Component({
   selector: 'app-home',
-  standalone: true, 
+  standalone: true,
   imports: [CommonModule, RouterLink, RouterModule],
   template: template || '', // ✅ External template
   styles: [styles || ''] // ✅ External styles (optional)
 })
-
 export class HomeComponent {
   @ViewChild('cloudContainer') cloudContainerRef!: ElementRef<HTMLDivElement>;
 
   private resizeTimeout: any; // Holds timeout ID for debounce
-  private router = inject(Router);
+  private router = inject(Router); // Inject the Router for navigation
 
-  // 1️⃣ Inject the Router
   constructor() {}
 
+  // Lifecycle hooks
   ngAfterViewInit() {
     this.loadSVG();
     window.addEventListener('resize', this.handleResize);
     this.animatePlane();
     this.animateClouds();
+    this.initializeAnimations();
+  }
 
-    // 1) Fade in the entire page
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  // Event listeners
+  @HostListener('window:resize')
+  handleResize = () => {
+    clearTimeout(this.resizeTimeout);
+    this.resizeTimeout = setTimeout(() => {
+      this.loadSVG();
+    }, 300); // Debounce resize events
+  };
+
+  // Initialization methods
+  private initializeAnimations() {
+    // Fade in the entire page
     const homeContainer = document.getElementById('home-container');
     if (homeContainer) {
-      homeContainer.classList.add('loaded'); // triggers fade-in
+      homeContainer.classList.add('loaded'); // Triggers fade-in
     }
 
-    // 2) Bouncy logo from top
-    //    If your layout might use either horizontal or vertical logo, just pick whichever is showing
+    // Animate logos
     const horizontalLogo = document.getElementById('horizontal-logo');
     const verticalLogo = document.getElementById('vertical-logo');
     if (horizontalLogo) {
@@ -46,32 +61,20 @@ export class HomeComponent {
       verticalLogo.classList.add('animated-logo');
     }
 
-    // 3) Bouncy hills
+    // Animate hills
     const hillContainer = document.getElementById('hill-container');
     if (hillContainer) {
       hillContainer.classList.add('animated-hill');
     }
 
-    // 4) Bouncy cityscape
+    // Animate cityscape
     const cityscapeContainer = document.getElementById('cityscape-container');
     if (cityscapeContainer) {
       cityscapeContainer.classList.add('animated-city');
     }
   }
 
-
-  ngOnDestroy() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  @HostListener('window:resize')
-  handleResize = () => {
-    clearTimeout(this.resizeTimeout);
-    this.resizeTimeout = setTimeout(() => {
-      this.loadSVG();
-    }, 300);
-  };
-
+  // SVG loading and animation
   async loadSVG() {
     try {
       const response = await fetch('/assets/svg/cityscape.svg');
@@ -79,7 +82,7 @@ export class HomeComponent {
       const container = document.getElementById('cityscape-container');
       if (!container) return;
 
-      container.innerHTML = '';
+      container.innerHTML = ''; // Clear existing SVGs
 
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = svgText;
@@ -117,9 +120,9 @@ export class HomeComponent {
     }
   }
 
-  animateWindows() {
+  private animateWindows() {
     const windows = document.querySelectorAll('.window');
-  
+
     setInterval(() => {
       windows.forEach(window => {
         if (Math.random() > 0.999) {
@@ -132,10 +135,11 @@ export class HomeComponent {
           }
         }
       });
-    }, 400);
+    }, 400); // Randomly toggle window lights
   }
 
-  animatePlane() {
+  // Plane animation
+  private animatePlane() {
     const plane = document.getElementById('banner-plane-container');
     if (!plane) {
       console.warn("⚠️ Plane element NOT FOUND! Check your template.");
@@ -168,7 +172,7 @@ export class HomeComponent {
     resetPlane();
   }
 
-  // 2️⃣ Updated to use Router navigation after tape exits
+  // Tape animation with navigation
   animateTapeExit(tapeId: string, direction: 'left' | 'right') {
     const tape = document.getElementById(tapeId);
     if (!tape) {
@@ -182,18 +186,17 @@ export class HomeComponent {
     setTimeout(() => {
       console.log(`🚀 ${tapeId} exited, transitioning...`);
 
-      // 3️⃣ Use router to navigate to the route you want
-      //    Update '/next-route' to whatever route you like
-      if(tapeId === 'dev-tape') {
+      // Navigate to the appropriate route
+      if (tapeId === 'dev-tape') {
         this.router.navigate(['/development']);
-      } else if(tapeId === 'design-tape') {
+      } else if (tapeId === 'design-tape') {
         this.router.navigate(['/design']);
       }
-      
     }, 1000);
   }
 
-  animateClouds() {
+  // Cloud animation
+  private animateClouds() {
     if (!this.cloudContainerRef) return;
     const CLOUD_BASE_SPEED_PX_PER_SEC = 30;
     const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -221,7 +224,7 @@ export class HomeComponent {
       const widthRem = 2 + Math.random() * 33;
       cloudEl.style.width = `${widthRem}rem`;
       cloudEl.style.height = 'auto';
-      cloudEl.style.zIndex = widthRem < 12 ? '100' : '10';
+      cloudEl.style.zIndex = widthRem < 12 ? '100' : '6';
       cloudEl.style.position = 'absolute';
       const containerHeight = cloudContainer.clientHeight || 300;
       const topPos = Math.random() * containerHeight;
@@ -236,7 +239,7 @@ export class HomeComponent {
       if (startOnScreen) {
         startXRem = Math.random() * (containerWidthRem - widthRem);
       } else {
-        startXRem = - (widthRem + 5);
+        startXRem = -(widthRem + 5);
       }
       cloudEl.style.left = `${startXRem}rem`;
 
