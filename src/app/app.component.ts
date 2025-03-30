@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 
@@ -47,7 +47,10 @@ import { trigger, transition, style, animate, query, group } from '@angular/anim
   ]
 })
 export class AppComponent {
-  constructor(private router: Router) {
+
+  private router = inject(Router);
+
+  constructor() {
     console.log('AppComponent running');
   }
 
