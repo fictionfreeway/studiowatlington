@@ -22,32 +22,35 @@ export class DesignComponent implements OnInit {
   private sanitizer = inject(DomSanitizer);
 
   ngOnInit(): void {
-    // Load your external showcases
     const templatePaths = [
       '/assets/showcases/Design.html',
       '/assets/showcases/PES_40th_Anniversary_Campaign.html',
       '/assets/showcases/BRRL_Design.html',
       '/assets/showcases/social_design.html'
     ];
-
-    templatePaths.forEach((path) => {
-      fetch(path)
-        .then((response) => response.text())
-        .then((content) => {
-          const sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(content);
-          this.templates.push({ content: sanitizedContent });
-        })
-        .catch((error) => {
-          console.error('Error loading template:', path, error);
-        });
+  
+    // Fetch templates in order
+    Promise.all(
+      templatePaths.map(path =>
+        fetch(path)
+          .then(response => response.text())
+          .then(content => this.sanitizer.bypassSecurityTrustHtml(content))
+          .catch(error => {
+            console.error('Error loading template:', path, error);
+            return ''; // Return empty content on error to avoid breaking array order
+          })
+      )
+    ).then(contents => {
+      this.templates = contents.map(content => ({ content })); // Assign in order
     });
-
-    // 1) Attach idle bounce class on init (so it teases automatically)
+  
+    // Attach idle bounce class on init
     const rightArrow = document.getElementById('right-arrow');
     if (rightArrow) {
       rightArrow.classList.add('arrow-idle-bounce');
     }
   }
+  
 
   showNextTemplate(): void {
     this.transitionClass = 'slide-out-left';
