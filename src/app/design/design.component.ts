@@ -24,7 +24,7 @@ export class DesignComponent implements OnInit {
   ngOnInit(): void {
     const templatePaths = [
       '/assets/showcases/Design.html',
-      '/assets/showcases/PES_40th_Anniversary_Campaign.html',
+      /* '/assets/showcases/PES_40th_Anniversary_Campaign.html', */
       '/assets/showcases/BRRL_Design.html',
       '/assets/showcases/social_design.html'
     ];
