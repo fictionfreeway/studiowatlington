@@ -28,7 +28,37 @@ export class HomeComponent {
     window.addEventListener('resize', this.handleResize);
     this.animatePlane();
     this.animateClouds();
+
+    // 1) Fade in the entire page
+    const homeContainer = document.getElementById('home-container');
+    if (homeContainer) {
+      homeContainer.classList.add('loaded'); // triggers fade-in
+    }
+
+    // 2) Bouncy logo from top
+    //    If your layout might use either horizontal or vertical logo, just pick whichever is showing
+    const horizontalLogo = document.getElementById('horizontal-logo');
+    const verticalLogo = document.getElementById('vertical-logo');
+    if (horizontalLogo) {
+      horizontalLogo.classList.add('animated-logo');
+    }
+    if (verticalLogo) {
+      verticalLogo.classList.add('animated-logo');
+    }
+
+    // 3) Bouncy hills
+    const hillContainer = document.getElementById('hill-container');
+    if (hillContainer) {
+      hillContainer.classList.add('animated-hill');
+    }
+
+    // 4) Bouncy cityscape
+    const cityscapeContainer = document.getElementById('cityscape-container');
+    if (cityscapeContainer) {
+      cityscapeContainer.classList.add('animated-city');
+    }
   }
+
 
   ngOnDestroy() {
     window.removeEventListener('resize', this.handleResize);

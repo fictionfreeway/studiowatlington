@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 
 @Component({
@@ -14,30 +14,50 @@ import { trigger, transition, style, animate, query, group } from '@angular/anim
   animations: [
     trigger('routeAnimations', [
       transition('* <=> *', [
-        query(':enter, :leave', style({ position: 'absolute', width: '100%' }), { optional: true }),
-
+        query(':enter, :leave', style({ position: 'absolute', width: '100%' }), {
+          optional: true
+        }),
         group([
           // Slide out current component to the left
-          query(':leave', [
-            animate('300ms ease-in-out', style({ transform: 'translateX(-100%)', opacity: 0 }))
-          ], { optional: true }),
-
+          query(
+            ':leave',
+            [
+              animate(
+                '300ms ease-in-out',
+                style({ transform: 'translateX(-100%)', opacity: 0 })
+              )
+            ],
+            { optional: true }
+          ),
           // Slide in new component from the right
-          query(':enter', [
-            style({ transform: 'translateX(100%)', opacity: 0 }),
-            animate('300ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
-          ], { optional: true })
+          query(
+            ':enter',
+            [
+              style({ transform: 'translateX(100%)', opacity: 0 }),
+              animate(
+                '300ms ease-in-out',
+                style({ transform: 'translateX(0)', opacity: 1 })
+              )
+            ],
+            { optional: true }
+          )
         ])
       ])
     ])
   ]
 })
 export class AppComponent {
-  constructor() {
+  constructor(private router: Router) {
     console.log('AppComponent running');
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    return outlet?.activatedRouteData?.['animation'];
+    // Only animate if there's a "previousNavigation".
+    // No previous navigation => user typed URL or refreshed => no animation
+    const currentNav = this.router.getCurrentNavigation();
+    if (currentNav && currentNav.previousNavigation) {
+      return outlet?.activatedRouteData?.['animation'];
+    }
+    return null;
   }
 }

@@ -4,6 +4,70 @@
     padding-top:  5rem;
     background: var(--dark-blue);
     background: linear-gradient(180deg, rgba(1,25,54,1) 0%,rgba(1,25,54,1) 42%, rgb(87, 53, 76) 70%, rgba(248,180,190,1) 100%);
+    opacity: 0; /* hidden by default */
+    transition: opacity 1.5s ease-out; 
+}
+
+#home-container.loaded {
+    opacity: 1; 
+}
+
+@keyframes bounceFromTop {
+    0% {
+      transform: translateY(-1200px) rotate(15deg) scale(0.7);
+      opacity: 0;
+    }
+    20% {
+      transform: translateY(50px) rotate(0deg) scale(1.05);
+      opacity: 1;
+    }
+    40% {
+      transform: translateY(-20px) scale(0.95);
+    }
+    50% {
+      transform: translateY(15px) scale(1.02);
+    }
+    60% {
+      transform: translateY(-10px) scale(0.98);
+    }
+    75% {
+      transform: translateY(4px) scale(1.01);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+}
+
+.animated-logo {
+    animation: bounceFromTop 1.5s ease-out forwards;
+}
+
+@keyframes bounceFromBottom {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+  
+.animated-hill {
+    animation: bounceFromBottom 1.2s ease-out forwards;
+    animation-delay: 0.5s; /* hills first */
+}
+
+.animated-city {
+    animation: bounceFromBottom 1.2s ease-out forwards;
+    animation-delay: 0.8s; /* cityscape second */
 }
 
 #jap-name {
