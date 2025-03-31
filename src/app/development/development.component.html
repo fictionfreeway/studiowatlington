@@ -1,30 +1,40 @@
 <div id="dev-container" class="component-container">
     <div class="links" style="color: var(--deep-blue)">
-        <a routerLink="/contact">CONTACT</a>
-        <span style="pointer-events: none"> | </span>
-        <a routerLink="/clients">RETURNING CLIENTS</a>
+      <a routerLink="/contact">CONTACT</a>
+      <span style="pointer-events: none"> | </span>
+      <a routerLink="/clients">RETURNING CLIENTS</a>
     </div>
     <div id="whiteboard-container" #whiteboard>
-        <div #showcaseList>
-            <h2>Designed, Developed, Delivered</h2>
-            <h4>&#40;click a project for more info&#41;</h4>
-            <ul>
-                <li *ngFor="let item of showcases" id="{{item.title}}" (click)="titleClicked(item)">{{ item.title }}</li>
-            </ul>
-            <div id="showcase-container" *ngIf="selectedShowcase.title">
-                {{ selectedShowcase.title }}
-            </div>
+      <div #showcaseList>
+        <h2>Designed, Developed, Delivered</h2>
+        <h4>&#40;click a project for more info&#41;</h4>
+        <ul>
+          <li *ngFor="let item of showcases" id="{{item.title}}" (click)="titleClicked(item)">
+            {{ item.title }}
+          </li>
+        </ul>
+        <div id="showcase-container" *ngIf="selectedShowcase.title">
+          {{ selectedShowcase.title }}
         </div>
-        <div #showcase id="showcase" class="fade-in" *ngIf="selectedShowcase.title">
-            <div id="whiteboard-close" (click)="closeShowcase()">X</div>
-            <div id="showcase-content">
-                <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}"/>
-                <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
-                <p>
-                    {{ selectedShowcase.description }}
-                    <a class="showcase-button" href="https://events.brrl.us" target="_blank">{{ selectedShowcase.buttonText }}</a>
-                </p>
-            </div>
+      </div>
+      <div #showcase id="showcase" class="fade-in" *ngIf="selectedShowcase.title">
+        <div id="whiteboard-close" (click)="closeShowcase()">X</div>
+        <div id="showcase-content" [ngClass]="{'erasing': isErasing}" #showcaseContent>
+          <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}" />
+          <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
+          <p>
+            {{ selectedShowcase.description }}
+            <a class="showcase-button" href="https://events.brrl.us" target="_blank">
+              {{ selectedShowcase.buttonText }}
+            </a>
+          </p>
         </div>
+      </div>
     </div>
-</div>
+    <!-- Fixed arrow buttons – only visible when a showcase is selected -->
+    <img src="assets/images/arrow-left.png" class="arrow left-arrow" (click)="prevShowcase()"
+         *ngIf="selectedShowcase.title" alt="Previous showcase" />
+    <img src="assets/images/arrow-right.png" class="arrow right-arrow" (click)="nextShowcase()"
+         *ngIf="selectedShowcase.title" alt="Next showcase" />
+  </div>
+  

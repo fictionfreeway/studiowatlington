@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
@@ -12,20 +12,21 @@ import styles from './development.component.css?inline';
   template: template || '',
   styles: [styles || '']
 })
+export class DevelopmentComponent implements AfterViewInit {
 
-
-export class DevelopmentComponent {
-
-  // get whiteboard container element from template
+  // Template references
   @ViewChild('whiteboard') whiteboardRef?: ElementRef;
-  // get showcase list element from template
   @ViewChild('showcaseList') showcaseListRef?: ElementRef;
+  @ViewChild('showcaseContent') showcaseContentRef?: ElementRef;
 
-  whiteboard?: HTMLElement; // holds whiteboard html element assigned in ngOnInit
-  showcaseList?: HTMLElement; // holds showcase list html element assigned in ngOnInit
-  selectedShowcase: {} = {}; // currently selected showcase object, absence of value used to in *ngIf(s)
-  
-  // array of showcase objects and content to be displayed in the whiteboard container
+  whiteboard?: HTMLElement;
+  showcaseList?: HTMLElement;
+  // When a showcase is selected, its object is stored here.
+  selectedShowcase: any = {};
+  // Flag used to trigger the erase animation (applied via ngClass)
+  isErasing: boolean = false;
+
+  // Array of showcase objects to display.
   showcases = [
     {
       title: 'BRRL Events',
@@ -35,30 +36,32 @@ export class DevelopmentComponent {
     },
     {
       title: 'Blue Ridge Regional Library',
-      image: '',
-      description: ''
+      image: 'assets/showcases/blue-ridge-regional-library.png',
+      description: 'Description for Blue Ridge Regional Library project.',
+      buttonText: 'Learn More'
     }, 
     {
       title: 'Bellevue University',
-      image: '',
-      description: ''
+      image: 'assets/showcases/bellevue-university.png',
+      description: 'Description for Bellevue University project.',
+      buttonText: 'Learn More'
     }, 
     {
       title: 'Github',
-      image: '',
-      description: ''
+      image: 'assets/showcases/github.png',
+      description: 'Description for Github project.',
+      buttonText: 'Learn More'
     }
   ];
 
   ngAfterViewInit() {
-    // assign the whiteboardRef to the whiteboard variable
     this.whiteboard = this.whiteboardRef?.nativeElement;
-    // assign the showcaseListRef to the showcaseList variable
     this.showcaseList = this.showcaseListRef?.nativeElement;
     console.log(this.whiteboard);
   }
 
-  titleClicked(showcase: {}) {
+  // Called when a project title is clicked from the list.
+  titleClicked(showcase: any) {
     this.selectedShowcase = showcase;
   
     if (this.whiteboard) {
@@ -71,6 +74,7 @@ export class DevelopmentComponent {
     }
   }
 
+  // Close the current showcase.
   closeShowcase() {
     this.selectedShowcase = {};
 
@@ -84,5 +88,33 @@ export class DevelopmentComponent {
     }
   }
   
- 
+  // Go to the next showcase in the array.
+  nextShowcase() {
+    this.changeShowcase(1);
+  }
+  
+  // Go to the previous showcase in the array.
+  prevShowcase() {
+    this.changeShowcase(-1);
+  }
+  
+  // Handles the animated change of showcase.
+  changeShowcase(direction: number) {
+    if (!this.selectedShowcase || !this.selectedShowcase.title) return;
+    
+    // Trigger the erase animation.
+    this.isErasing = true;
+    
+    // After half the animation duration, update the showcase.
+    setTimeout(() => {
+      const currentIndex = this.showcases.findIndex(item => item.title === this.selectedShowcase.title);
+      const nextIndex = (currentIndex + direction + this.showcases.length) % this.showcases.length;
+      this.selectedShowcase = this.showcases[nextIndex];
+    }, 500);
+    
+    // Remove the erasing flag after the full animation.
+    setTimeout(() => {
+      this.isErasing = false;
+    }, 1000);
+  }
 }
