@@ -12,14 +12,24 @@
 #whiteboard-container {
     background-image: url('assets/images/whiteboard-mobile.png');
     background-size: cover;
-    min-height: 75vh;
-    min-width: 85%;
+    height: 75vh;
+    width: 85%;
     position: absolute;
     top: 50%;
     left: 15%;
     transform: translateY(-50%);
     font-family: "ff-providence-sans-web-pro", sans-serif;
+    transition: all 0.5s ease-in-out;
 }
+
+#whiteboard-container.zoomed {
+    position: fixed;
+    width: 100%;
+    height: 110vh;
+    z-index: 9999;
+    background-position: 15%;
+    left: 0;
+  }
 
 #whiteboard-container h2 {
     text-align: center;
@@ -52,5 +62,9 @@
 
 #whiteboard-container li:hover {
     animation: sketchJitter 0.5s infinite steps(1, end);
+}
+
+.not-visible {
+    display: none;
 }
   

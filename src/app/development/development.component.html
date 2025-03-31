@@ -4,11 +4,16 @@
         <span style="pointer-events: none"> | </span>
         <a routerLink="/clients">RETURNING CLIENTS</a>
     </div>
-    <div id="whiteboard-container">
-        <h2>Designed, Developed, Delivered</h2>
-        <h4>&#40;click a project for more info&#41;</h4>
-        <ul>
-            <li *ngFor="let item of showcases">{{ item.title }}</li>
-        </ul>
+    <div id="whiteboard-container" #whiteboard>
+        <div #showcaseList>
+            <h2>Designed, Developed, Delivered</h2>
+            <h4>&#40;click a project for more info&#41;</h4>
+            <ul>
+                <li *ngFor="let item of showcases" id="{{item.title}}" (click)="titleClicked(item)">{{ item.title }}</li>
+            </ul>
+            <div id="showcase-container" *ngIf="selectedShowcase.title">
+                {{ selectedShowcase.title }}
+            </div>
+        </div>
     </div>
 </div>

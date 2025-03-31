@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
@@ -16,15 +16,52 @@ import styles from './development.component.css?inline';
 
 export class DevelopmentComponent {
 
+  // get whiteboard container element from template
+  @ViewChild('whiteboard') whiteboardRef?: ElementRef;
+  // get showcase list element from template
+  @ViewChild('showcaseList') showcaseListRef?: ElementRef;
+
+  whiteboard?: HTMLElement; // holds whiteboard html element assigned in ngOnInit
+  showcaseList?: HTMLElement; // holds showcase list html element assigned in ngOnInit
+  selectedShowcase: {} = {}; // currently selected showcase object, absence of value used to in *ngIf(s)
+  
+  // array of showcase objects and content to be displayed in the whiteboard container
   showcases = [
-    {title: 'BRRL Events'},
-    {title: 'Blue Ridge Regional Library'}, 
-    {title: 'Bellevue University'}, 
-    {title: 'Github'}
+    {
+      title: 'BRRL Events'
+      
+    },
+    {
+      title: 'Blue Ridge Regional Library'
+    }, 
+    {
+      title: 'Bellevue University'
+    }, 
+    {
+      title: 'Github'
+    }
   ];
 
-  ngOnInit() {
-    console.log('DevelopmentComponent initialized');
+  ngAfterViewInit() {
+    // assign the whiteboardRef to the whiteboard variable
+    this.whiteboard = this.whiteboardRef?.nativeElement;
+    // assign the showcaseListRef to the showcaseList variable
+    this.showcaseList = this.showcaseListRef?.nativeElement;
+    console.log(this.whiteboard);
   }
+
+  titleClicked(showcase: {}): void {
+    this.selectedShowcase = showcase;
+  
+    if (this.whiteboard) {
+      this.whiteboard.classList.toggle('zoomed');
+      document.body.style.overflow = (document.body.style.overflow === 'hidden') ? 'auto' : 'hidden';
+    }
+
+    if (this.showcaseList) {
+      this.showcaseList.classList.toggle('not-visible');
+    }
+  }
+  
  
 }
