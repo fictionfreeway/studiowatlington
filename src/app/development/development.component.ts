@@ -29,8 +29,9 @@ export class DevelopmentComponent {
   showcases = [
     {
       title: 'BRRL Events',
-      image: '',
-      description: ''
+      image: 'assets/showcases/brrl-events-showcase.png',
+      description: 'A MEAN stack web application created to manage all event hosting, marketing, event fees, and user accounts for Blue Ridge Regional Library, a large public library system covering southwestern Virginia',
+      buttonText: 'Visit events.brrl.us',
     },
     {
       title: 'Blue Ridge Regional Library',

@@ -15,12 +15,15 @@
                 {{ selectedShowcase.title }}
             </div>
         </div>
-        <div #showcase id="showcase" *ngIf="selectedShowcase.title">
+        <div #showcase id="showcase" class="fade-in" *ngIf="selectedShowcase.title">
             <div id="whiteboard-close" (click)="closeShowcase()">X</div>
             <div id="showcase-content">
                 <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}"/>
                 <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
-                <h4>{{ selectedShowcase.description }}</h4>
+                <p>
+                    {{ selectedShowcase.description }}
+                    <a class="showcase-button" href="https://events.brrl.us" target="_blank">{{ selectedShowcase.buttonText }}</a>
+                </p>
             </div>
         </div>
     </div>
