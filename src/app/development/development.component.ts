@@ -18,9 +18,11 @@ export class DevelopmentComponent implements AfterViewInit {
   @ViewChild('whiteboard') whiteboardRef?: ElementRef;
   @ViewChild('showcaseList') showcaseListRef?: ElementRef;
   @ViewChild('showcaseContent') showcaseContentRef?: ElementRef;
+  @ViewChild('showcaseDescription') showcaseDescRef?: ElementRef;
 
   whiteboard?: HTMLElement;
   showcaseList?: HTMLElement;
+  showcaseDescription?: HTMLElement;
   // When a showcase is selected, its object is stored here.
   selectedShowcase: any = {};
   // Flag used to trigger the erase animation (applied via ngClass)
@@ -51,6 +53,7 @@ export class DevelopmentComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.whiteboard = this.whiteboardRef?.nativeElement;
     this.showcaseList = this.showcaseListRef?.nativeElement;
+    this.showcaseDescription = this.showcaseDescRef?.nativeElement;
     console.log(this.whiteboard);
   }
 
@@ -104,6 +107,11 @@ export class DevelopmentComponent implements AfterViewInit {
       const currentIndex = this.showcases.findIndex(item => item.title === this.selectedShowcase.title);
       const nextIndex = (currentIndex + direction + this.showcases.length) % this.showcases.length;
       this.selectedShowcase = this.showcases[nextIndex];
+      setTimeout(() => {
+        if (this.showcaseDescRef?.nativeElement) {
+          this.showcaseDescRef.nativeElement.scrollTop = 0;
+        }
+      }, 0);
     }, 500);
     
     // Remove the erasing flag after the full animation.

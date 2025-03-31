@@ -22,7 +22,7 @@
         <div id="showcase-content" [ngClass]="{'erasing': isErasing}" #showcaseContent>
           <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}" />
           <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
-          <p>
+          <p #showcaseDescription>
             {{ selectedShowcase.description }}
             <a class="showcase-button" href="https://events.brrl.us" *ngIf="selectedShowcase.buttonText" target="_blank">
               {{ selectedShowcase.buttonText }}
