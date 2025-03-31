@@ -28,17 +28,24 @@ export class DevelopmentComponent {
   // array of showcase objects and content to be displayed in the whiteboard container
   showcases = [
     {
-      title: 'BRRL Events'
-      
+      title: 'BRRL Events',
+      image: '',
+      description: ''
     },
     {
-      title: 'Blue Ridge Regional Library'
+      title: 'Blue Ridge Regional Library',
+      image: '',
+      description: ''
     }, 
     {
-      title: 'Bellevue University'
+      title: 'Bellevue University',
+      image: '',
+      description: ''
     }, 
     {
-      title: 'Github'
+      title: 'Github',
+      image: '',
+      description: ''
     }
   ];
 
@@ -50,12 +57,25 @@ export class DevelopmentComponent {
     console.log(this.whiteboard);
   }
 
-  titleClicked(showcase: {}): void {
+  titleClicked(showcase: {}) {
     this.selectedShowcase = showcase;
   
     if (this.whiteboard) {
       this.whiteboard.classList.toggle('zoomed');
       document.body.style.overflow = (document.body.style.overflow === 'hidden') ? 'auto' : 'hidden';
+    }
+
+    if (this.showcaseList) {
+      this.showcaseList.classList.toggle('not-visible');
+    }
+  }
+
+  closeShowcase() {
+    this.selectedShowcase = {};
+
+    if (this.whiteboard) {
+      this.whiteboard.classList.toggle('zoomed');
+      document.body.style.overflow = 'auto';
     }
 
     if (this.showcaseList) {

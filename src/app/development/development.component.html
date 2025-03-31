@@ -15,5 +15,13 @@
                 {{ selectedShowcase.title }}
             </div>
         </div>
+        <div #showcase id="showcase" *ngIf="selectedShowcase.title">
+            <div id="whiteboard-close" (click)="closeShowcase()">X</div>
+            <div id="showcase-content">
+                <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}"/>
+                <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
+                <h4>{{ selectedShowcase.description }}</h4>
+            </div>
+        </div>
     </div>
 </div>
