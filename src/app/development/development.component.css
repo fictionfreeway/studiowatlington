@@ -49,7 +49,7 @@
     left: 15%;
     transform: translateY(-50%);
     font-family: "ff-providence-sans-web-pro", sans-serif;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
   
   #whiteboard-container.zoomed {
@@ -114,8 +114,8 @@
   
   #showcase-content p {
     width: 80%;
-    height: 30vh;
-    margin: 2rem auto;
+    max-height: 33vh;
+    margin: 2rem auto 0 auto;
     font-size: 1.2rem;
     line-height: 2rem;
     text-indent: 1rem;

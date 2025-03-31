@@ -36,20 +36,14 @@ export class DevelopmentComponent implements AfterViewInit {
     },
     {
       title: 'Blue Ridge Regional Library',
-      image: 'assets/showcases/blue-ridge-regional-library.png',
-      description: 'Description for Blue Ridge Regional Library project.',
-      buttonText: 'Learn More'
-    }, 
-    {
-      title: 'Bellevue University',
-      image: 'assets/showcases/bellevue-university.png',
-      description: 'Description for Bellevue University project.',
-      buttonText: 'Learn More'
+      image: 'assets/showcases/brrl-showcase.png',
+      description: 'A PHP-based website for the Blue Ridge Regional Library, seamlessly integrated with TLC and Open Library APIs to make discovering books and services easier (and way more fun) for patrons',
+      buttonText: 'Visit brrl.lib.va.us'
     }, 
     {
       title: 'Github',
-      image: 'assets/showcases/github.png',
-      description: 'Description for Github project.',
+      image: 'assets/showcases/github-showcase.png',
+      description: 'The Studio Watlington Github is a diverse showcase of projects—from web dev and game dev to software and beyond—exploring creativity across code and design',
       buttonText: 'Learn More'
     }
   ];
