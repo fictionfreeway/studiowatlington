@@ -18,7 +18,6 @@ export class DevelopmentComponent implements AfterViewInit {
   @ViewChild('whiteboard') whiteboardRef?: ElementRef;
   @ViewChild('showcaseList') showcaseListRef?: ElementRef;
   @ViewChild('showcaseContent') showcaseContentRef?: ElementRef;
-  @ViewChild('showcaseDescription') showcaseDescRef?: ElementRef;
 
   whiteboard?: HTMLElement;
   showcaseList?: HTMLElement;
@@ -53,7 +52,6 @@ export class DevelopmentComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.whiteboard = this.whiteboardRef?.nativeElement;
     this.showcaseList = this.showcaseListRef?.nativeElement;
-    this.showcaseDescription = this.showcaseDescRef?.nativeElement;
     console.log(this.whiteboard);
   }
 
@@ -108,8 +106,8 @@ export class DevelopmentComponent implements AfterViewInit {
       const nextIndex = (currentIndex + direction + this.showcases.length) % this.showcases.length;
       this.selectedShowcase = this.showcases[nextIndex];
       setTimeout(() => {
-        if (this.showcaseDescRef?.nativeElement) {
-          this.showcaseDescRef.nativeElement.scrollTop = 0;
+        if (this.showcaseContentRef?.nativeElement) {
+          this.showcaseContentRef.nativeElement.scrollTop = 0;
         }
       }, 0);
     }, 500);

@@ -5,7 +5,7 @@
       <a routerLink="/clients">RETURNING CLIENTS</a>
     </div>
     <div id="whiteboard-container" #whiteboard>
-      <div #showcaseList>
+      <div #showcaseList id="showcase-list">
         <h2>Designed, Developed, Delivered</h2>
         <h4>&#40;click a project for more info&#41;</h4>
         <ul>
@@ -36,5 +36,6 @@
          *ngIf="selectedShowcase.title" alt="Previous showcase" />
     <img src="assets/images/right-arrow-dev.png" class="arrow right-arrow" (click)="nextShowcase()"
          *ngIf="selectedShowcase.title" alt="Next showcase" />
+    <div id="crt-desk"></div>
   </div>
   
