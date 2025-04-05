@@ -5,24 +5,25 @@
       <a routerLink="/clients">RETURNING CLIENTS</a>
     </div>
     <div id="whiteboard-container" #whiteboard>
-      <div id="whiteboard-close" (click)="closeShowcase()">X</div>
+      <div #whiteboardClose id="whiteboard-close" class="hidden material-symbols-outlined" (click)="closeShowcase()">undo</div>
       <div #showcaseList id="showcase-list">
         <h2>Designed, Developed, Delivered</h2>
         <h4>&#40;click a project for more info&#41;</h4>
         <ul>
           <li *ngFor="let item of showcases" id="{{item.title}}" (click)="titleClicked(item)">
-            {{ item.title }}
+             > {{ item.title }}
           </li>
         </ul>
-        <div id="showcase-container" *ngIf="selectedShowcase.title">
-          {{ selectedShowcase.title }}
-        </div>
       </div>
-      <div #showcase id="showcase" class="fade-in" *ngIf="selectedShowcase.title">
+      <div #showcase id="showcase" *ngIf="selectedShowcase.title">
         <div id="showcase-content" [ngClass]="{'erasing': isErasing}" #showcaseContent>
           <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}" />
           <div id="showcase-text-container">
-            <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
+            <h2 style="margin-top: 0;">
+              <div id="left-arrow" class="arrow" (click)="nextShowcase()"></div>
+              {{ selectedShowcase.title }}
+              <div id="right-arrow" class="arrow" (click)="prevShowcase()"></div>
+            </h2>
             <p #showcaseDescription>
               {{ selectedShowcase.description }}
               <a class="showcase-button" href="https://events.brrl.us" *ngIf="selectedShowcase.buttonText" target="_blank">
@@ -34,10 +35,7 @@
       </div>
     </div>
     <!-- Fixed arrow buttons – only visible when a showcase is selected -->
-    <img src="assets/images/left-arrow-dev.png" class="arrow left-arrow" (click)="prevShowcase()"
-         *ngIf="selectedShowcase.title" alt="Previous showcase" />
-    <img src="assets/images/right-arrow-dev.png" class="arrow right-arrow" (click)="nextShowcase()"
-         *ngIf="selectedShowcase.title" alt="Next showcase" />
+    
     <div #crtDesk id="crt-desk">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1810.99 1482.21">
         <defs>

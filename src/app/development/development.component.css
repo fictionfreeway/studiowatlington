@@ -4,15 +4,6 @@
   100% { transform: translateX(0) rotate(-1deg); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.fade-in {
-  animation: 0.5s fadeIn 2.5s ease-in-out;
-}
-
 @keyframes eraseEffect {
   0% {
     opacity: 1;
@@ -30,6 +21,10 @@
 
 .erasing {
   animation: eraseEffect 1s ease-in-out;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 #dev-container {
@@ -53,8 +48,8 @@
 
 #whiteboard-container.zoomed {
   position: fixed;
-  width: 100%;
   height: 125vh;
+  width: 100%;
   z-index: 99;
   background-position: 15%;
   left: 0;
@@ -143,32 +138,44 @@
 }
 
 #whiteboard-close {
-  left: 15%;
-  top: 30vh;
+  left: 5%;
+  top: 25vh;
   width: 2rem;
   position: fixed;
   font-size: 3rem;
   color: var(--deep-blue);
   z-index: 999;
   cursor: pointer;
+  font-size: 4rem !important;
+}
+
+#showcase-text-container h2 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: space-between;
+  max-width: 35rem;
+  margin: 0 auto;
 }
 
 .arrow {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
   cursor: pointer;
   z-index: 999;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.left-arrow {
-  left: 20px;
+#left-arrow {
+  background-image: url('assets/images/left-arrow-dev.png');
+  margin-right: 2rem;
 }
-  
-.right-arrow {
-  right: 20px;
+
+#right-arrow {
+  background-image: url('assets/images/right-arrow-dev.png');
+  margin-left: 2rem;
 }
 
 #crt-desk {
@@ -176,24 +183,26 @@
 }
 
 @media (min-width: 900px) {
-  /* No change */
+
 }
 
 @media (min-width: 1200px) {
   #whiteboard-container {
     background-image: url('assets/images/whiteboard.png');
     background-size: contain;
-    width: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 65vh;
     max-width: 85rem;
     left: 10%;
   }
 
   #whiteboard-container.zoomed {
     max-width: 100%;
-    height: 150vh;
-    position: fixed;
+    height: 85vh;
+    position: absolute;
     width: 85%;
-    left: 13%;
+    left: 5%;
     top: 50%;
   }
 
@@ -217,7 +226,7 @@
   #whiteboard-container h2 {
     font-size: 3rem;
     line-height: 4rem;
-    margin-top: 4rem;
+    padding-top: 0rem;
   }
 
   #whiteboard-container h4 {
@@ -227,10 +236,10 @@
   #showcase {
     position: relative;
     max-width: none;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     left: 50%;
-    top: 50%;
+    top: 55%;
     transform: translate(-50%, -50%);
   }
 
@@ -238,16 +247,15 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: flex-start;
-    height: auto;
+    align-items: center;
+    height: 100%;
     width: 100%;
-    padding: 0 0 0 15%;
-    margin: 0;
+    padding: 0 0 0 25%;
+    margin-top: -12vh;
     max-width: 100%;
   }
 
   #showcase-text-container {
-    padding-top: 7rem;
     overflow: visible;
   }
 
@@ -271,12 +279,17 @@
   #showcase-list ul {
     margin: 5rem 0 5rem 25%;
     font-size: 2rem;
+  } 
+
+  .arrow {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
-  /* Here’s the important override so it’s inside the whiteboard: */
   #whiteboard-close {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 10vh;
+    left: 6rem;
   }
 }
+  

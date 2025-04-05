@@ -20,11 +20,13 @@ export class DevelopmentComponent implements AfterViewInit {
   @ViewChild('showcaseContent') showcaseContentRef?: ElementRef;
   @ViewChild('showcaseDescription') showcaseDescRef?: ElementRef;
   @ViewChild('crtDesk') crtDeskRef?: ElementRef;
+  @ViewChild('whiteboardClose') whiteboardCloseRef?: ElementRef;
 
   whiteboard?: HTMLElement;
   showcaseList?: HTMLElement;
   showcaseDescription?: HTMLElement;
   crtDesk?: HTMLElement;
+  whiteboardClose?: HTMLElement;
   // When a showcase is selected, its object is stored here.
   selectedShowcase: any = {};
   // Flag used to trigger the erase animation (applied via ngClass)
@@ -57,6 +59,7 @@ export class DevelopmentComponent implements AfterViewInit {
     this.showcaseList = this.showcaseListRef?.nativeElement;
     this.showcaseDescription = this.showcaseDescRef?.nativeElement;
     this.crtDesk = this.crtDeskRef?.nativeElement;
+    this.whiteboardClose = this.whiteboardCloseRef?.nativeElement;
     console.log(this.whiteboard);
   }
 
@@ -67,6 +70,7 @@ export class DevelopmentComponent implements AfterViewInit {
     if (this.whiteboard) {
       this.whiteboard.classList.toggle('zoomed');
       this.crtDesk?.classList.toggle('zoomed');
+      this.whiteboardClose?.classList.toggle('hidden');
       document.body.style.overflow = (document.body.style.overflow === 'hidden') ? 'auto' : 'hidden';
     }
 
@@ -82,6 +86,7 @@ export class DevelopmentComponent implements AfterViewInit {
     if (this.whiteboard) {
       this.whiteboard.classList.toggle('zoomed');
       this.crtDesk?.classList.toggle('zoomed');
+      this.whiteboardClose?.classList.toggle('hidden');
       document.body.style.overflow = 'auto';
     }
 
