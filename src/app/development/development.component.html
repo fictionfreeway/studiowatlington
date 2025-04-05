@@ -5,6 +5,7 @@
       <a routerLink="/clients">RETURNING CLIENTS</a>
     </div>
     <div id="whiteboard-container" #whiteboard>
+      <div id="whiteboard-close" (click)="closeShowcase()">X</div>
       <div #showcaseList id="showcase-list">
         <h2>Designed, Developed, Delivered</h2>
         <h4>&#40;click a project for more info&#41;</h4>
@@ -18,10 +19,9 @@
         </div>
       </div>
       <div #showcase id="showcase" class="fade-in" *ngIf="selectedShowcase.title">
-        <div id="whiteboard-close" (click)="closeShowcase()">X</div>
         <div id="showcase-content" [ngClass]="{'erasing': isErasing}" #showcaseContent>
           <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}" />
-          <div>
+          <div id="showcase-text-container">
             <h2 style="margin-top: 0;">{{ selectedShowcase.title }}</h2>
             <p #showcaseDescription>
               {{ selectedShowcase.description }}
@@ -38,7 +38,7 @@
          *ngIf="selectedShowcase.title" alt="Previous showcase" />
     <img src="assets/images/right-arrow-dev.png" class="arrow right-arrow" (click)="nextShowcase()"
          *ngIf="selectedShowcase.title" alt="Next showcase" />
-    <div #crtDesktop id="crt-desk">
+    <div #crtDesk id="crt-desk">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1810.99 1482.21">
         <defs>
           <clipPath id="clippath">
