@@ -164,7 +164,7 @@
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
 }
 
@@ -284,12 +284,24 @@
   .arrow {
     width: 2.5rem;
     height: 2.5rem;
+    flex-shrink: 0;
+    margin: 0;
   }
 
   #whiteboard-close {
     position: absolute;
     top: 10vh;
     left: 6rem;
+  }
+
+  .contact-button {
+    fill: #a1d9d6;
+    pointer-events: auto;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .contact-button:hover {
+    fill: black;
   }
 }
   

@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
+import { animate, stagger } from 'animejs';
+
 import template from './development.component.html?raw';
 import styles from './development.component.css?inline';
 
@@ -54,13 +56,33 @@ export class DevelopmentComponent implements AfterViewInit {
     }
   ];
 
+  ngOnInit() {
+    this.showcases.forEach(showcase => {
+      const img = new Image();
+      img.src = showcase.image;
+    });
+  }
+
   ngAfterViewInit() {
     this.whiteboard = this.whiteboardRef?.nativeElement;
     this.showcaseList = this.showcaseListRef?.nativeElement;
     this.showcaseDescription = this.showcaseDescRef?.nativeElement;
     this.crtDesk = this.crtDeskRef?.nativeElement;
     this.whiteboardClose = this.whiteboardCloseRef?.nativeElement;
-    console.log(this.whiteboard);
+    
+    // testing stagger animation through animejs
+    animate('.ellipsis-dot', {
+      y: [
+        { to: '-.25rem', ease: 'outExpo', duration: 600 },
+        { to: 0, ease: 'outBounce', duration: 800  }
+      ],
+      delay: stagger(100),
+      ease: 'inOutCirc',
+      loopDelay: 1000,
+      loop: true
+    })
+
+    
   }
 
   // Called when a project title is clicked from the list.
