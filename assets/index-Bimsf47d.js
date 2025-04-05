@@ -1188,6 +1188,7 @@ This is currently a dev mode only error but will become a call stack size exceed
           <img [src]="selectedShowcase.image" alt="{{ selectedShowcase.title }}" />\r
           <div id="showcase-text-container">\r
             <h2 style="margin-top: 0;">\r
+              <div id="left-arrow" class="arrow" (click)="nextShowcase()"></div>\r
               {{ selectedShowcase.title }}\r
               <div id="right-arrow" class="arrow" (click)="prevShowcase()"></div>\r
             </h2>\r
