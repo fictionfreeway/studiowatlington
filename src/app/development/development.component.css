@@ -19,6 +19,15 @@
   }
 }
 
+@keyframes fillInText {
+  0% {
+    fill: #ffffff00;
+  }
+  100% {
+    fill: var(--deep-blue);
+  }
+}
+
 .erasing {
   animation: eraseEffect 1s ease-in-out;
 }
@@ -182,6 +191,36 @@
   display: none;
 }
 
+#dev-header, #mobile-dev-header {
+  overflow: visible;
+}
+
+#dev-header {
+  display: none;
+}
+
+#mobile-dev-header {
+  display: block;
+  margin: 9rem auto 0 auto;
+  width: 40%;
+}
+
+.whiteboard-path, .mobile-whiteboard-path {
+  fill: none;
+  stroke: var(--deep-blue); /* initial fill defined here */
+  transition: fill 0.3s ease; /* smooth transition fallback (optional) */
+  animation: fillInText 1s ease-in-out forwards; /* animation for fill effect */
+  animation-delay: 3s; /* delay before the animation starts */
+} 
+
+.whiteboard-path {
+  stroke-width: 0.8;
+}
+
+.mobile-whiteboard-path {
+  stroke-width: 0.5;
+}
+
 @media (min-width: 900px) {
 
 }
@@ -301,7 +340,17 @@
   }
 
   .contact-button:hover {
-    fill: black;
+    box-shadow: inset 0 -3.25rem 0 0 var(--deep-blue)
+  }
+
+  #dev-header {
+    display: block;
+    margin: 5rem 0 0 4rem;
+    padding: 0 2rem;
+  }
+
+  #mobile-dev-header {
+    display: none;
   }
 }
   

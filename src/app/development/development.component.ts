@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
-import { animate, stagger } from 'animejs';
+import { animate, stagger, svg } from 'animejs';
 
 import template from './development.component.html?raw';
 import styles from './development.component.css?inline';
@@ -82,6 +82,19 @@ export class DevelopmentComponent implements AfterViewInit {
       loop: true
     })
 
+    animate(svg.createDrawable('.whiteboard-path'), {
+      draw: ['0 0', '0 1'],
+      ease: 'easeIn',
+      duration: 100,
+      delay: stagger(200),
+    });
+
+    animate(svg.createDrawable('.mobile-whiteboard-path'), {
+      draw: ['0 0', '0 1'],
+      ease: 'easeIn',
+      duration: 100,
+      delay: stagger(200),
+    });
     
   }
 
