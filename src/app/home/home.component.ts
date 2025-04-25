@@ -58,7 +58,28 @@ export class HomeComponent {
         { to: '-50vh', ease: 'outExpo', duration: 600},
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
-      delay: 300,
+      delay: 500,
+      ease: 'outBounce',
+    })
+
+    animate('#vertical-logo', {
+      y: [
+        { to: '-50vh', ease: 'outExpo', duration: 600},
+        { to: '0vh', ease: 'outBounce', duration: 800}
+      ],
+      delay: 500,
+      ease: 'outBounce',
+    })
+
+    animate('#cityscape-container', {
+      y: [
+        { to: '50vh', ease: 'outExpo', duration: 600},
+        { to: '0vh', ease: 'outBounce', duration: 800}
+      ],
+      opacity: [
+        { to: 1, duration: 100 }
+      ],
+      delay: 1200,
       ease: 'outBounce',
     })
   }

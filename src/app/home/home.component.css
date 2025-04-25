@@ -68,7 +68,7 @@
     align-items: flex-end;
     pointer-events: none;
     white-space: nowrap;
-    opacity: 1;
+    opacity: 0;
 }
 
 #cityscape-container svg {
