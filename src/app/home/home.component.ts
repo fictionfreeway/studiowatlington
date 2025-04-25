@@ -2,6 +2,8 @@ import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 
+import { animate, stagger } from 'animejs';
+
 // Import the external template and styles
 import template from './home.component.html?raw';
 import styles from './home.component.css?inline';
@@ -23,7 +25,7 @@ export class HomeComponent {
 
   // Lifecycle hooks
   ngAfterViewInit() {
-    this.loadSVG();
+    this.loadCitySVG();
     window.addEventListener('resize', this.handleResize);
     this.animatePlane();
     this.animateClouds();
@@ -39,7 +41,7 @@ export class HomeComponent {
   handleResize = () => {
     clearTimeout(this.resizeTimeout);
     this.resizeTimeout = setTimeout(() => {
-      this.loadSVG();
+      this.loadCitySVG();
     }, 300); // Debounce resize events
   };
 
@@ -51,31 +53,18 @@ export class HomeComponent {
       homeContainer.classList.add('loaded'); // Triggers fade-in
     }
 
-    // Animate logos
-    const horizontalLogo = document.getElementById('horizontal-logo');
-    const verticalLogo = document.getElementById('vertical-logo');
-    if (horizontalLogo) {
-      horizontalLogo.classList.add('animated-logo');
-    }
-    if (verticalLogo) {
-      verticalLogo.classList.add('animated-logo');
-    }
-
-    // Animate hills
-    const hillContainer = document.getElementById('hill-container');
-    if (hillContainer) {
-      hillContainer.classList.add('animated-hill');
-    }
-
-    // Animate cityscape
-    const cityscapeContainer = document.getElementById('cityscape-container');
-    if (cityscapeContainer) {
-      cityscapeContainer.classList.add('animated-city');
-    }
+    animate('#horizontal-logo', {
+      y: [
+        { to: '-50vh', ease: 'outExpo', duration: 600},
+        { to: '0vh', ease: 'outBounce', duration: 800}
+      ],
+      delay: 300,
+      ease: 'outBounce',
+    })
   }
 
   // SVG loading and animation
-  async loadSVG() {
+  async loadCitySVG() {
     try {
       const response = await fetch('/assets/svg/cityscape.svg');
       const svgText = await response.text();
