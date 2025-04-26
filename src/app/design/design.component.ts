@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
+import { animate } from 'animejs';
+
 import template from './design.component.html?raw';
 import styles from './design.component.css?inline';
 
@@ -43,15 +45,48 @@ export class DesignComponent implements OnInit {
     ).then(contents => {
       this.templates = contents.map(content => ({ content })); // Assign in order
     });
-  
-    // Attach idle bounce class on init
-    const rightArrow = document.getElementById('right-arrow');
-    if (rightArrow) {
-      rightArrow.classList.add('arrow-idle-bounce');
-    }
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeAnimations();
+  }
+
+  private initializeAnimations() {
+    animate('#design-cassette-container', {
+      x: [
+        { to: '40vw', duration: 1000, ease: 'outExpo' },
+        { to:  '0vw', duration: 2000, ease: 'outElastic' }
+      ],
+      opacity: 1
+    });
+
+    animate('#ui-cloud', {
+      x: [
+        { to: '-40vw', duration: 1000, ease: 'outExpo' },
+        { to:  '0vw', duration: 2000, ease: 'outElastic' }
+      ],
+      opacity: 1
+    });
+    
+    animate('#ui-cloud', {
+      y: ['0vh', '-2vh'],
+      duration: 2000,
+      ease: 'inOutSine',
+      loop: true,
+      alternate: true
+    }); 
+
+    animate('#right-arrow', {
+      rotate: [
+        { to: -15, duration: 0 },
+        { to: 0, duration: 300, delay: 3000, ease: 'inSine' },
+        { to:  -15, duration: 1000, ease: 'outBounce'}
+      ],
+      loop: true,
+      loopDelay: 3000
+    })
   }
   
-
   showNextTemplate(): void {
     this.transitionClass = 'slide-out-left';
     setTimeout(() => {
@@ -69,46 +104,23 @@ export class DesignComponent implements OnInit {
     }, 400);
   }
 
-
-  // ─────────────────────────────────────────────────────────────────
-  //  BOUNCE ARROW METHODS (imperative approach)
-  // ─────────────────────────────────────────────────────────────────
-
-  bounceLeftArrow(): void {
-    const leftArrow = document.getElementById('left-arrow');
-    if (!leftArrow) return;
-
-    // Remove the class if it’s still lingering
-    leftArrow.classList.remove('left-arrow-clicked');
-
-    // Force a reflow, so we can re-trigger the animation
-    void leftArrow.offsetWidth;
-
-    // Add the class to start the animation
-    leftArrow.classList.add('left-arrow-clicked');
-
-    // Remove class after animation completes (300ms)
-    setTimeout(() => {
-      leftArrow.classList.remove('left-arrow-clicked');
-    }, 300);
+  bounceRightArrow(): void {
+    animate('#right-arrow', {
+      rotate: [
+        { to: -15, duration: 0 },
+        { to: 0, duration: 300, ease: 'inSine' },
+        { to:  -15, duration: 1000, ease: 'outBounce'}
+      ],
+    })
   }
 
-  // 2) On click, permanently remove idle bounce, run click bounce once.
-  bounceRightArrow(): void {
-    const rightArrow = document.getElementById('right-arrow');
-    if (!rightArrow) return;
-
-    // Remove idle bounce class
-    rightArrow.classList.remove('arrow-idle-bounce');
-    // Force reflow so new animation can start fresh
-    void rightArrow.offsetWidth;
-
-    // Add click bounce class
-    rightArrow.classList.add('right-arrow-clicked');
-
-    // (Optional) remove click bounce class after 300ms
-    setTimeout(() => {
-      rightArrow.classList.remove('right-arrow-clicked');
-    }, 300);
+  bounceLeftArrow(): void {
+    animate('#left-arrow', {
+      rotate: [
+        { to: -10, duration: 0 },
+        { to: 0, duration: 300, ease: 'outBouce' },
+        { to:  -10, duration: 700, ease: 'outBounce'}
+      ],
+    })
   }
 }

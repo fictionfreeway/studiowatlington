@@ -1,205 +1,5 @@
 /*======================================================================
-  1) KEYFRAME ANIMATIONS
-  ----------------------------------------------------------------------
-  Organized all animations in one place so they’re easy to find & manage!
-======================================================================*/
-
-@keyframes cloudFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2rem);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes fly-in-from-left {
-  0% {
-    transform: translateX(-120vw);
-    opacity: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fly-in-from-right {
-  0% {
-    transform: translateX(120vw);
-    opacity: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-out {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-/* ============================================================
-   SLIDE IN FROM LEFT (less bounce, small snap)
-   ------------------------------------------------------------
-   - Starts off-screen to the left, quickly moves to center
-   - Slight scale for a crisp "click" feel
-   - Tiny final snap to lock into place
-============================================================ */
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-120%) scale(0.95);
-    opacity: 0;
-  }
-  /* By 70%, we've fully arrived on screen */
-  70% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-  /* Small snap backward */
-  85% {
-    transform: translateX(-1%) scale(0.98);
-  }
-  /* Final lock-in */
-  100% {
-    transform: translateX(0) scale(1);
-  }
-}
-
-/* ============================================================
-   SLIDE IN FROM RIGHT (less bounce, small snap)
-============================================================ */
-@keyframes slide-in-right {
-  0% {
-    transform: translateX(120%) scale(0.95);
-    opacity: 0;
-  }
-  70% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-  85% {
-    transform: translateX(1%) scale(0.98);
-  }
-  100% {
-    transform: translateX(0) scale(1);
-  }
-}
-
-/* ============================================================
-   SLIDE OUT TO LEFT (less bounce, small snap)
-   ------------------------------------------------------------
-   - Quick slight "push" before sliding away
-   - Minimal scale change to keep it snappy
-============================================================ */
-@keyframes slide-out-left {
-  0% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-  /* Tiny forward nudge */
-  20% {
-    transform: translateX(1%) scale(1.02);
-  }
-  /* Start sliding away & fading out */
-  50% {
-    transform: translateX(-3%) scale(0.95);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateX(-120%) scale(0.9);
-    opacity: 0;
-  }
-}
-
-/* ============================================================
-   SLIDE OUT TO RIGHT (less bounce, small snap)
-============================================================ */
-@keyframes slide-out-right {
-  0% {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-  20% {
-    transform: translateX(-1%) scale(1.02);
-  }
-  50% {
-    transform: translateX(3%) scale(0.95);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateX(120%) scale(0.9);
-    opacity: 0;
-  }
-}
-
-
-
-
-/* EXACT recreation of old rotations but triggered once on click */
-@keyframes arrow-click-left {
-  0% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  100% {
-    transform: rotate(-5deg);
-  }
-}
-
-@keyframes arrow-click-right {
-  0% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  100% {
-    transform: rotate(-10deg);
-  }
-}
-
-/* 1) Keyframes for the idle "tease" every 10s */
-@keyframes arrowIdleTease {
-  0%   { transform: rotate(-10deg); }
-  2%   { transform: rotate(2deg); }
-  4%   { transform: rotate(-4deg); }
-  6%   { transform: rotate(2deg); }
-  8%   { transform: rotate(-10deg); }
-  20%  { transform: rotate(-10deg); }
-  100% { transform: rotate(-10deg); }
-}
-
-/*======================================================================
-  2) GENERAL LAYOUT & CONTAINERS
+  GENERAL LAYOUT & CONTAINERS
   ----------------------------------------------------------------------
 ======================================================================*/
 
@@ -302,14 +102,10 @@
 
 /* Default angles from your old hover state */
 #left-arrow {
-  transform: rotate(-5deg);
-}
-#right-arrow {
   transform: rotate(-10deg);
 }
-
-.arrow-idle-bounce {
-  animation: arrowIdleTease 10s ease-in-out 4s infinite;
+#right-arrow {
+  transform: rotate(-15deg);
 }
 
 /* Classes toggled via TS for a single-run animation on click */
@@ -333,8 +129,6 @@
 #ui-cloud {
   z-index: 10;
   width: 60%;
-  animation: fly-in-from-left 0.5s ease-out 1s forwards,
-             cloudFloat 10s ease-in-out 1.5s infinite;
   opacity: 0;
   width: 30%;
   top: 40rem;
@@ -342,7 +136,6 @@
 }
 
 #design-cassette-container {
-  animation: fly-in-from-right 0.5s ease-out 1.2s forwards;
   opacity: 0;
   width: 30%;
   right: -13%;

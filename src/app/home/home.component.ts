@@ -94,7 +94,7 @@ export class HomeComponent {
     // cassette tapes fly in from the sides on load
     animate('#dev-tape-container', {
       x: [
-        { to: '-60vw', ease: 'outExpo', duration: 0 },
+        { to: '-150vw', ease: 'outExpo', duration: 0 },
         { to: '0vw', ease: 'outElastic', duration: 2000 }
       ],
       opacity: [
@@ -107,7 +107,7 @@ export class HomeComponent {
     
     animate('#design-tape-container', {
       x: [
-        { to: '60vw', ease: 'outExpo', duration: 0 },
+        { to: '150vw', ease: 'outExpo', duration: 0 },
         { to: '0vw', ease: 'outElastic', duration: 2000 }
       ],
       opacity: [
