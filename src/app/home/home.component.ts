@@ -58,6 +58,9 @@ export class HomeComponent {
         { to: '-20vh', ease: 'outExpo', duration: 600},
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
+      opacity: [
+        { to: 1, duration: 400 }
+      ],
       delay: 500,
       ease: 'outBounce',
     })
@@ -66,6 +69,9 @@ export class HomeComponent {
       y: [
         { to: '-20vh', ease: 'outExpo', duration: 600},
         { to: '0vh', ease: 'outBounce', duration: 800}
+      ],
+      opacity: [
+        { to: 1, duration: 400 }
       ],
       delay: 500,
       ease: 'outBounce',
@@ -77,7 +83,7 @@ export class HomeComponent {
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
       opacity: [
-        { to: 1, duration: 100 }
+        { to: 1, duration: 400 }
       ],
       delay: 1200,
       ease: 'outBounce',

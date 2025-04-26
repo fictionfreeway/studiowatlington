@@ -43,6 +43,7 @@
     z-index: 15;
     position: relative;
     padding-top: 5rem;
+    opacity: 0;
 }
 
 #horizontal-logo {
