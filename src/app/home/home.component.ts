@@ -53,6 +53,7 @@ export class HomeComponent {
       homeContainer.classList.add('loaded'); // Triggers fade-in
     }
 
+    // horizontal and vertical logo bounce animation from above on load
     animate('#horizontal-logo', {
       y: [
         { to: '-20vh', ease: 'outExpo', duration: 600},
@@ -77,6 +78,7 @@ export class HomeComponent {
       ease: 'outBounce',
     })
 
+    // Cityscape animation from below on load
     animate('#cityscape-container', {
       y: [
         { to: '40vh', ease: 'outExpo', duration: 600},
@@ -87,6 +89,33 @@ export class HomeComponent {
       ],
       delay: 1200,
       ease: 'outBounce',
+    })
+
+    // cassette tapes fly in from the sides on load
+    animate('#dev-tape-container', {
+      x: [
+        { to: '-60vw', ease: 'outExpo', duration: 0 },
+        { to: '0vw', ease: 'outElastic', duration: 2000 }
+      ],
+      opacity: [
+        { to: 0, duration: 200 },
+        { to: 1, duration: 400 }
+      ],
+      delay: 2000,
+      ease: 'outElastic',
+    })
+    
+    animate('#design-tape-container', {
+      x: [
+        { to: '60vw', ease: 'outExpo', duration: 0 },
+        { to: '0vw', ease: 'outElastic', duration: 2000 }
+      ],
+      opacity: [
+        { to: 0, duration: 200 },
+        { to: 1, duration: 400 }
+      ],
+      delay: 3500,
+      ease: 'outElastic',
     })
   }
 

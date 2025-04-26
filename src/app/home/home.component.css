@@ -111,6 +111,10 @@
     height: fit-content;
 }
 
+#design-tape-container, #dev-tape-container {
+    opacity: 0;
+}
+
 #design-tape, #dev-tape {
     transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
     position: relative;
