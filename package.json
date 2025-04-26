@@ -7,13 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && copy CNAME dist\\CNAME && npx gh-pages -d dist"
+    "deploy": "npm run build && shx cp CNAME dist/ && gh-pages -d dist"
   },
   "devDependencies": {
     "@angular/compiler": "^19.1.7",
     "@angular/compiler-cli": "^19.1.7",
     "animejs": "^4.0.0",
     "gh-pages": "^6.3.0",
+    "shx": "^0.4.0",
     "typescript": "~5.7.2",
     "vite": "^6.1.0"
   },

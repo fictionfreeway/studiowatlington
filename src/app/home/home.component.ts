@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 
-import { animate, stagger } from 'animejs';
+import { animate } from 'animejs';
 
 // Import the external template and styles
 import template from './home.component.html?raw';
@@ -55,7 +55,7 @@ export class HomeComponent {
 
     animate('#horizontal-logo', {
       y: [
-        { to: '-50vh', ease: 'outExpo', duration: 600},
+        { to: '-20vh', ease: 'outExpo', duration: 600},
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
       delay: 500,
@@ -64,7 +64,7 @@ export class HomeComponent {
 
     animate('#vertical-logo', {
       y: [
-        { to: '-50vh', ease: 'outExpo', duration: 600},
+        { to: '-20vh', ease: 'outExpo', duration: 600},
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
       delay: 500,
@@ -73,7 +73,7 @@ export class HomeComponent {
 
     animate('#cityscape-container', {
       y: [
-        { to: '50vh', ease: 'outExpo', duration: 600},
+        { to: '40vh', ease: 'outExpo', duration: 600},
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
       opacity: [

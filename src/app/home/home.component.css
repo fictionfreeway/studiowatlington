@@ -100,8 +100,14 @@
 #banner-plane-container {
     position: absolute;
     width: 150px;
+    height: fit-content;
     z-index: 8;
     animation: planeFloat 4s ease-in-out infinite;
+}
+
+#banner-plane {
+    width: 100%;
+    height: fit-content;
 }
 
 #design-tape, #dev-tape {
