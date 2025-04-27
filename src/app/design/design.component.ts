@@ -19,7 +19,6 @@ import styles from './design.component.css?inline';
 export class DesignComponent implements OnInit {
   templates: { content: SafeHtml }[] = [];
   currentTemplateIndex = 0;
-  transitionClass = '';
 
   private sanitizer = inject(DomSanitizer);
 
@@ -88,19 +87,31 @@ export class DesignComponent implements OnInit {
   }
   
   showNextTemplate(): void {
-    this.transitionClass = 'slide-out-left';
+    animate('#showcase-content', {
+      x: [
+        { to: '120%', duration: 400},
+        { to: '-120%', duration: 0 },
+        { to: '0%', duration: 400, delay: 150 }
+      ],
+      ease: 'inOutBack'
+    })
     setTimeout(() => {
       this.currentTemplateIndex = (this.currentTemplateIndex + 1) % this.templates.length;
-      this.transitionClass = 'slide-in-right';
     }, 400);
   }
 
   showPreviousTemplate(): void {
-    this.transitionClass = 'slide-out-right';
+    animate('#showcase-content', {
+      x: [
+        { to: "-120%", duration: 400 },
+        { to: "120%", duration: 0 },
+        { to: "0%", duration: 400, delay: 50 },
+      ],
+      ease: 'inOutBack'
+    })
     setTimeout(() => {
       this.currentTemplateIndex =
         (this.currentTemplateIndex - 1 + this.templates.length) % this.templates.length;
-      this.transitionClass = 'slide-in-left';
     }, 400);
   }
 

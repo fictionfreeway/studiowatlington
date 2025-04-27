@@ -108,14 +108,6 @@
   transform: rotate(-15deg);
 }
 
-/* Classes toggled via TS for a single-run animation on click */
-.left-arrow-clicked {
-  animation: arrow-click-left 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
-}
-.right-arrow-clicked {
-  animation: arrow-click-right 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
-}
-
 /*======================================================================
   5) SPECIAL OBJECTS (SVGs, Floaters, etc.)
   ----------------------------------------------------------------------
