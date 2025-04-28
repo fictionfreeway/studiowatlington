@@ -9,24 +9,24 @@
     <h2 class="portfolio-header">Graphic Design Portfolio</h2>
     <div id="design-flex-container">
       <div id="design-content">
-          <div id="design-nav">
-            <div
-            id="left-arrow"
+        <div id="design-nav">
+          <div
+          id="left-arrow"
+          class="design-arrow"
+          tabindex="0"
+          (click)="bounceLeftArrow(); showPreviousTemplate()"
+          >
+            <img src="/assets/images/left-arrow-design.png" alt="Left Arrow" />
+          </div>
+          <div
+            id="right-arrow"
             class="design-arrow"
             tabindex="0"
-            (click)="bounceLeftArrow(); showPreviousTemplate()"
-            >
-              <img src="/assets/images/left-arrow-design.png" alt="Left Arrow" />
-            </div>
-            <div
-              id="right-arrow"
-              class="design-arrow"
-              tabindex="0"
-              (click)="bounceRightArrow(); showNextTemplate()"
-            >
-              <img src="/assets/images/right-arrow-design.png" alt="Right Arrow" />
-            </div>
+            (click)="bounceRightArrow(); showNextTemplate()"
+          >
+            <img src="/assets/images/right-arrow-design.png" alt="Right Arrow" />
           </div>
+        </div>
           <span class="showcase-group">
             <section id="showcase-content" [innerHTML]="templates[currentTemplateIndex]?.content" class="template-content"></section>
           </span>

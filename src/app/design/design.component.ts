@@ -78,19 +78,21 @@ export class DesignComponent implements OnInit {
     animate('#right-arrow', {
       rotate: [
         { to: -15, duration: 0 },
-        { to: 0, duration: 300, delay: 3000, ease: 'inSine' },
-        { to:  -15, duration: 1000, ease: 'outBounce'}
+        { to: -5, duration: 200, delay: 3000, ease: 'inSine' },
+        { to:  -9, duration: 100, ease: 'outBounce'},
+        { to: -5, duration: 200, ease: 'inSine' },
+        { to: -15, duration: 500, ease: 'outBounce'}
       ],
       loop: true,
-      loopDelay: 3000
+      loopDelay: 2000
     })
   }
   
   showNextTemplate(): void {
     animate('#showcase-content', {
       x: [
-        { to: '120%', duration: 400},
-        { to: '-120%', duration: 0 },
+        { to: '-120%', duration: 400},
+        { to: '120%', duration: 0 },
         { to: '0%', duration: 400, delay: 150 }
       ],
       ease: 'inOutBack'
@@ -103,8 +105,8 @@ export class DesignComponent implements OnInit {
   showPreviousTemplate(): void {
     animate('#showcase-content', {
       x: [
-        { to: "-120%", duration: 400 },
-        { to: "120%", duration: 0 },
+        { to: "120%", duration: 400 },
+        { to: "-120%", duration: 0 },
         { to: "0%", duration: 400, delay: 50 },
       ],
       ease: 'inOutBack'
@@ -129,8 +131,8 @@ export class DesignComponent implements OnInit {
     animate('#left-arrow', {
       rotate: [
         { to: -10, duration: 0 },
-        { to: 0, duration: 300, ease: 'outBouce' },
-        { to:  -10, duration: 700, ease: 'outBounce'}
+        { to: 0, duration: 100, ease: 'outCirc' },
+        { to:  -10, duration: 400, ease: 'outBounce'}
       ],
     })
   }
