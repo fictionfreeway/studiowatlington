@@ -119,8 +119,8 @@ export class DesignComponent implements OnInit {
     animate('#right-arrow', {
       rotate: [
         { to: -15, duration: 0 },
-        { to: 0, duration: 300, ease: 'inSine' },
-        { to:  -15, duration: 1000, ease: 'outBounce'}
+        { to: 0, duration: 100, ease: 'outCirc' },
+        { to:  -15, duration: 400, ease: 'outBounce'}
       ],
     })
   }
