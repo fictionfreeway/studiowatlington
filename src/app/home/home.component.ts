@@ -85,6 +85,7 @@ export class HomeComponent {
         { to: '0vh', ease: 'outBounce', duration: 800}
       ],
       opacity: [
+        { to: 0, duration: 200 },
         { to: 1, duration: 400 }
       ],
       delay: 1200,
@@ -232,6 +233,38 @@ export class HomeComponent {
     };
 
     resetPlane();
+  }
+
+  // Animated fly-away on click for dev tape and routing
+  devTapeClicked() {
+    // Animate the tape exit
+    animate('#dev-tape', {
+      x: ['0', '-100vw'],
+      rotate: ['-4deg', '-10deg'],
+      duration: 500,
+      ease: 'inBack'
+    });
+
+    setTimeout(() => {
+      // Navigate to the development page after animation
+      this.router.navigate(['/development']);
+    }, 500);
+  }
+
+  // Animated fly-away on click for design tape and routing
+  designTapeClicked() {
+    // Animate the tape exit
+    animate('#design-tape', {
+      x: ['0', '100vw'],
+      rotate: ['6deg', '8deg'],
+      duration: 500,
+      ease: 'inBack'
+    });
+
+    setTimeout(() => {
+      // Navigate to the design page after animation
+      this.router.navigate(['/design']);
+    }, 500);
   }
 
   // Tape animation with navigation
