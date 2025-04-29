@@ -18,4 +18,22 @@ import styles from './dark-mode-button.component.css?inline';
 
 export class DarkModeButtonComponent {
 
+    toggleDarkMode() {
+        this.animateButtonToggle();
+    }
+
+    animateButtonToggle() {
+        animate('#sun', {
+            rotate: [ '0deg', '360deg' ],
+            loop: true,
+            ease: 'linear'
+        })
+
+        animate('#sun-moon-container', {
+            translateX: [ '0%', '40%' ],
+            ease: 'easeInOutSine',
+            duration: 1000
+        })
+    }
+
 }
