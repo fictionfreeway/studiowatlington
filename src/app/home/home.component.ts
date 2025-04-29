@@ -117,6 +117,23 @@ export class HomeComponent {
       delay: 3500,
       ease: 'outElastic',
     })
+
+    animate('#design-tape', {
+      y: [ '10rem', '12rem' ],
+      duration: 4000,
+      loop: true,
+      alternate: true,
+      ease: 'inOutQuad'
+    })
+
+    animate('#design-tape', {
+      x: [ '-.25rem', '.25rem' ],
+      rotate: [ '6deg', '5deg' ],
+      duration: 6000,
+      loop: true,
+      alternate: true,
+      ease: 'inOutQuad'
+    })
   }
 
   // SVG loading and animation

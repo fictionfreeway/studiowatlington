@@ -172,4 +172,12 @@
     #cityscape-container {
         max-height: 25rem;
     }
+
+    #dev-tape {
+        transform: rotate(-4deg) translate(-2rem, 0rem);
+    }
+
+    #design-tape {
+        transform: rotate(6deg) translate(2rem, 0rem);
+    }
 }
