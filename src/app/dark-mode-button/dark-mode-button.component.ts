@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 import { animate } from 'animejs';
@@ -12,28 +12,103 @@ import styles from './dark-mode-button.component.css?inline';
     selector: 'app-dark-mode-button',
     standalone: true,
     imports: [CommonModule, RouterLink, RouterModule],
-    template: template || '', // ✅ External template
+    encapsulation: ViewEncapsulation.None,
+    template: template || '',
     styles: [styles || '']
 })
 
-export class DarkModeButtonComponent {
+export class DarkModeButtonComponent implements OnInit {
+
+    darkModeActive: boolean; // Default to light mode
+    prefersDarkMode: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    constructor() {
+        this.darkModeActive = this.prefersDarkMode;
+    }
+
+    ngOnInit(): void {
+        if(this.darkModeActive) {
+            this.animateButtonToggle();
+        }
+        animate('#sun, #moon', {
+            scale: [ '1.4' ],
+            duration: 0,
+            ease: 'linear'
+        })
+    }
 
     toggleDarkMode() {
+        this.darkModeActive = !this.darkModeActive;
         this.animateButtonToggle();
     }
 
     animateButtonToggle() {
-        animate('#sun', {
-            rotate: [ '0deg', '360deg' ],
-            loop: true,
-            ease: 'linear'
-        })
+        if(!this.darkModeActive) {
+            // sun opacity to 0 as moon opacity to 1
+            animate('#sun', {
+                opacity: [ '0', '1' ],
+                ease: 'outSine',
+                delay: 100,
+                duration: 150
+            })
 
-        animate('#sun-moon-container', {
-            translateX: [ '0%', '40%' ],
-            ease: 'easeInOutSine',
-            duration: 1000
-        })
+            animate('#moon', {
+                opacity: [ '1', '0' ],
+                ease: 'inSine',
+                delay: 100,
+                duration: 150
+            })
+
+            animate('#sun', {
+                rotate: [ '260deg', '0deg' ],
+                duration: 100,
+                ease: 'linear'
+            })
+    
+            animate('#moon', {
+                rotate: [ '260deg', '0deg' ],
+                duration: 200,
+                ease: 'linear'
+            })
+    
+            animate('#sun-moon-container', {
+                translateX: [ '50%', '0%' ],
+                ease: 'outBack',
+                duration: 700
+            })
+        } else {
+            animate('#sun', {
+                rotate: [ '260deg', '0deg' ],
+                duration: 200,
+                ease: 'linear'
+            })
+
+            animate('#sun', {
+                opacity: [ '1', '0' ],
+                ease: 'inSine',
+                delay: 100,
+                duration: 150
+            })
+    
+            animate('#moon', {
+                rotate: [ '0deg', '260deg' ],
+                duration: 200,
+                ease: 'linear'
+            })
+
+            animate('#moon', {
+                opacity: [ '0', '1' ],
+                ease: 'outSine',
+                delay: 100,
+                duration: 150
+            })
+    
+            animate('#sun-moon-container', {
+                translateX: [ '0%', '50%' ],
+                ease: 'outBack',
+                duration: 700
+            })
+        }
     }
 
 }

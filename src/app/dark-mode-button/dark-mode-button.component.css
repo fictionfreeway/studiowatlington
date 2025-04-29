@@ -10,3 +10,7 @@
 #moon, #sun {
     transform-origin: 235px 135px;
 }
+
+#moon {
+    opacity: 0;
+}
