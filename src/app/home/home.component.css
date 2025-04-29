@@ -77,24 +77,13 @@
     flex-shrink: 0;
 }
 
-/* Cassette container styles */
 #cassette-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5rem auto;
+    max-width: 40rem;
+    display: block;
+    margin: 4rem auto 0 auto;
     z-index: 50;
     position: relative;
-}
-
-#cassette-container svg {
-    width: 80%;
-    max-width: 50rem;
-    max-height: 40rem;
-    height: auto;
-    display: block;
-    overflow: visible;
 }
 
 /* Plane animation */
@@ -112,20 +101,26 @@
 }
 
 #design-tape-container, #dev-tape-container {
+    width: 90%;
+    max-width: 80vw;
+    position: relative;
+    z-index: 10;
+    display: block;
+    margin: 0 auto;
     opacity: 0;
 }
 
 #design-tape, #dev-tape {
-    transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
-    position: relative;
+    position: absolute;
+    width: 100%;
 }
 
-.fly-away-right {
-    transform: translateX(250vw) rotate(15deg); /* Move right + slight rotation */
+#dev-tape {
+    transform: rotate(-4deg) translate(-3rem, 0rem);
 }
 
-.fly-away-left {
-    transform: translateX(-250vw) rotate(-15deg); /* Move left + slight rotation */
+#design-tape {
+    transform: rotate(6deg) translate(3rem, 12rem);
 }
 
 /* Cloud container styles */
@@ -178,7 +173,11 @@
         max-height: 25rem;
     }
 
-    #cassette-container svg {
-        width: 90%;
+    #dev-tape {
+        transform: rotate(-4deg) translate(-2rem, 0rem);
+    }
+
+    #design-tape {
+        transform: rotate(6deg) translate(2rem, 0rem);
     }
 }
