@@ -52,8 +52,27 @@ table {
 	border-spacing: 0;
 }
 
-
-
+/* ── 1.  Register each stop (only once, near the top of your CSS) ─────────── */
+@property --top-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #011936;
+}
+@property --top-middle-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #011936;
+}
+@property --bottom-middle-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #57354c;
+}
+@property --bottom-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #f8b4be;
+}
 
 :root {
     --deep-blue: #011936;
@@ -62,6 +81,10 @@ table {
 	--white: #fff;
     --pink: #FEB6BF;
     --gray: #465362;
+	--top-gradient: #011936;
+	--top-middle-gradient: #011936;
+	--bottom-middle-gradient: #57354c;
+	--bottom-gradient: #f8b4be;
 }
 
 .material-symbols-outlined {

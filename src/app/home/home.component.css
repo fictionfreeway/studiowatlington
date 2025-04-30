@@ -1,29 +1,6 @@
 /* Import external fonts */
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
 
-/* ── 1.  Register each stop (only once, near the top of your CSS) ─────────── */
-@property --top-gradient {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: rgba(1, 25, 54, 1);
-  }
-  @property --top-middle-gradient {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: rgba(1, 25, 54, 1);
-  }
-  @property --bottom-middle-gradient {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: rgb(87 53 76);
-  }
-  @property --bottom-gradient {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: rgba(248, 180, 190, 1);
-  }
-  
-
 /* General container styles */
 #home-container {
     /* (The other rules you already have stay the same) */
@@ -34,9 +11,35 @@
         var(--bottom-middle-gradient) 70%,
         var(--bottom-gradient) 100%
     );
-  }
-  
+    transition: background 0.5s ease-in-out;
+}
 
+@keyframes lightMode {
+    to {
+        --top-gradient: #b4bef8;
+        --top-middle-gradient: #257b4c;
+        --bottom-middle-gradient: #022d62;
+        --bottom-gradient: #053876;
+    }
+}
+
+@keyframes darkMode {
+    to {
+        --top-gradient: #011936;
+        --top-middle-gradient: #011936;
+        --bottom-middle-gradient: #57354c;
+        --bottom-gradient: #f8b4be;
+    }
+}
+
+#home-container.light-mode {
+    animation: lightMode 0.5s forwards;   
+}
+
+#home-container.dark-mode {
+
+}
+  
 #home-container.loaded {
     opacity: 1; /* Fade-in effect when loaded */
 }
@@ -140,6 +143,7 @@
 #design-tape, #dev-tape {
     position: absolute;
     width: 100%;
+    cursor: pointer;
 }
 
 #dev-tape {

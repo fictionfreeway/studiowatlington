@@ -205,6 +205,7 @@ export class HomeComponent {
 
   setTheme(event: any) {
     // change css variables in background gradient
+    console.log(event);
   }
 
   // Plane animation
