@@ -14,8 +14,8 @@ import styles from './home.component.css?inline';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterModule, DarkModeButtonComponent],
-  template: template || '', // ✅ External template
-  styles: [styles || ''] // ✅ External styles (optional)
+  template: template || '',
+  styles: [styles || '']
 })
 export class HomeComponent {
   @ViewChild('cloudContainer') cloudContainerRef!: ElementRef<HTMLDivElement>;

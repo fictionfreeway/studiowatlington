@@ -140,6 +140,13 @@
     animation: planeFloat 10s ease-in-out infinite;
 }
 
+#dark-mode-button-container {
+    position: fixed;
+    width: 20rem;
+    top: 15rem;
+    right: 5rem;
+}
+
 /* Keyframes for plane floating effect */
 @keyframes planeFloat {
     0% { transform: translateY(0); }
