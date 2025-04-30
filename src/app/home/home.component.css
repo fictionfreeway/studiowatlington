@@ -11,25 +11,21 @@
         var(--bottom-middle-gradient) 70%,
         var(--bottom-gradient) 100%
     );
-    transition: background 0.5s ease-in-out;
+    transition: --top-gradient 0.5s, --top-middle-gradient 0.5s, --bottom-middle-gradient 0.5s, --bottom-gradient 0.5s;
 }
 
-@keyframes lightMode {
-    to {
-        --top-gradient: #b4bef8;
-        --top-middle-gradient: #257b4c;
-        --bottom-middle-gradient: #022d62;
-        --bottom-gradient: #053876;
-    }
+#home-container.light-mode {
+    --top-gradient: #2C67F2;
+    --top-middle-gradient: #62CFF4;
+    --bottom-middle-gradient: #AEEAFC;
+    --bottom-gradient: #66AB4D;
 }
 
-@keyframes darkMode {
-    to {
-        --top-gradient: #011936;
-        --top-middle-gradient: #011936;
-        --bottom-middle-gradient: #57354c;
-        --bottom-gradient: #f8b4be;
-    }
+#home-container.dark-mode {
+    --top-gradient: #011936;
+    --top-middle-gradient: #011936;
+    --bottom-middle-gradient: #57354c;
+    --bottom-gradient: #f8b4be;
 }
 
 #home-container.light-mode {
@@ -37,7 +33,7 @@
 }
 
 #home-container.dark-mode {
-
+    animation: darkMode 0.5s forwards;
 }
   
 #home-container.loaded {
@@ -176,6 +172,7 @@
     width: 20rem;
     top: 15rem;
     right: 5rem;
+    z-index: 999;
 }
 
 /* Keyframes for plane floating effect */

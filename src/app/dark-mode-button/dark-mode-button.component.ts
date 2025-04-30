@@ -32,6 +32,10 @@ export class DarkModeButtonComponent implements OnInit {
     ngOnInit(): void {
         if(this.darkModeActive) {
             this.animateButtonToggle();
+            this.themeChange.emit('dark');
+        } else {
+            this.animateButtonToggle();
+            this.themeChange.emit('light');
         }
         animate('#sun, #moon', {
             scale: [ '1.4' ],

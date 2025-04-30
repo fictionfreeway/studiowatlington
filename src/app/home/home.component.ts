@@ -1,5 +1,5 @@
-import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ElementRef, HostListener, inject, ViewChild, Renderer2, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 
 import { DarkModeButtonComponent } from '../dark-mode-button/dark-mode-button.component';
@@ -19,11 +19,10 @@ import styles from './home.component.css?inline';
 })
 export class HomeComponent {
   @ViewChild('cloudContainer') cloudContainerRef!: ElementRef<HTMLDivElement>;
-
-  private resizeTimeout: any; // Holds timeout ID for debounce
-  private router = inject(Router); // Inject the Router for navigation
-
-  constructor() {}
+  private readonly router   = inject(Router);
+  private readonly renderer = inject(Renderer2);
+  private readonly document = inject(DOCUMENT);
+  private resizeTimeout: any;
 
   // Lifecycle hooks
   ngAfterViewInit() {
@@ -50,9 +49,9 @@ export class HomeComponent {
   // Initialization methods
   private initializeAnimations() {
     // Fade in the entire page
-    const homeContainer = document.getElementById('home-container');
+    const homeContainer = this.document.getElementById('home-container');
     if (homeContainer) {
-      homeContainer.classList.add('loaded'); // Triggers fade-in
+      this.renderer.addClass(homeContainer, 'loaded'); // Triggers fade-in
     }
 
     // horizontal and vertical logo bounce animation from above on load
@@ -203,9 +202,15 @@ export class HomeComponent {
     }, 400); // Randomly toggle window lights
   }
 
-  setTheme(event: any) {
-    // change css variables in background gradient
-    console.log(event);
+  setTheme(requestedTheme: any) {
+    const homeContainer = document.getElementById('home-container');
+    if(requestedTheme === 'dark') {
+      homeContainer?.classList.add('dark-mode');
+      homeContainer?.classList.remove('light-mode');
+    } else {
+      homeContainer?.classList.add('light-mode');
+      homeContainer?.classList.remove('dark-mode');
+    }
   }
 
   // Plane animation
