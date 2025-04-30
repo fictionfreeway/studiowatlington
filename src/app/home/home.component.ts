@@ -2,6 +2,8 @@ import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 
+import { DarkModeButtonComponent } from '../dark-mode-button/dark-mode-button.component';
+
 import { animate } from 'animejs';
 
 // Import the external template and styles
@@ -11,7 +13,7 @@ import styles from './home.component.css?inline';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule],
+  imports: [CommonModule, RouterLink, RouterModule, DarkModeButtonComponent],
   template: template || '', // ✅ External template
   styles: [styles || ''] // ✅ External styles (optional)
 })

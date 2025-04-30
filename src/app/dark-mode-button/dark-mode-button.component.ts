@@ -44,6 +44,7 @@ export class DarkModeButtonComponent implements OnInit {
 
     animateButtonToggle() {
         if(!this.darkModeActive) {
+            
             // sun opacity to 0 as moon opacity to 1
             animate('#sun', {
                 opacity: [ '0', '1' ],
@@ -61,25 +62,25 @@ export class DarkModeButtonComponent implements OnInit {
 
             animate('#sun', {
                 rotate: [ '260deg', '0deg' ],
-                duration: 100,
+                duration: 400,
                 ease: 'linear'
             })
     
             animate('#moon', {
                 rotate: [ '260deg', '0deg' ],
-                duration: 200,
+                duration: 400,
                 ease: 'linear'
             })
     
             animate('#sun-moon-container', {
                 translateX: [ '50%', '0%' ],
-                ease: 'outBack',
+                ease: 'outBounce',
                 duration: 700
             })
         } else {
             animate('#sun', {
                 rotate: [ '260deg', '0deg' ],
-                duration: 200,
+                duration: 400,
                 ease: 'linear'
             })
 
@@ -92,7 +93,7 @@ export class DarkModeButtonComponent implements OnInit {
     
             animate('#moon', {
                 rotate: [ '0deg', '260deg' ],
-                duration: 200,
+                duration: 400,
                 ease: 'linear'
             })
 
@@ -105,7 +106,7 @@ export class DarkModeButtonComponent implements OnInit {
     
             animate('#sun-moon-container', {
                 translateX: [ '0%', '50%' ],
-                ease: 'outBack',
+                ease: 'outBounce',
                 duration: 700
             })
         }
