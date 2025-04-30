@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 import { animate } from 'animejs';
@@ -7,6 +7,7 @@ import { animate } from 'animejs';
 // Import the external template and styles
 import template from './dark-mode-button.component.html?raw';
 import styles from './dark-mode-button.component.css?inline';
+
 
 @Component({
     selector: 'app-dark-mode-button',
@@ -18,6 +19,8 @@ import styles from './dark-mode-button.component.css?inline';
 })
 
 export class DarkModeButtonComponent implements OnInit {
+
+    @Output() themeChange = new EventEmitter<'light' | 'dark'>();
 
     darkModeActive: boolean; // Default to light mode
     prefersDarkMode: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -40,6 +43,8 @@ export class DarkModeButtonComponent implements OnInit {
     toggleDarkMode() {
         this.darkModeActive = !this.darkModeActive;
         this.animateButtonToggle();
+
+        this.themeChange.emit(this.darkModeActive ? 'dark' : 'light');
     }
 
     animateButtonToggle() {

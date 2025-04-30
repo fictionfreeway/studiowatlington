@@ -1,11 +1,18 @@
 /* Import external fonts */
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
 
+:root {
+    --top-gradient: rgba(1,25,54,1);
+    --top-middle-gradient: rgba(1,25,54,1);
+    --bottom-middle-gradient: rgb(87, 53, 76);
+    --bottom-gradient: rgba(248,180,190,1);
+}
+
 /* General container styles */
 #home-container {
     /* Background gradient for the home container */
     background: var(--dark-blue);
-    background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(1,25,54,1) 42%, rgb(87, 53, 76) 70%, rgba(248,180,190,1) 100%);
+    background: linear-gradient(180deg, var(--top-gradient) 0%, var(--top-middle-gradient) 42%, var(--bottom-middle-gradient) 70%, var(--bottom-gradient) 100%);
     opacity: 0; /* Hidden by default */
     transition: opacity 1.5s ease-out; 
 }

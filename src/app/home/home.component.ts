@@ -203,6 +203,10 @@ export class HomeComponent {
     }, 400); // Randomly toggle window lights
   }
 
+  setTheme(event: any) {
+    // change css variables in background gradient
+  }
+
   // Plane animation
   private animatePlane() {
     const plane = document.getElementById('banner-plane-container');
