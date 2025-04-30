@@ -1,21 +1,41 @@
 /* Import external fonts */
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
 
-:root {
-    --top-gradient: rgba(1,25,54,1);
-    --top-middle-gradient: rgba(1,25,54,1);
-    --bottom-middle-gradient: rgb(87, 53, 76);
-    --bottom-gradient: rgba(248,180,190,1);
-}
+/* ── 1.  Register each stop (only once, near the top of your CSS) ─────────── */
+@property --top-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(1, 25, 54, 1);
+  }
+  @property --top-middle-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(1, 25, 54, 1);
+  }
+  @property --bottom-middle-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgb(87 53 76);
+  }
+  @property --bottom-gradient {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(248, 180, 190, 1);
+  }
+  
 
 /* General container styles */
 #home-container {
-    /* Background gradient for the home container */
-    background: var(--dark-blue);
-    background: linear-gradient(180deg, var(--top-gradient) 0%, var(--top-middle-gradient) 42%, var(--bottom-middle-gradient) 70%, var(--bottom-gradient) 100%);
-    opacity: 0; /* Hidden by default */
-    transition: opacity 1.5s ease-out; 
-}
+    /* (The other rules you already have stay the same) */
+    background: linear-gradient(
+        180deg,
+        var(--top-gradient) 0%,
+        var(--top-middle-gradient) 42%,
+        var(--bottom-middle-gradient) 70%,
+        var(--bottom-gradient) 100%
+    );
+  }
+  
 
 #home-container.loaded {
     opacity: 1; /* Fade-in effect when loaded */
