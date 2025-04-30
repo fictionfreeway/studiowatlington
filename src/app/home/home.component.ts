@@ -23,6 +23,8 @@ export class HomeComponent {
   private readonly renderer = inject(Renderer2);
   private readonly document = inject(DOCUMENT);
   private resizeTimeout: any;
+  private currentTheme: 'light' | 'dark' = 'light';
+  private windowLightInterval: any;
 
   // Lifecycle hooks
   ngAfterViewInit() {
@@ -177,39 +179,69 @@ export class HomeComponent {
           container.appendChild(clonedSVG);
         }
       }
-
-      this.animateWindows();
     } catch (error) {
       console.error('Failed to load SVG:', error);
     }
   }
 
-  private animateWindows() {
+  private animateWindowsNight() {
     const windows = document.querySelectorAll('.window');
+    const buildings = document.querySelectorAll('.st0');
+    windows.forEach(window => {
+      window.classList.remove('window-day');
+      window.classList.add('window-dark');
+      window.classList.remove('window-lit');
+    });
 
-    setInterval(() => {
-      windows.forEach(window => {
-        if (Math.random() > 0.999) {
-          if (window.classList.contains('window-lit')) {
-            window.classList.remove('window-lit');
-            window.classList.add('window-dark');
-          } else {
-            window.classList.remove('window-dark');
-            window.classList.add('window-lit');
+    buildings.forEach(building => {
+      building.classList.remove('building-day');
+    });
+
+    this.windowLightInterval = setInterval(() => {
+      if(this.currentTheme === 'dark') {
+        windows.forEach(window => {
+          if (Math.random() > 0.999) {
+            if (window.classList.contains('window-lit')) {
+              if(Math.random() > 0.999) {
+                window.classList.remove('window-lit');
+                window.classList.add('window-dark');
+              }
+            } else {
+              window.classList.remove('window-dark');
+              window.classList.add('window-lit');
+            }
           }
-        }
-      });
-    }, 400); // Randomly toggle window lights
+        });
+      }
+    }, 75); // Randomly toggle window lights
   }
 
-  setTheme(requestedTheme: any) {
+  private animateWindowsDay() {
+    this.windowLightInterval && clearInterval(this.windowLightInterval);
+    const windows = document.querySelectorAll('.window');
+    const buildings = document.querySelectorAll('.st0');
+    windows.forEach(window => {
+      window.classList.remove('window-lit');
+      window.classList.remove('window-dark');
+      window.classList.add('window-day');
+    });
+    buildings.forEach(building => {
+      building.classList.add('building-day');
+    });
+  }
+
+  private setTheme(requestedTheme: any) {
     const homeContainer = document.getElementById('home-container');
     if(requestedTheme === 'dark') {
       homeContainer?.classList.add('dark-mode');
       homeContainer?.classList.remove('light-mode');
+      this.animateWindowsNight();
+      this.currentTheme = 'dark';
     } else {
       homeContainer?.classList.add('light-mode');
       homeContainer?.classList.remove('dark-mode');
+      this.animateWindowsDay();
+      this.currentTheme = 'light';
     }
   }
 
