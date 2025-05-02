@@ -22,7 +22,7 @@
       }
 
       .window-day-light {
-        fill:rgb(134, 164, 184);
+        fill:rgb(135, 206, 235);
         stroke: #000;
       }
 
