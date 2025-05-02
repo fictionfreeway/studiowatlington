@@ -44,14 +44,8 @@
 #hill-container {
     position: absolute;
     bottom: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 20vh;
-    background: url('/assets/images/hills.png') no-repeat center bottom;
-    background-repeat: repeat-x;
-    background-size: contain;
-    z-index: 5;
-    opacity: 0;
+    right: 0;
+    width: 100vw;
 }
 
 /* Japanese name styling */
@@ -201,8 +195,7 @@
     }
 
     #hill-container {
-        min-height: 25vh;
-        background-size: cover;
+        width: 310vw;
     }
 
     #horizontal-logo {
