@@ -190,6 +190,7 @@ export class HomeComponent {
     const buildings = document.querySelectorAll('.st0');
     windows.forEach(window => {
       window.classList.remove('window-day');
+      window.classList.remove('window-day-light');
       window.classList.add('window-dark');
       window.classList.remove('window-lit');
     });
@@ -229,6 +230,22 @@ export class HomeComponent {
     buildings.forEach(building => {
       building.classList.add('building-day');
     });
+
+    this.windowLightInterval = setInterval(() => {
+      if(this.currentTheme === 'light') {
+        windows.forEach(window => {
+          if (Math.random() > 0.99) {
+            if (window.classList.contains('window-day')) {
+              window.classList.remove('window-day');
+              window.classList.add('window-day-light');
+            } else {
+              window.classList.remove('window-day-light');
+              window.classList.add('window-day');
+            }
+          }
+        });
+      }
+    }, 475); // Randomly toggle window lights
   }
 
   private setTheme(requestedTheme: any) {
