@@ -4,7 +4,7 @@
   <defs>
     <style>
       .window {
-        
+        transition: all 0.3s ease;
       }
 
       .window-dark {
@@ -13,9 +13,17 @@
 
       .window-lit {
         fill: #e4c432;
-        filter: drop-shadow(0 0 8px #e4c432)
+        <!-- filter: drop-shadow(0 0 8px #e4c432) -->
       }
 
+      .window-day {
+        fill:rgb(83, 131, 163);
+        stroke: #000;
+      }
+
+      .building-day {
+        fill: rgb(94, 105, 113) !important;
+      }
 
       .st0 {
         stroke-width: 5px;
