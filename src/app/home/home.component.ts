@@ -118,7 +118,7 @@ export class HomeComponent {
         { to: 0, duration: 200 },
         { to: 1, duration: 400 }
       ],
-      delay: 3500,
+      delay: 3000,
       ease: 'outElastic',
     })
 

@@ -168,7 +168,7 @@
 }
 
 #dark-mode-button-container {
-    position: fixed;
+    position: absolute;
     width: 20rem;
     top: 15rem;
     right: 5rem;
@@ -184,9 +184,21 @@
 
 /* Mobile responsiveness */
 @media only screen and (max-width: 800px) {
-    /* #home-container {
-        background: linear-gradient(180deg, rgba(1,25,54,1) 0%, rgba(1,25,54,1) 25%, #F8B4BE 75%);
-    } */
+    #jap-name {
+        display: none;
+    }
+
+    #dark-mode-button-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem;
+        width: 10rem;
+    }
+
+    #cassette-container {
+        margin: 3rem auto;
+    }
 
     #hill-container {
         min-height: 25vh;
@@ -202,6 +214,7 @@
         max-width: 80%;
         width: 75rem;
         margin: auto;
+        padding-top: 7rem;
     }
 
     #cityscape-container {
@@ -209,7 +222,7 @@
     }
 
     #dev-tape {
-        transform: rotate(-4deg) translate(-2rem, 0rem);
+        transform: rotate(-4deg) translate(-1rem, 0rem);
     }
 
     #design-tape {
