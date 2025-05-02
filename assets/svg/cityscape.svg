@@ -21,6 +21,11 @@
         stroke: #000;
       }
 
+      .window-day-light {
+        fill:rgb(134, 164, 184);
+        stroke: #000;
+      }
+
       .building-day {
         fill: rgb(94, 105, 113) !important;
       }
