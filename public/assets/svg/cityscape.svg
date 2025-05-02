@@ -13,7 +13,7 @@
 
       .window-lit {
         fill: #e4c432;
-        filter: drop-shadow(0 0 8px #e4c432)
+        <!-- filter: drop-shadow(0 0 8px #e4c432) -->
       }
 
       .window-day {

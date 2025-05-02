@@ -179,6 +179,7 @@ export class HomeComponent {
           container.appendChild(clonedSVG);
         }
       }
+      this.setTheme(this.currentTheme);
     } catch (error) {
       console.error('Failed to load SVG:', error);
     }
