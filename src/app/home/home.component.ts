@@ -138,6 +138,18 @@ export class HomeComponent {
       alternate: true,
       ease: 'inOutQuad'
     })
+
+    animate('#tower-light', {
+      // ─── Fill colour ────────────────────────────────────────────────
+      fill: [
+        { to: '#7d0000', duration: 2000 },  // 0–2 s  : dark red (idle)
+        { to: '#FF0A0A', duration: 200  },  // 2–2.2 s: quick flash‑up
+        { to: '#FF0A0A', duration: 600  },  // 2.2–2.8 s: hold bright
+        { to: '#7d0000', duration: 200  }   // 2.8–3 s: fade back to dark
+      ],
+      easing: 'inOutCirc',
+      loop: true
+    });
   }
 
   // SVG loading and animation
@@ -173,7 +185,7 @@ export class HomeComponent {
         const clonedSVG = newSVG.querySelector('svg');
 
         if (clonedSVG) {
-          clonedSVG.style.maxHeight = '45rem';
+          clonedSVG.style.maxHeight = '40rem';
           clonedSVG.style.width = 'auto';
           clonedSVG.style.flexShrink = '0';
           container.appendChild(clonedSVG);

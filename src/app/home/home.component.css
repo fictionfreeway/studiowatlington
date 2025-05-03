@@ -44,8 +44,12 @@
 #hill-container {
     position: absolute;
     bottom: 0;
-    right: 0;
+    left: 0;
     width: 100vw;
+}
+
+#hill-container path {
+    transition: all 0.3s ease-in-out;
 }
 
 /* Japanese name styling */
