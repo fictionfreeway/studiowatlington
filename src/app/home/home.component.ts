@@ -173,7 +173,7 @@ export class HomeComponent {
         const clonedSVG = newSVG.querySelector('svg');
 
         if (clonedSVG) {
-          clonedSVG.style.maxHeight = '30rem';
+          clonedSVG.style.maxHeight = '45rem';
           clonedSVG.style.width = 'auto';
           clonedSVG.style.flexShrink = '0';
           container.appendChild(clonedSVG);
@@ -183,6 +183,25 @@ export class HomeComponent {
     } catch (error) {
       console.error('Failed to load SVG:', error);
     }
+  }
+
+  changeHillPalette(mode: 'light' | 'dark'): void {
+    const newPrefix = mode === 'dark' ? 'night' : 'day';
+    const oldPrefix = mode === 'dark' ? 'day'   : 'night';
+    const prefixLen = oldPrefix.length + 1;            // +1 for the hyphen
+  
+    const svgRoot = this.document.querySelector('#hill');
+    // Grab *every* descendant that declares a class attribute (incl. <svg> root)
+    svgRoot?.querySelectorAll<HTMLElement>('[class]').forEach(el => {
+      // Copy is required because we mutate the list while iterating
+      [...el.classList].forEach(cls => {
+        if (cls.startsWith(oldPrefix + '-')) {
+          const rest = cls.slice(prefixLen);           // keep "-fill‑ffffff" etc.
+          el.classList.remove(cls);
+          el.classList.add(`${newPrefix}-${rest}`);
+        }
+      });
+    });
   }
 
   private animateWindowsNight() {
@@ -250,6 +269,7 @@ export class HomeComponent {
 
   private setTheme(requestedTheme: any) {
     const homeContainer = document.getElementById('home-container');
+    this.changeHillPalette(requestedTheme);
     if(requestedTheme === 'dark') {
       homeContainer?.classList.add('dark-mode');
       homeContainer?.classList.remove('light-mode');
@@ -417,7 +437,7 @@ export class HomeComponent {
       }, (crossTime * 1000) + 5000);
     };
 
-    const cloudsToSpawn = Math.min(Math.floor(window.innerWidth / 200), 7);
+    const cloudsToSpawn = Math.min(Math.floor(window.innerWidth / 300), 7);
     for (let i = 0; i < cloudsToSpawn; i++) {
       spawnCloud(true);
     }
