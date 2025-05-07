@@ -9,23 +9,25 @@
 
       .window-dark {
         fill: #1d1500;
+        transition: all 0.3s ease;
       }
 
       .window-lit {
         fill: #e4c432;
-        <!-- filter: drop-shadow(0 0 8px #e4c432) -->
+        <!-- filter: drop-shadow(0 0 8px #e4c432)  Removed due to performance issues -->
+        transition: all 0.3s ease;
       }
 
       .window-day {
         fill:rgb(83, 131, 163);
         stroke: #000;
-        transition: all 0.3s ease;
+        transition: all 1s ease;
       }
 
       .window-day-light {
         fill:rgb(135, 206, 235);
         stroke: #000;
-        transition: all 3s ease;
+        transition: all 1s ease;
       }
 
       .building-day {

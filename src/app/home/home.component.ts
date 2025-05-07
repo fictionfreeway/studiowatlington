@@ -200,15 +200,15 @@ export class HomeComponent {
   changeHillPalette(mode: 'light' | 'dark'): void {
     const newPrefix = mode === 'dark' ? 'night' : 'day';
     const oldPrefix = mode === 'dark' ? 'day'   : 'night';
-    const prefixLen = oldPrefix.length + 1;            // +1 for the hyphen
+    const prefixLen = oldPrefix.length + 1; // +1 for the hyphen
   
     const svgRoot = this.document.querySelector('#hill');
     // Grab *every* descendant that declares a class attribute (incl. <svg> root)
     svgRoot?.querySelectorAll<HTMLElement>('[class]').forEach(el => {
-      // Copy is required because we mutate the list while iterating
+      // Copy is required
       [...el.classList].forEach(cls => {
         if (cls.startsWith(oldPrefix + '-')) {
-          const rest = cls.slice(prefixLen);           // keep "-fill‑ffffff" etc.
+          const rest = cls.slice(prefixLen);
           el.classList.remove(cls);
           el.classList.add(`${newPrefix}-${rest}`);
         }
