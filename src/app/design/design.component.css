@@ -12,6 +12,7 @@
 #design-container.light {
   --page-background: #FDF5E9;
   --element-background: #fff;
+  --content-shadow: #0000008e;
   --strong-border: #000;
   --card-border: #ddd;
   --card-shadow: #555;
@@ -21,12 +22,13 @@
 
 #design-container.dark {
   --page-background: #1d1e21;
-  --element-background: #5c6068;
-  --strong-border: #92e6da;
+  --element-background: #f1e5e6;
+  --content-shadow: #000000;
+  --strong-border: #feb6bf;
   --card-border: #444;
   --card-shadow: #fff;
-  --content-font-color: #fff;
-  --deep-blue: #feb6bf;
+  --content-font-color: #000;
+  --deep-blue: #011936;
 }
 
 /*======================================================================
@@ -44,13 +46,6 @@
   position: relative;
 }
 
-#dark-mode-button-container {
-  position: fixed;
-  top: 6em;
-  right: 6rem;
-  width: 12rem;
-}
-
 #design-content {
   background-color: var(--element-background);
   width: fit-content;
@@ -63,7 +58,8 @@
   margin: 5rem auto;
   padding: 2rem 5%;
   position: relative;
-  color: var(--content-font-color)
+  color: var(--content-font-color);
+  filter: drop-shadow(20px 20px 0 var(--content-shadow));
 }
 
 .portfolio-header {
@@ -103,6 +99,10 @@
 
 #vertical-logo {
   display: none;
+}
+
+.links, .portfolio-header, .links a {
+  color: var(--strong-border);
 }
 
 /*======================================================================
@@ -391,6 +391,17 @@
     right: 0;
   }
 
+  #dark-mode-button-container {
+    position: relative;
+    margin: 0 auto 1rem auto;
+    width: 40%;
+    max-width: 40rem;
+  }
+
+  .links {
+    margin: 1rem auto 2rem auto;
+  }
+
   #filler-div {
     display: none;
   }
@@ -405,6 +416,15 @@
     margin-bottom: 5rem;
     margin-top: 10rem;
   }
+
+  #dark-mode-button-container {
+    position: fixed;
+    top: 6em;
+    right: 6rem;
+    width: 12rem;
+    z-index: 999;
+  }
+
   #design-content {
     margin: 5rem auto;
   }
