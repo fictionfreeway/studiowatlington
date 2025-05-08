@@ -1,10 +1,19 @@
+:host, app-design {
+  --page-background: #FDF5E9;
+  --element-background: #fff;
+  --strong-border: #000;
+  --image-drop-shadow: #0000008e;
+  --card-border: #ddd;
+  --card-shadow: #555;
+}
+
 /*======================================================================
   GENERAL LAYOUT & CONTAINERS
   ----------------------------------------------------------------------
 ======================================================================*/
 
 #design-container {
-  background-color: #FDF5E9;
+  background-color: var(--page-background);
 }
 
 #design-flex-container {
@@ -15,12 +24,12 @@
 }
 
 #design-content {
-  background-color: #fff;
+  background-color: var(--element-background);
   width: fit-content;
   min-width: 20rem;
   max-width: 40rem;
   overflow: hidden;
-  border: solid 5px #000;
+  border: solid 5px var(--strong-border);
   border-radius: 2rem;
   min-height: 20vh;
   margin: 5rem auto;
@@ -61,14 +70,6 @@
 
 #vertical-logo {
   display: none;
-}
-
-.links {
-  /* Add styles if needed */
-}
-
-.links a {
-  /* Add styles if needed */
 }
 
 /*======================================================================
@@ -138,7 +139,7 @@
   width: 80%;
   height: auto;
   transform: rotate(20deg);
-  filter: drop-shadow(11px 5px 0 #0000008e);
+  filter: drop-shadow(11px 5px 0 var(--image-drop-shadow));
 }
 
 /*======================================================================
@@ -220,11 +221,11 @@
 
 .card {
   display: inline-block;  
-  background-color: #fff;
+  background-color: var(--element-background);
   padding: 1rem 0 1rem 1rem;
-  border: 2px solid #ddd;
+  border: 2px solid var(--card-border);
   transform: rotate(5deg);
-  box-shadow: 10px 10px 0 #555; 
+  box-shadow: 10px 10px 0 var(--card-shadow); 
   width: 45%;
   position: absolute;
   z-index: 1;
@@ -233,7 +234,7 @@
 }
 
 #pes-header-container img {
-  background-color: #fff;
+  background-color: var(--element-background);
   padding: 0;
   margin: 0;
 }
