@@ -235,10 +235,8 @@ export class HomeComponent {
         windows.forEach(window => {
           if (Math.random() > 0.999) {
             if (window.classList.contains('window-lit')) {
-              if(Math.random() > 0.999) {
                 window.classList.remove('window-lit');
                 window.classList.add('window-dark');
-              }
             } else {
               window.classList.remove('window-dark');
               window.classList.add('window-lit');
@@ -246,7 +244,7 @@ export class HomeComponent {
           }
         });
       }
-    }, 75); // Randomly toggle window lights
+    }, 175); // Randomly toggle window lights
   }
 
   private animateWindowsDay() {

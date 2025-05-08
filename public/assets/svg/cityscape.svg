@@ -21,13 +21,13 @@
       .window-day {
         fill:rgb(83, 131, 163);
         stroke: #000;
-        transition: all 1s ease;
+        transition: all 0.3s ease;
       }
 
       .window-day-light {
         fill:rgb(135, 206, 235);
         stroke: #000;
-        transition: all 1s ease;
+        transition: all .3s ease;
       }
 
       .building-day {
