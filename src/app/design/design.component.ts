@@ -12,6 +12,7 @@ import styles from './design.component.css?inline';
   selector: 'app-design',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterModule],
+  encapsulation: ViewEncapsulation.None,
   template: template || '',
   styles: [styles || '']
 })
