@@ -217,6 +217,7 @@ export class HomeComponent {
   }
 
   private animateWindowsNight() {
+    this.windowLightInterval && clearInterval(this.windowLightInterval);
     const windows = document.querySelectorAll('.window');
     const buildings = document.querySelectorAll('.st0');
     windows.forEach(window => {
@@ -254,6 +255,7 @@ export class HomeComponent {
     windows.forEach(window => {
       window.classList.remove('window-lit');
       window.classList.remove('window-dark');
+      window.classList.remove('window-day-light');
       window.classList.add('window-day');
     });
     buildings.forEach(building => {
