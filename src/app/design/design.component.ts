@@ -8,10 +8,12 @@ import { animate } from 'animejs';
 import template from './design.component.html?raw';
 import styles from './design.component.css?inline';
 
+import { DarkModeButtonComponent } from '../dark-mode-button/dark-mode-button.component';
+
 @Component({
   selector: 'app-design',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule],
+  imports: [CommonModule, RouterLink, RouterModule, DarkModeButtonComponent],
   encapsulation: ViewEncapsulation.None,
   template: template || '',
   styles: [styles || '']
@@ -135,5 +137,16 @@ export class DesignComponent implements OnInit {
         { to:  -10, duration: 400, ease: 'outBounce'}
       ],
     })
+  }
+
+  setTheme(requestedTheme: string): void {
+    console.log('Requested theme:', requestedTheme);
+    let designComponent = document.querySelector('app-design');
+    if (designComponent) {
+      designComponent.classList.remove('light', 'dark');
+      designComponent.classList.add(requestedTheme);
+    } else {
+      console.error('Design component not found');
+    }
   }
 }

@@ -7,6 +7,24 @@ app-design {
   --card-shadow: #555;
 }
 
+app-design.light {
+  --page-background: #FDF5E9;
+  --element-background: #fff;
+  --strong-border: #000;
+  --image-drop-shadow: #0000008e;
+  --card-border: #ddd;
+  --card-shadow: #555;
+}
+
+app-design.dark {
+  --page-background: #000;
+  --element-background: #111;
+  --strong-border: #fff;
+  --image-drop-shadow: #fff;
+  --card-border: #444;
+  --card-shadow: #fff;
+}
+
 /*======================================================================
   GENERAL LAYOUT & CONTAINERS
   ----------------------------------------------------------------------
