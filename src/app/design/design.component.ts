@@ -141,7 +141,7 @@ export class DesignComponent implements OnInit {
 
   setTheme(requestedTheme: string): void {
     console.log('Requested theme:', requestedTheme);
-    let designComponent = document.querySelector('app-design');
+    let designComponent = document.querySelector('#design-container');
     if (designComponent) {
       designComponent.classList.remove('light', 'dark');
       designComponent.classList.add(requestedTheme);

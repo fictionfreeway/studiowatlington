@@ -7,7 +7,9 @@
     <img routerLink="/" id="vertical-logo" src="/assets/images/vertical-logo.png" alt="Studio Watlington Logo" />
     <img routerLink="/" id="desktop-logo" src="/assets/images/studio-watlington-logo.png" alt="Studio Watlington Logo" />
     <h2 class="portfolio-header">Graphic Design Portfolio</h2>
-    <app-dark-mode-button (themeChange)="setTheme($event)"></app-dark-mode-button>
+    <div id="dark-mode-button-container">
+      <app-dark-mode-button (themeChange)="setTheme($event)"></app-dark-mode-button>
+    </div>
     <div id="design-flex-container">
       <div id="design-content">
         <div id="design-nav">

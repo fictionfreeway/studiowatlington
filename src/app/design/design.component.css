@@ -1,28 +1,32 @@
-app-design {
+#design-container {
   --page-background: #FDF5E9;
   --element-background: #fff;
   --strong-border: #000;
   --image-drop-shadow: #0000008e;
   --card-border: #ddd;
   --card-shadow: #555;
+  --content-font-color: #000;
+  transition: all 0.5s ease-in-out;
 }
 
-app-design.light {
+#design-container.light {
   --page-background: #FDF5E9;
   --element-background: #fff;
   --strong-border: #000;
-  --image-drop-shadow: #0000008e;
   --card-border: #ddd;
   --card-shadow: #555;
+  --content-font-color: #000;
+  --deep-blue: #011936;
 }
 
-app-design.dark {
-  --page-background: #000;
-  --element-background: #111;
-  --strong-border: #fff;
-  --image-drop-shadow: #fff;
+#design-container.dark {
+  --page-background: #1d1e21;
+  --element-background: #5c6068;
+  --strong-border: #92e6da;
   --card-border: #444;
   --card-shadow: #fff;
+  --content-font-color: #fff;
+  --deep-blue: #feb6bf;
 }
 
 /*======================================================================
@@ -35,10 +39,11 @@ app-design.dark {
 }
 
 #design-flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  position: relative;
+}
+
+#dark-mode-button-container {
+
 }
 
 #design-content {
@@ -53,6 +58,11 @@ app-design.dark {
   margin: 5rem auto;
   padding: 2rem 5%;
   position: relative;
+  color: var(--content-font-color)
+}
+
+.portfolio-header {
+  color: var(--content-font-color);
 }
 
 #deco-container {
@@ -383,6 +393,13 @@ app-design.dark {
 
 /* Desktop responsiveness */
 @media (min-width: 900px) {
+  #dark-mode-button-container {
+    position: sticky;
+    top: 5rem;
+    left: 2rem;
+    width: 13rem;
+  }
+
   #design-showcase-header {
     text-align: right;
     width: 90%;
@@ -391,7 +408,7 @@ app-design.dark {
     margin-top: 10rem;
   }
   #design-content {
-    margin: 0rem 0 5rem 0;
+    margin: 5rem auto;
   }
   #design-content p {
     font-size: 1.2rem;
