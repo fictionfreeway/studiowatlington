@@ -1,44 +1,44 @@
 <div id="design-container" class="component-container">
-    <div class="links">
-        <a routerLink="/contact">CONTACT</a>
-        <span style="pointer-events: none;"> | </span>
-        <a routerLink="/clients">RETURNING CLIENTS</a>
-    </div>
-    <img routerLink="/" id="vertical-logo" src="/assets/images/vertical-logo.png" alt="Studio Watlington Logo" />
-    <img routerLink="/" id="desktop-logo" src="/assets/images/studio-watlington-logo.png" alt="Studio Watlington Logo" />
-    <h2 class="portfolio-header">Graphic Design Portfolio</h2>
-    <div id="dark-mode-button-container">
-      <app-dark-mode-button (themeChange)="setTheme($event)"></app-dark-mode-button>
-    </div>
-    <div id="design-flex-container">
-      <div id="design-content">
-        <div id="design-nav">
-          <div
-          id="left-arrow"
+  <div class="links">
+      <a routerLink="/contact">CONTACT</a>
+      <span style="pointer-events: none;"> | </span>
+      <a routerLink="/clients">RETURNING CLIENTS</a>
+  </div>
+  <img routerLink="/" id="vertical-logo" src="/assets/images/vertical-logo.png" alt="Studio Watlington Logo" />
+  <img routerLink="/" id="desktop-logo" src="/assets/images/studio-watlington-logo.png" alt="Studio Watlington Logo" />
+  <h2 class="portfolio-header">Graphic Design Portfolio</h2>
+  <div id="dark-mode-button-container">
+    <app-dark-mode-button (themeChange)="setTheme($event)"></app-dark-mode-button>
+  </div>
+  <div id="design-flex-container">
+    <div id="design-content">
+      <div id="design-nav">
+        <div
+        id="left-arrow"
+        class="design-arrow"
+        tabindex="0"
+        (click)="bounceLeftArrow(); showPreviousTemplate()"
+        >
+          <img src="/assets/images/left-arrow-design.png" alt="Left Arrow" />
+        </div>
+        <div
+          id="right-arrow"
           class="design-arrow"
           tabindex="0"
-          (click)="bounceLeftArrow(); showPreviousTemplate()"
-          >
-            <img src="/assets/images/left-arrow-design.png" alt="Left Arrow" />
-          </div>
-          <div
-            id="right-arrow"
-            class="design-arrow"
-            tabindex="0"
-            (click)="bounceRightArrow(); showNextTemplate()"
-          >
-            <img src="/assets/images/right-arrow-design.png" alt="Right Arrow" />
-          </div>
+          (click)="bounceRightArrow(); showNextTemplate()"
+        >
+          <img src="/assets/images/right-arrow-design.png" alt="Right Arrow" />
         </div>
-          <span class="showcase-group">
-            <section id="showcase-content" [innerHTML]="templates[currentTemplateIndex]?.content" class="template-content"></section>
-          </span>
       </div>
-      <div id="deco-container">
-          <object id="ui-cloud" data="/assets/svg/UI-cloud.svg" type="image/svg+xml"></object>
-          <div id="design-cassette-container">
-            <object id="design-cassette" data="/assets/svg/design-cassette.svg" type="image/svg+xml"></object>
-          </div>
-      </div>
+        <span class="showcase-group">
+          <section id="showcase-content" [innerHTML]="templates[currentTemplateIndex]?.content" class="template-content"></section>
+        </span>
     </div>
+    <div id="deco-container">
+        <object id="ui-cloud" data="/assets/svg/UI-cloud.svg" type="image/svg+xml"></object>
+        <div id="design-cassette-container">
+          <object id="design-cassette" data="/assets/svg/design-cassette.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+  </div>
 </div>

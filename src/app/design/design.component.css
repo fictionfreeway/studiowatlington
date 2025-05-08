@@ -36,6 +36,8 @@
 
 #design-container {
   background-color: var(--page-background);
+  overflow: auto;
+  position: relative;
 }
 
 #design-flex-container {
@@ -43,7 +45,10 @@
 }
 
 #dark-mode-button-container {
-
+  position: fixed;
+  top: 6em;
+  right: 6rem;
+  width: 12rem;
 }
 
 #design-content {
@@ -393,13 +398,6 @@
 
 /* Desktop responsiveness */
 @media (min-width: 900px) {
-  #dark-mode-button-container {
-    position: sticky;
-    top: 5rem;
-    left: 2rem;
-    width: 13rem;
-  }
-
   #design-showcase-header {
     text-align: right;
     width: 90%;
