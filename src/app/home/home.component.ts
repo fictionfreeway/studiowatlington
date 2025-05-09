@@ -299,7 +299,7 @@ export class HomeComponent {
   private animatePlane() {
     const plane = document.getElementById('banner-plane-container');
     if (!plane) {
-      console.warn("⚠️ Plane element NOT FOUND! Check your template.");
+      console.warn("Plane element NOT FOUND! Check your template.");
       return;
     }
 
@@ -365,7 +365,7 @@ export class HomeComponent {
   animateTapeExit(tapeId: string, direction: 'left' | 'right') {
     const tape = document.getElementById(tapeId);
     if (!tape) {
-      console.warn(`⚠️ ${tapeId} NOT FOUND!`);
+      console.warn(`${tapeId} NOT FOUND!`);
       return;
     }
 
@@ -373,7 +373,7 @@ export class HomeComponent {
     tape.classList.add(flyClass);
 
     setTimeout(() => {
-      console.log(`🚀 ${tapeId} exited, transitioning...`);
+      console.log(`${tapeId} exited, transitioning...`);
 
       // Navigate to the appropriate route
       if (tapeId === 'dev-tape') {

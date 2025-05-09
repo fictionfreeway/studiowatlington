@@ -138,6 +138,11 @@
     position: absolute;
     width: 100%;
     cursor: pointer;
+    transition: translate 0.5s ease-in-out;
+}
+
+#design-tape:hover, #dev-tape:hover {
+    translate: 1rem -2rem;
 }
 
 #dev-tape {
