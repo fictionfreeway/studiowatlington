@@ -10,6 +10,11 @@ import styles from './design.component.css?inline';
 
 import { DarkModeButtonComponent } from '../dark-mode-button/dark-mode-button.component';
 
+/**
+ * Component responsible for displaying the design portfolio.
+ * It fetches and renders HTML templates for different design showcases,
+ * handles navigation between these showcases, and manages theme changes.
+ */
 @Component({
   selector: 'app-design',
   standalone: true,
@@ -19,11 +24,21 @@ import { DarkModeButtonComponent } from '../dark-mode-button/dark-mode-button.co
   styles: [styles || '']
 })
 export class DesignComponent implements OnInit {
+  /**
+   * An array of objects, where each object contains the sanitized HTML content
+   * for a design showcase template.
+   */
   templates: { content: SafeHtml }[] = [];
+  /**
+   * The index of the currently displayed template in the `templates` array.
+   */
   currentTemplateIndex = 0;
 
   private sanitizer = inject(DomSanitizer);
 
+  /**
+   * Initializes the component by fetching the design showcase templates.
+   */
   ngOnInit(): void {
     const templatePaths = [
       '/assets/showcases/Design.html',
@@ -48,11 +63,20 @@ export class DesignComponent implements OnInit {
     });
   }
 
+  /**
+   * Lifecycle hook that is called after Angular has fully initialized
+   * the component's view. Initializes animations for various elements.
+   */
   ngAfterViewInit(): void {
     this.initializeAnimations();
   }
 
+  /**
+   * Initializes animations for UI elements like the design cassette and UI cloud,
+   * and the navigation arrows.
+   */
   private initializeAnimations() {
+    // Animates the design cassette container
     animate('#design-cassette-container', {
       x: [
         { to: '40vw', duration: 1000, ease: 'outExpo' },
@@ -61,6 +85,7 @@ export class DesignComponent implements OnInit {
       opacity: 1
     });
 
+    // Animates the UI cloud element
     animate('#ui-cloud', {
       x: [
         { to: '-40vw', duration: 1000, ease: 'outExpo' },
@@ -69,6 +94,7 @@ export class DesignComponent implements OnInit {
       opacity: 1
     });
     
+    // Animates the UI cloud with a vertical bobbing motion
     animate('#ui-cloud', {
       y: ['0vh', '-2vh'],
       duration: 2000,
@@ -77,6 +103,7 @@ export class DesignComponent implements OnInit {
       alternate: true
     }); 
 
+    // Animates the right navigation arrow with a subtle rotation effect
     animate('#right-arrow', {
       rotate: [
         { to: -15, duration: 0 },
@@ -90,7 +117,12 @@ export class DesignComponent implements OnInit {
     })
   }
   
+  /**
+   * Displays the next design showcase template in the `templates` array.
+   * Animates the transition between templates.
+   */
   showNextTemplate(): void {
+    // Animates the showcase content sliding out to the left and the new one sliding in
     animate('#showcase-content', {
       x: [
         { to: '-120%', duration: 400},
@@ -104,7 +136,12 @@ export class DesignComponent implements OnInit {
     }, 400);
   }
 
+  /**
+   * Displays the previous design showcase template in the `templates` array.
+   * Animates the transition between templates.
+   */
   showPreviousTemplate(): void {
+    // Animates the showcase content sliding out to the right and the new one sliding in
     animate('#showcase-content', {
       x: [
         { to: "120%", duration: 400 },
@@ -119,6 +156,9 @@ export class DesignComponent implements OnInit {
     }, 400);
   }
 
+  /**
+   * Triggers a bounce animation on the right navigation arrow when clicked.
+   */
   bounceRightArrow(): void {
     animate('#right-arrow', {
       rotate: [
@@ -129,6 +169,9 @@ export class DesignComponent implements OnInit {
     })
   }
 
+  /**
+   * Triggers a bounce animation on the left navigation arrow when clicked.
+   */
   bounceLeftArrow(): void {
     animate('#left-arrow', {
       rotate: [
@@ -139,6 +182,10 @@ export class DesignComponent implements OnInit {
     })
   }
 
+  /**
+   * Sets the theme (light or dark) for the design component.
+   * @param requestedTheme The theme to apply ('light' or 'dark').
+   */
   setTheme(requestedTheme: string): void {
     console.log('Requested theme:', requestedTheme);
     let designComponent = document.querySelector('#design-container');
