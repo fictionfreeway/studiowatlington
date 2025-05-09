@@ -22,7 +22,7 @@
 
 #design-container.dark {
   --page-background: #1d1e21;
-  --element-background: #f1e5e6;
+  --element-background: #f4edee;
   --content-shadow: #000000;
   --strong-border: #feb6bf;
   --card-border: #444;
@@ -64,6 +64,7 @@
 
 .portfolio-header {
   color: var(--content-font-color);
+  margin-bottom: 1rem;
 }
 
 #deco-container {
