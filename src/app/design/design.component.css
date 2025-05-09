@@ -62,6 +62,11 @@
   filter: drop-shadow(20px 20px 0 var(--content-shadow));
 }
 
+#design-content p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+}
+
 .portfolio-header {
   color: var(--content-font-color);
   margin-bottom: 1rem;
@@ -215,13 +220,11 @@
 }
 
 #design-header-img {
-  margin: 0;
-  position: absolute;
+  margin: 5rem 0 0 0;
+  position: relative;
   width: 60%;
   max-width: 40rem;
   max-height: fit-content;
-  right: 35%;
-  top: 8rem;
 }
 
 #showcase-title {
@@ -414,8 +417,7 @@
     text-align: right;
     width: 90%;
     max-width: 40rem;
-    margin-bottom: 5rem;
-    margin-top: 10rem;
+    margin: -5rem auto 5rem auto;
   }
 
   #dark-mode-button-container {
@@ -430,7 +432,6 @@
     margin: 5rem auto;
   }
   #design-content p {
-    font-size: 1.2rem;
     line-height: 2.5rem;
   }
   #ui-cloud {
@@ -443,10 +444,11 @@
     right: 5%;
     width: 25%;
   }
-  #design-header-img {
-    right: 35%;
-    top: 8rem;
+
+  #filler-div {
+    display: none;
   }
+
   #social-design-header-image {
     width: 45%;
     right: 1rem;
