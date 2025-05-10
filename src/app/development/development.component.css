@@ -39,19 +39,29 @@
 #dev-container {
   background-color: var(--pink);
   position: relative;
-  height: 700vh; /* temp for development */
+  font-family: "Providence Sans Pro", sans-serif;
 }
 
-#whiteboard-container {
-  background-image: url('assets/images/whiteboard-mobile.png');
+#whiteboard-container-desktop {
+  background-image: url('assets/images/whiteboard.png');
   background-size: contain;
   background-repeat: no-repeat;
   height: 75vh;
   width: 70%;
   position: fixed;
   left: 10%;
-  font-family: "ff-providence-sans-web-pro", sans-serif;
   z-index: 9;
+  display: none;
+}
+
+#whiteboard-container-mobile {
+  background-image: url('assets/images/whiteboard-mobile.png');
+  z-index: 9;
+  height: 120vh;
+  width: 130%;
+  position: fixed;
+  top: -15%;
+  left: -10%;
 }
 
 .showcase {
@@ -106,47 +116,6 @@
   display: none;
 }
 
-#whiteboard-close {
-  left: 5%;
-  top: 25vh;
-  width: 2rem;
-  position: fixed;
-  font-size: 3rem;
-  color: var(--deep-blue);
-  z-index: 999;
-  cursor: pointer;
-  font-size: 4rem !important;
-}
-
-#showcase-text-container h2 {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: space-between;
-  max-width: 35rem;
-  margin: 0 auto;
-}
-
-.arrow {
-  cursor: pointer;
-  z-index: 999;
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
-#left-arrow {
-  background-image: url('assets/images/left-arrow-dev.png');
-  margin-right: 2rem;
-}
-
-#right-arrow {
-  background-image: url('assets/images/right-arrow-dev.png');
-  margin-left: 2rem;
-}
-
 #crt-desk {
   display: none;
 }
@@ -184,6 +153,7 @@
 #brrl-showcase {
   height: 150vh;
   margin: 100vh 0;
+  padding-top: 60vh;
 }
 
 @media (min-width: 900px) {
@@ -191,25 +161,21 @@
 }
 
 @media (min-width: 1200px) {
-  #whiteboard-container {
-    background-image: url('assets/images/whiteboard.png');
+  #whiteboard-container-desktop {
+    display: block;
+  }
+
+  #whiteboard-container-mobile {
+    display: none;
   }
 
   #crt-desk {
     display: block;
-    position: absolute;
+    position: fixed;
     width: 120%;
     left: 10%;
-    top: -30%;
     pointer-events: none;
     z-index: 999;
-    transition: all 0.2s ease-in-out;
-  }
-
-  #crt-desk.zoomed {
-    width: 100%;
-    top: -10%;
-    left: 25%;
   }
 
   #showcase {

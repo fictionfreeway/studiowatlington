@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
@@ -15,24 +15,6 @@ import styles from './development.component.css?inline';
   styles: [styles || '']
 })
 export class DevelopmentComponent implements AfterViewInit {
-
-  // Template references
-  @ViewChild('whiteboard') whiteboardRef?: ElementRef;
-  @ViewChild('showcaseList') showcaseListRef?: ElementRef;
-  @ViewChild('showcaseContent') showcaseContentRef?: ElementRef;
-  @ViewChild('showcaseDescription') showcaseDescRef?: ElementRef;
-  @ViewChild('crtDesk') crtDeskRef?: ElementRef;
-  @ViewChild('whiteboardClose') whiteboardCloseRef?: ElementRef;
-
-  whiteboard?: HTMLElement;
-  showcaseList?: HTMLElement;
-  showcaseDescription?: HTMLElement;
-  crtDesk?: HTMLElement;
-  whiteboardClose?: HTMLElement;
-  // When a showcase is selected, its object is stored here.
-  selectedShowcase: any = {};
-  // Flag used to trigger the erase animation (applied via ngClass)
-  isErasing: boolean = false;
 
   // Array of showcase objects to display.
   showcases = [
@@ -64,10 +46,6 @@ export class DevelopmentComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.showcaseList = this.showcaseListRef?.nativeElement;
-    this.showcaseDescription = this.showcaseDescRef?.nativeElement;
-    this.crtDesk = this.crtDeskRef?.nativeElement;
-    
     // testing stagger animation through animejs
     animate('.ellipsis-dot', {
       y: [
@@ -94,11 +72,11 @@ export class DevelopmentComponent implements AfterViewInit {
       delay: stagger(200),
     });
 
-    animate('#whiteboard-container', {
-      width: ['75vw', '200vw'],
-      height: ['75vh', '200vh'],
-      left: ['10%', '-10%'],
-      top: ['10%', '-10%'],
+    animate('#whiteboard-container-desktop', {
+      width: ['75vw', '250vw'],
+      height: ['75vh', '250vh'],
+      left: ['10%', '-30%'],
+      top: ['10%', '-30%'],
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
@@ -108,73 +86,19 @@ export class DevelopmentComponent implements AfterViewInit {
         debug: true
       })
     })
+
+    animate('#crt-desk', {
+      left: ['10%', '20%'],
+      bottom: ['-50vh', '-60vh'],
+      scale: [1, 0.8],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'bottom bottom',
+        sync: true,
+      })
+    })
     
-  }
-
-  // Called when a project title is clicked from the list.
-  titleClicked(showcase: any) {
-    this.selectedShowcase = showcase;
-  
-    if (this.whiteboard) {
-      this.whiteboard.classList.toggle('zoomed');
-      this.crtDesk?.classList.toggle('zoomed');
-      this.whiteboardClose?.classList.toggle('hidden');
-      document.body.style.overflow = (document.body.style.overflow === 'hidden') ? 'auto' : 'hidden';
-    }
-
-    if (this.showcaseList) {
-      this.showcaseList.classList.toggle('not-visible');
-    }
-  }
-
-  // Close the current showcase.
-  closeShowcase() {
-    this.selectedShowcase = {};
-
-    if (this.whiteboard) {
-      this.whiteboard.classList.toggle('zoomed');
-      this.crtDesk?.classList.toggle('zoomed');
-      this.whiteboardClose?.classList.toggle('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
-    if (this.showcaseList) {
-      this.showcaseList.classList.toggle('not-visible');
-    }
-  }
-  
-  // Go to the next showcase in the array.
-  nextShowcase() {
-    this.changeShowcase(1);
-  }
-  
-  // Go to the previous showcase in the array.
-  prevShowcase() {
-    this.changeShowcase(-1);
-  }
-  
-  // Handles the animated change of showcase.
-  changeShowcase(direction: number) {
-    if (!this.selectedShowcase || !this.selectedShowcase.title) return;
-    
-    // Trigger the erase animation.
-    this.isErasing = true;
-    
-    // After half the animation duration, update the showcase.
-    setTimeout(() => {
-      const currentIndex = this.showcases.findIndex(item => item.title === this.selectedShowcase.title);
-      const nextIndex = (currentIndex + direction + this.showcases.length) % this.showcases.length;
-      this.selectedShowcase = this.showcases[nextIndex];
-      setTimeout(() => {
-        if (this.showcaseDescRef?.nativeElement) {
-          this.showcaseDescRef.nativeElement.scrollTop = 0;
-        }
-      }, 0);
-    }, 500);
-    
-    // Remove the erasing flag after the full animation.
-    setTimeout(() => {
-      this.isErasing = false;
-    }, 1000);
   }
 }
