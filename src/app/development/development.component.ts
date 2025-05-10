@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
-import { animate, stagger, svg } from 'animejs';
+import { animate, stagger, svg, onScroll } from 'animejs';
 
 import template from './development.component.html?raw';
 import styles from './development.component.css?inline';
@@ -64,11 +64,9 @@ export class DevelopmentComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.whiteboard = this.whiteboardRef?.nativeElement;
     this.showcaseList = this.showcaseListRef?.nativeElement;
     this.showcaseDescription = this.showcaseDescRef?.nativeElement;
     this.crtDesk = this.crtDeskRef?.nativeElement;
-    this.whiteboardClose = this.whiteboardCloseRef?.nativeElement;
     
     // testing stagger animation through animejs
     animate('.ellipsis-dot', {
@@ -95,6 +93,21 @@ export class DevelopmentComponent implements AfterViewInit {
       duration: 100,
       delay: stagger(200),
     });
+
+    animate('#whiteboard-container', {
+      width: ['75vw', '200vw'],
+      height: ['75vh', '200vh'],
+      left: ['10%', '-10%'],
+      top: ['10%', '-10%'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'bottom bottom',
+        sync: true,
+        debug: true
+      })
+    })
     
   }
 

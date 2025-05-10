@@ -39,64 +39,24 @@
 #dev-container {
   background-color: var(--pink);
   position: relative;
+  height: 700vh; /* temp for development */
 }
 
 #whiteboard-container {
   background-image: url('assets/images/whiteboard-mobile.png');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   height: 75vh;
-  width: 85%;
-  position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translateY(-50%);
-  font-family: "ff-providence-sans-web-pro", sans-serif;
-  transition: all 0.2s ease-in-out;
-}
-
-#whiteboard-container.zoomed {
+  width: 70%;
   position: fixed;
-  height: 125vh;
-  width: 100%;
-  z-index: 99;
-  background-position: 15%;
-  left: 0;
-  top: 45%;
+  left: 10%;
+  font-family: "ff-providence-sans-web-pro", sans-serif;
+  z-index: 9;
 }
 
-#whiteboard-container h2 {
-  text-align: center;
-  margin-top: 8rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  padding-top: 1rem;
-  line-height: 2rem;
-  padding: 0 2rem;
-}
-
-#whiteboard-container h4 {
-  text-align: right;
-  transform: rotate(4deg);
-  font-size: 0.8rem;
-  margin: 0 2rem 0 0;
-}
-
-#whiteboard-container ul {
-  margin: 3rem auto 0 auto;
-  width: 75%;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-#whiteboard-container li {
-  margin: 1.5rem 0;
-  cursor: pointer;
-  width: fit-content;
-}
-
-#whiteboard-container li:hover {
-  animation: sketchJitter 0.5s infinite steps(1, end);
+.showcase {
+  position: relative;
+  z-index: 999;
 }
 
 #showcase-content {
@@ -221,6 +181,11 @@
   stroke-width: 0.5;
 }
 
+#brrl-showcase {
+  height: 150vh;
+  margin: 100vh 0;
+}
+
 @media (min-width: 900px) {
 
 }
@@ -228,21 +193,6 @@
 @media (min-width: 1200px) {
   #whiteboard-container {
     background-image: url('assets/images/whiteboard.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 65vh;
-    max-width: 85rem;
-    left: 10%;
-  }
-
-  #whiteboard-container.zoomed {
-    max-width: 100%;
-    height: 85vh;
-    position: absolute;
-    width: 85%;
-    left: 5%;
-    top: 50%;
   }
 
   #crt-desk {
@@ -260,16 +210,6 @@
     width: 100%;
     top: -10%;
     left: 25%;
-  }
-
-  #whiteboard-container h2 {
-    font-size: 3rem;
-    line-height: 4rem;
-    padding-top: 0rem;
-  }
-
-  #whiteboard-container h4 {
-    font-size: 1.5rem;
   }
 
   #showcase {
