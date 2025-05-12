@@ -95,11 +95,9 @@ table {
     min-height: 100vh;
     min-width: 100%;
     position: relative;
-    overflow: hidden;
 }
 
 .links {
-	margin: 1rem auto 2rem auto;
 	text-align: center;
 	color: var(--pink);
 	font-family: 'Tahoma', Arial, sans-serif

@@ -58,13 +58,7 @@ export class DevelopmentComponent implements AfterViewInit {
       loop: true
     })
 
-    animate(svg.createDrawable('.whiteboard-path'), {
-      draw: ['0 0', '0 1'],
-      ease: 'easeIn',
-      duration: 100,
-      delay: stagger(200),
-    });
-
+    // draw the opening 'projects' header
     animate(svg.createDrawable('.projects-header-path'), {
       draw: ['0 0', '0 1'],
       ease: 'easeIn',
@@ -72,6 +66,59 @@ export class DevelopmentComponent implements AfterViewInit {
       delay: stagger(200)
     });
 
+    // header fades out/scales up while whiteboard expands
+    animate('#projects-header', { 
+      opacity: [1, 0],
+      scale: [1, 1.7],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'top top+=20vh',
+        sync: true
+      })
+    })
+
+    animate(svg.createDrawable('.brrl-header-path'), {
+      draw: ['0 0', '0 1'],
+      delay: stagger(200),
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top+=80vh',
+        leave: 'bottom bottom',
+        sync: true
+      })
+    })
+
+    //intro animations for brrl website images
+    animate('#brrl-website-img', {
+      left: ['-95%', '15%'],
+      top: ['30rem', '2rem'],
+      rotate: ['20deg', '0deg'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'bottom bottom',
+        sync: true
+      })
+    })
+
+    animate('#brrl-mobile-img', {
+      left: ['95%', '25%'],
+      top: ['-20rem', '2rem'],
+      rotate: ['20deg', '0deg'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'bottom bottom',
+        sync: true
+      })
+    })
+
+    //whiteboard expands to cover the viewport while scrolling down
     animate('#whiteboard-container-desktop', {
       width: ['75vw', '250vw'],
       height: ['75vh', '250vh'],
@@ -87,6 +134,7 @@ export class DevelopmentComponent implements AfterViewInit {
       })
     })
 
+    // crt-desk image moves to the right and scales down while scrolling down (still visible)
     animate('#crt-desk', {
       left: ['10%', '20%'],
       bottom: ['-50vh', '-60vh'],
@@ -99,10 +147,5 @@ export class DevelopmentComponent implements AfterViewInit {
         sync: true,
       })
     })
-
-    animate('#projects-header', {
-      // fade out on scroll down
-    })
-    
   }
 }
