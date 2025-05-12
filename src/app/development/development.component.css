@@ -150,11 +150,37 @@
   stroke-width: 0.5;
 }
 
+/* showcase styles */
+
+#intro-content {
+  position: relative;
+  left: 10%;
+  top: 10vh;
+  padding: 0 2rem;
+  border: solid 2px red;
+  height: 100vh;
+}
+
+#projects-header {
+  width: 20%;
+  display: block;
+  position: fixed;
+  top: 15rem;
+  left: 20%;
+}
+
+.projects-header-path {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+}
+
 #brrl-showcase {
   height: 150vh;
   margin: 100vh 0;
   padding-top: 60vh;
 }
+
 
 @media (min-width: 900px) {
 

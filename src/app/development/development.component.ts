@@ -65,11 +65,11 @@ export class DevelopmentComponent implements AfterViewInit {
       delay: stagger(200),
     });
 
-    animate(svg.createDrawable('.mobile-whiteboard-path'), {
+    animate(svg.createDrawable('.projects-header-path'), {
       draw: ['0 0', '0 1'],
       ease: 'easeIn',
       duration: 100,
-      delay: stagger(200),
+      delay: stagger(200)
     });
 
     animate('#whiteboard-container-desktop', {
@@ -98,6 +98,10 @@ export class DevelopmentComponent implements AfterViewInit {
         leave: 'bottom bottom',
         sync: true,
       })
+    })
+
+    animate('#projects-header', {
+      // fade out on scroll down
     })
     
   }
