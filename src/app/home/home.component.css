@@ -138,10 +138,10 @@
     position: absolute;
     width: 100%;
     cursor: pointer;
-    transition: translate 0.5s ease-in-out;
+    transition: translate 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#design-tape:hover, #dev-tape:hover {
+#design-tape:hover, #dev-tape:hover, #dev-tape:active, #design-tape:active, #dev-tape:focus, #design-tape:focus {
     translate: 1rem -2rem;
 }
 
