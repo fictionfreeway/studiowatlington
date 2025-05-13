@@ -188,8 +188,7 @@ export class DevelopmentComponent implements AfterViewInit {
         axis: 'y',
         enter: 'top bottom-=50%',
         leave: 'bottom bottom',
-        sync: true,
-        debug: true
+        sync: true
       })
     })
 
