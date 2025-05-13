@@ -12,6 +12,7 @@
         var(--bottom-gradient) 100%
     );
     transition: --top-gradient 2.5s, --top-middle-gradient 1.5s, --bottom-middle-gradient 1s, --bottom-gradient 0.5s;
+    overflow: hidden;
 }
 
 #home-container.light-mode {

@@ -1,35 +1,8 @@
-@keyframes sketchJitter {
-  0% { transform: translateX(0) rotate(-1deg); }
-  50% { transform: translateX(0) rotate(0); }
-  100% { transform: translateX(0) rotate(-1deg); }
-}
-
-@keyframes eraseEffect {
-  0% {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-  50% {
-    opacity: 1;
-    clip-path: inset(0 100% 0 0);
-  }
-  100% {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes fillInText {
-  0% {
-    fill: #ffffff00;
-  }
-  100% {
-    fill: var(--deep-blue);
-  }
-}
-
-.erasing {
-  animation: eraseEffect 1s ease-in-out;
+@font-face {
+  font-family: "Providence Sans Pro";
+  src: url("assets/fonts/Providence-Sans.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .hidden {
@@ -114,6 +87,10 @@
 
 /* showcase styles */
 
+.showcase-text {
+  font-family: "Providence Sans Pro", sans-serif;
+}
+
 #intro-content {
   position: relative;
   top: 10vh;
@@ -136,8 +113,13 @@
   stroke-width: 6;
 }
 
+#brrl-logo {
+  width: 100%;
+  margin: 0 auto;
+}
+
 #brrl-showcase {
-  height: 250vh;
+  height: 450vh;
   padding-top: 60vh;
   position: relative;
 }
@@ -179,12 +161,20 @@
   left: 25%;
 }
 
-.brrl-header-path {
-  fill: none;
-  stroke: black;
-  stroke-width: 3;
+#brrl-text {
+  width: 40%;
+  position: absolute;
+  left: 20%;
+  font-size: 1.2rem;
+  top: 0rem;
+  line-height: 2rem;
 }
 
+.brrl-header-path {
+  fill: none;
+  stroke: #115B9C;
+  stroke-width: 3;
+}
 
 @media (min-width: 900px) {
 

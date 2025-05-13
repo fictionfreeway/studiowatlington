@@ -46,18 +46,13 @@ export class DevelopmentComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // testing stagger animation through animejs
-    animate('.ellipsis-dot', {
-      y: [
-        { to: '-.25rem', ease: 'outExpo', duration: 600 },
-        { to: 0, ease: 'outBounce', duration: 800  }
-      ],
-      delay: stagger(100),
-      ease: 'inOutCirc',
-      loopDelay: 1000,
-      loop: true
-    })
+    // initialize animejs animations, organized into methods for clarity
+    this.initIntroAnimations();
+    this.initBrrlAnimations();
+  }
 
+  //organize animations into methods
+  initIntroAnimations() {
     // draw the opening 'projects' header
     animate(svg.createDrawable('.projects-header-path'), {
       draw: ['0 0', '0 1'],
@@ -79,43 +74,16 @@ export class DevelopmentComponent implements AfterViewInit {
       })
     })
 
-    animate(svg.createDrawable('.brrl-header-path'), {
-      draw: ['0 0', '0 1'],
-      delay: stagger(200),
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: 'bottom top+=80vh',
-        leave: 'bottom bottom',
-        sync: true
-      })
-    })
-
-    //intro animations for brrl website images
-    animate('#brrl-website-img', {
-      left: ['-95%', '15%'],
-      top: ['30rem', '2rem'],
-      rotate: ['20deg', '0deg'],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: 'bottom top',
-        leave: 'bottom bottom',
-        sync: true
-      })
-    })
-
-    animate('#brrl-mobile-img', {
-      left: ['95%', '25%'],
-      top: ['-20rem', '2rem'],
-      rotate: ['20deg', '0deg'],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: 'bottom top',
-        leave: 'bottom bottom',
-        sync: true
-      })
+    // ellipsis dots bounce animation on #crt-desk
+    animate('.ellipsis-dot', {
+      y: [
+        { to: '-.25rem', ease: 'outExpo', duration: 600 },
+        { to: 0, ease: 'outBounce', duration: 800  }
+      ],
+      delay: stagger(100),
+      ease: 'inOutCirc',
+      loopDelay: 1000,
+      loop: true
     })
 
     //whiteboard expands to cover the viewport while scrolling down
@@ -129,8 +97,7 @@ export class DevelopmentComponent implements AfterViewInit {
         axis: 'y',
         enter: 'bottom top',
         leave: 'bottom bottom',
-        sync: true,
-        debug: true
+        sync: true
       })
     })
 
@@ -143,8 +110,75 @@ export class DevelopmentComponent implements AfterViewInit {
         target: '#brrl-showcase',
         axis: 'y',
         enter: 'bottom top',
-        leave: 'bottom bottom',
+        leave: 'bottom bottom-=50%',
         sync: true,
+      })
+    })
+  }
+
+  initBrrlAnimations() {
+    animate(svg.createDrawable('.brrl-header-path'), {
+      draw: ['0 0', '0 1'],
+      delay: stagger(200),
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top+=80vh',
+        leave: 'bottom bottom-=50%',
+        sync: true
+      })
+    })
+
+    //intro animations for brrl website images
+    animate('#brrl-website-img', {
+      left: ['-95%', '15%'],
+      top: ['30rem', '2rem'],
+      rotate: ['20deg', '0deg'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'bottom bottom-=50%',
+        sync: true
+      })
+    })
+
+    animate('#brrl-mobile-img', {
+      left: ['95%', '25%'],
+      top: ['50rem', '-15rem'],
+      rotate: ['-20deg', '5deg'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'bottom top',
+        leave: 'bottom bottom-=50%',
+        sync: true
+      })
+    })
+
+    // text fades in/slides down while website image moves down
+    animate('#brrl-text', {
+      opacity: [0, 1],
+      translateY: ['-5rem', '0rem'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: '50% 50%',
+        leave: '100% 100%',
+        sync: true
+      })
+    })
+
+    animate('#brrl-website-img', {
+      top: ['2rem', '14rem'],
+      rotate: ['0deg', '3deg'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: '50% 50%',
+        leave: '100% 100%',
+        sync: true,
+        debug: true
       })
     })
   }
