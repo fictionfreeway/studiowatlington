@@ -1,3 +1,9 @@
+/* div {
+  border: 2px solid red;
+} */
+
+
+
 @font-face {
   font-family: "Providence Sans Pro";
   src: url("assets/fonts/Providence-Sans.otf") format("opentype");
@@ -95,7 +101,7 @@
   position: relative;
   top: 10vh;
   padding: 0 2rem;
-  height: 100vh;;
+  height: 100vh;
 }
 
 #projects-header {
@@ -104,6 +110,11 @@
   position: fixed;
   top: 15rem;
   left: 20%;
+}
+
+#intro-text {
+  line-height: 1.4rem;
+  text-align: left;
 }
 
 .projects-header-path {
@@ -118,7 +129,7 @@
 }
 
 #brrl-showcase {
-  height: 450vh;
+  height: 800vh;
   padding-top: 60vh;
   position: relative;
 }

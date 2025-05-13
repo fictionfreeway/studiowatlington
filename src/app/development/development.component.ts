@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
-import { animate, stagger, svg, onScroll } from 'animejs';
+import { animate, stagger, svg, onScroll, createTimeline } from 'animejs';
 
 import template from './development.component.html?raw';
 import styles from './development.component.css?inline';
@@ -68,8 +68,8 @@ export class DevelopmentComponent implements AfterViewInit {
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'bottom top',
-        leave: 'top top+=20vh',
+        enter: '100% top',
+        leave: '0% top+=20vh',
         sync: true
       })
     })
@@ -95,8 +95,8 @@ export class DevelopmentComponent implements AfterViewInit {
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'bottom top',
-        leave: 'bottom bottom',
+        enter: '100% 0%',
+        leave: '100% 25%',
         sync: true
       })
     })
@@ -109,22 +109,24 @@ export class DevelopmentComponent implements AfterViewInit {
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'bottom top',
-        leave: 'bottom bottom-=50%',
+        enter: '100% 0%',
+        leave: '100% 50%',
         sync: true,
       })
     })
   }
 
   initBrrlAnimations() {
+    /* Intro animations */
+
     animate(svg.createDrawable('.brrl-header-path'), {
       draw: ['0 0', '0 1'],
       delay: stagger(200),
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'bottom top+=80vh',
-        leave: 'bottom bottom-=50%',
+        enter: '100% 20%',
+        leave: '100% 25%',
         sync: true
       })
     })
@@ -134,11 +136,12 @@ export class DevelopmentComponent implements AfterViewInit {
       left: ['-95%', '15%'],
       top: ['30rem', '2rem'],
       rotate: ['20deg', '0deg'],
+      ease: 'inOutBack',
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'bottom top',
-        leave: 'bottom bottom-=50%',
+        enter: '100% 0%',
+        leave: '100% 25%',
         sync: true
       })
     })
@@ -147,62 +150,140 @@ export class DevelopmentComponent implements AfterViewInit {
       right: ['-95%', '25%'],
       top: ['50rem', '-15rem'],
       rotate: ['20deg', '-5deg'],
+      ease: 'inOutBack',
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'bottom top',
-        leave: 'bottom bottom-=50%',
+        enter: '100% 0%',
+        leave: '100% 25%',
         sync: true
       })
     })
 
     // text fades in/slides down while website image moves down
-    animate('#brrl-text', {
+    /* animate('#brrl-text', {
       opacity: [0, 1],
       translateY: ['-5rem', '0rem'],
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: '50% 50%',
-        leave: '100% 100%',
+        enter: '50% 25%',
+        leave: '100% 50%',
         sync: true
       })
-    })
+    }) */
 
-    animate('#brrl-website-img', {
-      top: ['2rem', '14rem'],
+    // website image moves down and rotates slightly to accompany the text
+    /* animate('#brrl-website-img', {
+      top: ['2rem', '11rem'],
       rotate: ['0deg', '3deg'],
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: '50% 50%',
-        leave: '100% 100%',
+        enter: '100% 25%',
+        leave: '100% 50%',
         sync: true
-      })
-    })
+      }),
+      ease: 'outBack'
+    }) */
 
+    // mobile image moves down and rotates slightly to accompany menu-img
     animate('#brrl-mobile-img', {
       rotate: ['5deg', '-2deg'],
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'top bottom-=50%',
-        leave: 'bottom bottom',
+        enter: '100% 25%',
+        leave: '100% 50%',
         sync: true
       })
     })
 
-    animate('#brrl-menu-img', {
-      right: ['-105%', '19%'],
-      rotate: ['4deg', '8deg'],
+    // mobile menu image slides in from right while rotating, landing on top of #brrl-mobile-img
+    /* animate('#brrl-menu-img', {
+      right: [
+        {to: '-50%', duration: '25%'},
+        {to: '19%'}
+      ],
+      rotate: ['-40deg', '8deg'],
       top: ['-25rem', '-10rem'],
+      ease: 'outCirc',
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: 'top bottom-=50%',
-        leave: 'bottom bottom',
-        sync: true
+        enter: '100% 0%',
+        leave: '100% 100%',
+        sync: true,
+        debug: true
       })
+    }) */
+
+    const tl = createTimeline({
+      defaults: {
+        
+      },
     })
+    // menu img starting position
+    .add('#brrl-menu-img', {
+      right: [
+        {to: '-25%'}
+      ],
+      rotate: [
+        {to: '-40deg'}
+      ],
+      top: [
+        {to: '-25rem'}
+      ],
+      duration: 0
+    }, 0)
+    // menu img slides in from right
+    .add('#brrl-menu-img', {
+      right: [
+        {to: '19%' }
+      ],
+      rotate: [
+        {to:'8deg'}
+      ],
+      top: [
+        {to: '-10rem'}
+      ],
+      duration: 500
+    }, 250)
+    // menu img flies away to the right
+    .add('#brrl-menu-img', {
+      right: [
+        {to: '-25%'}
+      ],
+      rotate: [
+        {to: '-40deg'}
+      ],
+      top: [
+        {to: '-25rem'}
+      ],
+      duration: 250
+    }, 750)
+    // website img move down and rotate slightly to accompany the text
+    .add ('#brrl-website-img', {
+      top: ['2rem', '11rem'],
+      rotate: ['0deg', '3deg'],
+      ease: 'outBack',
+      duration: 250
+    }, 250)
+    // text fades in
+    .add('#brrl-text', {
+      opacity: [0, 1],
+      translateY: ['-5rem', '0rem'],
+      duration: 250
+    }, 250)
+
+
+    onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: '50% 0%',
+        leave: '100% 100%',
+        sync: true,
+        debug: true
+    }).link(tl);
   }
 }
