@@ -95,7 +95,6 @@
   position: relative;
   top: 10vh;
   padding: 0 2rem;
-  border: solid 2px red;
   height: 100vh;;
 }
 
@@ -157,8 +156,17 @@
 
 #brrl-mobile-img {
   width: 10%;
-  position: relative;
-  left: 25%;
+  position: absolute;
+  right: 25%;
+  z-index: 888;
+}
+
+#brrl-menu-img {
+  width: 10%;
+  position: absolute;
+  right: 18%;
+  rotate: 6deg;
+  z-index: 888;
 }
 
 #brrl-text {

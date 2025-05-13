@@ -144,9 +144,9 @@ export class DevelopmentComponent implements AfterViewInit {
     })
 
     animate('#brrl-mobile-img', {
-      left: ['95%', '25%'],
+      right: ['-95%', '25%'],
       top: ['50rem', '-15rem'],
-      rotate: ['-20deg', '5deg'],
+      rotate: ['20deg', '-5deg'],
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
@@ -177,8 +177,32 @@ export class DevelopmentComponent implements AfterViewInit {
         axis: 'y',
         enter: '50% 50%',
         leave: '100% 100%',
+        sync: true
+      })
+    })
+
+    animate('#brrl-mobile-img', {
+      rotate: ['5deg', '-2deg'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'top bottom-=50%',
+        leave: 'bottom bottom',
         sync: true,
         debug: true
+      })
+    })
+
+    animate('#brrl-menu-img', {
+      right: ['-105%', '19%'],
+      rotate: ['4deg', '8deg'],
+      top: ['-25rem', '-10rem'],
+      autoplay: onScroll({
+        target: '#brrl-showcase',
+        axis: 'y',
+        enter: 'top bottom-=50%',
+        leave: 'bottom bottom',
+        sync: true
       })
     })
   }
