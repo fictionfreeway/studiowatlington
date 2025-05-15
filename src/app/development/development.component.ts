@@ -124,13 +124,17 @@ export class DevelopmentComponent implements AfterViewInit {
         axis: 'y',
         enter: '50% 0%',
         leave: '100% 50%',
-        sync: true,
-        debug: true
+        sync: true
     }).link(tl);
   }
 
   initBrrlAnimations() {
     /* Intro animations */
+
+    // add float animation to the images
+    this.addFloatAnimationToElement('#brrl-menu-img');
+    this.addFloatAnimationToElement('#brrl-mobile-img');
+    this.addFloatAnimationToElement('#brrl-website-img');
 
     animate(svg.createDrawable('.brrl-header-path'), {
       draw: ['0 0', '0 1'],
@@ -184,7 +188,8 @@ export class DevelopmentComponent implements AfterViewInit {
       top: [
         {to: '-25rem'}
       ],
-      duration: 250
+      duration: 150,
+      ease: 'inBack'
     }, 750)
     // text fades in
     .add('#brrl-text', {
@@ -209,16 +214,19 @@ export class DevelopmentComponent implements AfterViewInit {
     }, 50)
     // mobile image moves down and rotates slightly to accompany menu-img
     .add('#brrl-mobile-img', {
+      right: '22%',
       rotate: '-2deg',
-      duration: 250
+      top: '-12rem',
+      duration: 250,
+      ease: 'outBack'
     }, 250)
-    // mobile img flies away to the left
+    // mobile img flies away to the right
     .add('#brrl-mobile-img', {
-      right: '125%',
-      top: '-5rem',
+      right: '55%',
+      top: '-125rem',
       rotate: '20deg',
       duration: 250,
-      ease: 'inback'
+      ease: 'inBack'
     }, 750)
     // website img starting position
     .add('#brrl-website-img', {
@@ -237,19 +245,47 @@ export class DevelopmentComponent implements AfterViewInit {
     }, 1)
     // website img move down and rotate slightly to accompany the text
     .add ('#brrl-website-img', {
-      top: ['2rem', '11rem'],
-      rotate: ['0deg', '3deg'],
-      ease: 'outBack',
-      duration: 250
+      top: '14rem',
+      rotate: '5deg',
+      duration: 250,
+      ease: 'outBack'
     }, 250)
+    // website img flies away
+    .add('#brrl-website-img', {
+      left: '180%',
+      top: '30rem',
+      rotate: '20deg',
+      duration: 100,
+      ease: 'inBack'
+    }, 900)
 
     onScroll({
         target: '#brrl-showcase',
         axis: 'y',
         enter: '50% 0%',
         leave: '100% 100%',
-        sync: true,
-        debug: true
+        sync: true
     }).link(tl);
+
+    
+  }
+
+  // takes html identifier of element and adds looping 'floaty' animation
+  addFloatAnimationToElement(element: string) {
+    animate(element, {
+      translateY: [
+      { to: `${(Math.random() * 4 - 2).toFixed(2)}rem` },
+      { to: `${(Math.random() * 4 - 2).toFixed(2)}rem` }
+      ],
+      translateX: [
+      { to: `${(Math.random() * 4 - 2).toFixed(2)}rem` },
+      { to: `${(Math.random() * 4 - 2).toFixed(2)}rem` }
+      ],
+      duration: Math.floor(Math.random() * (7000 - 4000 + 1)) + 4000,
+      ease: 'inOutSine',
+      loop: true,
+      alternate: true,
+      composition: 'blend'
+    });
   }
 }
