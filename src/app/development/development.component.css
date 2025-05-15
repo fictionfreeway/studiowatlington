@@ -187,6 +187,7 @@
   font-size: 1.2rem;
   top: 0rem;
   line-height: 2rem;
+  opacity: 0;
 }
 
 .brrl-header-path {

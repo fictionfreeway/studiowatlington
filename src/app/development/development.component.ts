@@ -53,6 +53,51 @@ export class DevelopmentComponent implements AfterViewInit {
 
   //organize animations into methods
   initIntroAnimations() {
+    const tl = createTimeline({
+      defaults: {}
+    })
+    // 'projects' header starting position
+    .add('#projects-header', {
+      opacity: 0,
+      scale: 1
+    }, 0)
+    // 'projects' header scales up/fades out with whiteboard expansion
+    .add('#projects-header', {
+      opacity: 0,
+      scale: 2.2,
+      duration: 150
+    }, 1)
+    // whiteboard starting position
+    .add('#whiteboard-container-desktop', {
+      width: '75vw',
+      height: '75vh',
+      left: '10%',
+      top: '10%',
+      duration: 0
+    }, 0)
+    // whiteboard expands to cover the viewport
+    .add('#whiteboard-container-desktop', { 
+      width: '250vw',
+      height: '250vh',
+      left: '-30%',
+      top: '-30%',
+      duration: 250
+    }, 1)
+    // crt-desk starting position
+    .add('#crt-desk', {
+      left: '10%',
+      bottom: '-50vh',
+      scale: 1,
+      duration: 0
+    }, 0)
+    // crt-desk image moves to the right and scales down
+    .add('#crt-desk', {
+      left: '20%',
+      bottom: '-60vh',
+      scale: 0.8,
+      duration: 750
+    }, 250)
+
     // draw the opening 'projects' header
     animate(svg.createDrawable('.projects-header-path'), {
       draw: ['0 0', '0 1'],
@@ -60,19 +105,6 @@ export class DevelopmentComponent implements AfterViewInit {
       duration: 100,
       delay: stagger(200)
     });
-
-    // header fades out/scales up while whiteboard expands
-    animate('#projects-header', { 
-      opacity: [1, 0],
-      scale: [1, 1.7],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '100% top',
-        leave: '0% top+=20vh',
-        sync: true
-      })
-    })
 
     // ellipsis dots bounce animation on #crt-desk
     animate('.ellipsis-dot', {
@@ -86,34 +118,15 @@ export class DevelopmentComponent implements AfterViewInit {
       loop: true
     })
 
-    //whiteboard expands to cover the viewport while scrolling down
-    animate('#whiteboard-container-desktop', {
-      width: ['75vw', '250vw'],
-      height: ['75vh', '250vh'],
-      left: ['10%', '-30%'],
-      top: ['10%', '-30%'],
-      autoplay: onScroll({
+    // connect timeline to scroll event
+    onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: '100% 0%',
-        leave: '100% 25%',
-        sync: true
-      })
-    })
-
-    // crt-desk image moves to the right and scales down while scrolling down (still visible)
-    animate('#crt-desk', {
-      left: ['10%', '20%'],
-      bottom: ['-50vh', '-60vh'],
-      scale: [1, 0.8],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '100% 0%',
+        enter: '50% 0%',
         leave: '100% 50%',
         sync: true,
-      })
-    })
+        debug: true
+    }).link(tl);
   }
 
   initBrrlAnimations() {
@@ -125,103 +138,14 @@ export class DevelopmentComponent implements AfterViewInit {
       autoplay: onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: '100% 20%',
-        leave: '100% 25%',
-        sync: true
-      })
-    })
-
-    //intro animations for brrl website images
-    animate('#brrl-website-img', {
-      left: ['-95%', '15%'],
-      top: ['30rem', '2rem'],
-      rotate: ['20deg', '0deg'],
-      ease: 'inOutBack',
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
         enter: '100% 0%',
-        leave: '100% 25%',
+        leave: '100% 55%',
         sync: true
       })
     })
-
-    animate('#brrl-mobile-img', {
-      right: ['-95%', '25%'],
-      top: ['50rem', '-15rem'],
-      rotate: ['20deg', '-5deg'],
-      ease: 'inOutBack',
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '100% 0%',
-        leave: '100% 25%',
-        sync: true
-      })
-    })
-
-    // text fades in/slides down while website image moves down
-    /* animate('#brrl-text', {
-      opacity: [0, 1],
-      translateY: ['-5rem', '0rem'],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '50% 25%',
-        leave: '100% 50%',
-        sync: true
-      })
-    }) */
-
-    // website image moves down and rotates slightly to accompany the text
-    /* animate('#brrl-website-img', {
-      top: ['2rem', '11rem'],
-      rotate: ['0deg', '3deg'],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '100% 25%',
-        leave: '100% 50%',
-        sync: true
-      }),
-      ease: 'outBack'
-    }) */
-
-    // mobile image moves down and rotates slightly to accompany menu-img
-    animate('#brrl-mobile-img', {
-      rotate: ['5deg', '-2deg'],
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '100% 25%',
-        leave: '100% 50%',
-        sync: true
-      })
-    })
-
-    // mobile menu image slides in from right while rotating, landing on top of #brrl-mobile-img
-    /* animate('#brrl-menu-img', {
-      right: [
-        {to: '-50%', duration: '25%'},
-        {to: '19%'}
-      ],
-      rotate: ['-40deg', '8deg'],
-      top: ['-25rem', '-10rem'],
-      ease: 'outCirc',
-      autoplay: onScroll({
-        target: '#brrl-showcase',
-        axis: 'y',
-        enter: '100% 0%',
-        leave: '100% 100%',
-        sync: true,
-        debug: true
-      })
-    }) */
 
     const tl = createTimeline({
-      defaults: {
-        
-      },
+      defaults: {},
     })
     // menu img starting position
     .add('#brrl-menu-img', {
@@ -262,6 +186,55 @@ export class DevelopmentComponent implements AfterViewInit {
       ],
       duration: 250
     }, 750)
+    // text fades in
+    .add('#brrl-text', {
+      opacity: [0, 1],
+      translateY: ['-5rem', '0rem'],
+      duration: 250
+    }, 250)
+    // mobile img initial position
+    .add('#brrl-mobile-img', {
+      right: '-95%',
+      top: '50rem',
+      rotate: '20deg',
+      duration: 0
+    }, 0)
+    // mobile img flies in from the right
+    .add('#brrl-mobile-img', {
+      right: '25%',
+      top: '-15rem',
+      rotate: '-5deg',
+      duration: 500,
+      ease: 'outBack'
+    }, 50)
+    // mobile image moves down and rotates slightly to accompany menu-img
+    .add('#brrl-mobile-img', {
+      rotate: '-2deg',
+      duration: 250
+    }, 250)
+    // mobile img flies away to the left
+    .add('#brrl-mobile-img', {
+      right: '125%',
+      top: '-5rem',
+      rotate: '20deg',
+      duration: 250,
+      ease: 'inback'
+    }, 750)
+    // website img starting position
+    .add('#brrl-website-img', {
+      left: '-95%',
+      top: '30rem',
+      rotate: '20deg',
+      duration: 0
+    }, 0)
+    // website img slides in from the left
+    .add('#brrl-website-img', {
+      left: '15%',
+      top: '2rem',
+      rotate: '0deg',
+      duration: 250,
+      ease: 'inOutBack'
+    }, 1)
     // website img move down and rotate slightly to accompany the text
     .add ('#brrl-website-img', {
       top: ['2rem', '11rem'],
@@ -269,13 +242,6 @@ export class DevelopmentComponent implements AfterViewInit {
       ease: 'outBack',
       duration: 250
     }, 250)
-    // text fades in
-    .add('#brrl-text', {
-      opacity: [0, 1],
-      translateY: ['-5rem', '0rem'],
-      duration: 250
-    }, 250)
-
 
     onScroll({
         target: '#brrl-showcase',
