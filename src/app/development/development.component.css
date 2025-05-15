@@ -63,29 +63,6 @@
 #dev-header {
   display: none;
 }
-
-#mobile-dev-header {
-  display: block;
-  margin: 9rem auto 0 auto;
-  width: 40%;
-}
-
-.whiteboard-path, .mobile-whiteboard-path {
-  fill: none;
-  stroke: var(--deep-blue); /* initial fill defined here */
-  transition: fill 0.3s ease; /* smooth transition fallback (optional) */
-  animation: fillInText 1s ease-in-out forwards; /* animation for fill effect */
-  animation-delay: 3s; /* delay before the animation starts */
-} 
-
-.whiteboard-path {
-  stroke-width: 0.8;
-}
-
-.mobile-whiteboard-path {
-  stroke-width: 0.5;
-}
-
 /* showcase styles */
 
 .showcase-text {
@@ -100,11 +77,11 @@
 }
 
 #projects-header {
-  width: 20%;
+  width: 80%;
   display: block;
   position: fixed;
   top: 15rem;
-  left: 20%;
+  left: 10%;
 }
 
 #intro-text {
@@ -117,6 +94,8 @@
   stroke: black;
   stroke-width: 6;
 }
+
+/* brrl website showcase styles */
 
 #brrl-logo {
   width: 100%;
@@ -231,6 +210,15 @@
 
   #mobile-dev-header {
     display: none;
+  }
+
+  /* showcase styles */
+  #projects-header {
+    width: 20%;
+    display: block;
+    position: fixed;
+    top: 15rem;
+    left: 20%;
   }
 }
   
