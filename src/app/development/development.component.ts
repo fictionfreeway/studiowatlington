@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 
-import { animate, stagger, svg, onScroll, createTimeline } from 'animejs';
+import { animate, stagger, svg, onScroll, createTimeline, JSAnimation } from 'animejs';
 
 import template from './development.component.html?raw';
 import styles from './development.component.css?inline';
@@ -83,15 +83,15 @@ export class DevelopmentComponent implements AfterViewInit {
       top: '-30%',
       duration: 250
     }, 1)
-    // crt-desk starting position
-    .add('#crt-desk', {
+    // computer-desk starting position
+    .add('#computer-desk', {
       left: '10%',
       bottom: '-50vh',
       scale: 1,
       duration: 0
     }, 0)
-    // crt-desk image moves to the right and scales down
-    .add('#crt-desk', {
+    // computer-desk image moves to the right and scales down
+    .add('#computer-desk', {
       left: '20%',
       bottom: '-60vh',
       scale: 0.8,
@@ -106,7 +106,7 @@ export class DevelopmentComponent implements AfterViewInit {
       delay: stagger(200)
     });
 
-    // ellipsis dots bounce animation on #crt-desk
+    // ellipsis dots bounce animation on #computer-desk
     animate('.ellipsis-dot', {
       y: [
         { to: '-.25rem', ease: 'outExpo', duration: 600 },
@@ -122,7 +122,7 @@ export class DevelopmentComponent implements AfterViewInit {
     onScroll({
         target: '#brrl-showcase',
         axis: 'y',
-        enter: '50% 0%',
+        enter: '100% 0%',
         leave: '100% 50%',
         sync: true
     }).link(tl);
@@ -143,7 +143,7 @@ export class DevelopmentComponent implements AfterViewInit {
         target: '#brrl-showcase',
         axis: 'y',
         enter: '100% 0%',
-        leave: '100% 55%',
+        leave: '100% 35%',
         sync: true
       })
     })
@@ -269,6 +269,54 @@ export class DevelopmentComponent implements AfterViewInit {
 
     
   }
+
+  // used on click to enlarge image and move to middle of screen
+  // Keep a map so each element remembers its own enlarge animation
+  private zoomMap = new Map<string, JSAnimation>();   // JSAnimation is Anime.js’ type
+
+  enlargeImage(selector: string, orientation?: string) {
+    // Was this element already enlarged?
+    const running = this.zoomMap.get(selector);
+    if (running) {
+      running.revert();
+      this.zoomMap.delete(selector);
+      return;
+    }
+
+    let anim: JSAnimation | undefined = undefined;
+
+    if(orientation === 'portrait') {
+      // Otherwise create the enlarge tween and stash the instance
+      anim = animate(selector, {
+        scale   : [{ to: 1.5 }],
+        top     : [{ to: '-20%' }],
+        left    : [{ to: '35%'  }],
+        height  : [{ to: '50vh' }],
+        width   : [{ to: 'auto'  }],
+        rotate  : [{ to: '0deg'  }],
+        zIndex  : [{ to: 9_999, duration: 0 }],
+        duration: 600,
+        ease: 'inOutBack',
+        composition: 'replace',
+      });
+    } else {
+      anim = animate(selector, {
+        scale   : [{ to: 1.5 }],
+        top     : [{ to: '-20%' }],
+        left    : [{ to: '30vw'  }],
+        height  : [{ to: 'auto'  }],
+        width   : [{ to: '40vw' }],
+        rotate  : [{ to: '0deg'  }],
+        zIndex  : [{ to: 9_999, duration: 0 }],
+        duration: 600,
+        ease: 'inOutBack',
+        composition: 'replace',
+      });
+    }
+
+    this.zoomMap.set(selector, anim);
+  }
+
 
   // takes html identifier of element and adds looping 'floaty' animation
   addFloatAnimationToElement(element: string) {

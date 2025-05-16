@@ -1,3 +1,6 @@
+/* div {
+  border: 2px solid red;
+} */
 
 @font-face {
   font-family: "Providence Sans Pro";
@@ -52,7 +55,7 @@
   display: none;
 }
 
-#crt-desk {
+#computer-desk {
   
 }
 
@@ -104,18 +107,18 @@
 
 #brrl-showcase {
   height: 800vh;
-  padding-top: 60vh;
   position: relative;
+  padding-top: 60vh;
 }
 
 #brrl-sticky-container {
   position: sticky;
-  top: 10rem;
+  top: 0rem;
 }
 
 #brrl-showcase-content {
   position: sticky;
-  top: 0;
+  top: 10rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -125,6 +128,7 @@
   position: relative;
   width: 40%;
   left: 20%;
+  margin-top: 6rem;
 }
 
 .brrl-img {
@@ -150,7 +154,6 @@
   width: 10%;
   position: absolute;
   right: 18%;
-  rotate: 6deg;
   z-index: 888;
 }
 
@@ -183,7 +186,7 @@
     display: none;
   }
 
-  #crt-desk {
+  #computer-desk {
     display: block;
     position: fixed;
     width: 120%;
