@@ -49,6 +49,7 @@ export class DevelopmentComponent implements AfterViewInit {
     // initialize animejs animations, organized into methods for clarity
     this.initIntroAnimations();
     this.initBrrlAnimations();
+    this.initBrrlEventsAnimations();
   }
 
   //organize animations into methods
@@ -298,7 +299,7 @@ export class DevelopmentComponent implements AfterViewInit {
       }, 1)
       // mobile img slides to left to accomodate text
       .add('#brrl-mobile-img', {
-        left: '-15%',
+        left: '-33%',
         duration: 200
       }, 500)
       // mobile img flies away to the left
@@ -322,7 +323,7 @@ export class DevelopmentComponent implements AfterViewInit {
       }, 1)
       // menu img slides to the right to accomodate text
       .add ('#brrl-menu-img', {
-        right: '-15%',
+        right: '-29%',
         duration: 200
       }, 500)
       // menu img flies away to the left
@@ -344,10 +345,10 @@ export class DevelopmentComponent implements AfterViewInit {
         duration: 500,
         ease: 'outBack'
       }, 1)
-      // website img floats around for a bit
+      // website img floats around for a bit/moves down
       .add('#brrl-website-img', {
         left: '2%',
-        top: '24rem',
+        top: '16rem',
         duration: 250,
         ease: 'inOutBack'
       }, 500)
@@ -383,6 +384,24 @@ export class DevelopmentComponent implements AfterViewInit {
     }
   }
 
+  initBrrlEventsAnimations() {
+
+    animate(svg.createDrawable('.events-header-path'), {
+      draw: ['0 0', '0 1'],
+      delay: stagger(200),
+      autoplay: onScroll({
+        target: '#events-showcase',
+        axis: 'y',
+        enter: '100% 0%',
+        leave: '100% 35%',
+        sync: true
+      })
+    })
+
+    /* const tl = createTimeline({
+      defaults: {}
+    }) */
+  }
   // used on click to enlarge image and move to middle of screen
   // Keep a map so each element remembers its own enlarge animation
   private zoomMap = new Map<string, JSAnimation>();   // JSAnimation is Anime.js’ type
