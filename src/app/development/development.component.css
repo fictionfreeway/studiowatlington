@@ -219,6 +219,29 @@
   top: 3rem;
 }
 
+#events-scroll-container-1 {
+  height: 100vh;
+  position: relative;
+}
+
+#events-description {
+  position: relative;
+  top: 0;
+
+}
+
+.events-img {
+  border: solid 4px var(--pink);
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#events-text-container h3 {
+  opacity: 0;
+}
+
 @media (orientation: portrait) {
   
   #sw-logo {

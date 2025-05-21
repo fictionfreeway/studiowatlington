@@ -161,7 +161,8 @@ export class DevelopmentComponent implements AfterViewInit {
         sync: true
       })
     })
-
+    
+    // animation dependent on screen orientation (set on init)
     if(window.matchMedia('(orientation: landscape)').matches) {
       const tl = createTimeline({
         defaults: {},
@@ -398,9 +399,55 @@ export class DevelopmentComponent implements AfterViewInit {
       })
     })
 
-    /* const tl = createTimeline({
+    // mobile timeline
+    const tl = createTimeline({
       defaults: {}
-    }) */
+    })
+    // desktop img starting position in center of screen
+    // set to left: 50% to center it at translateX: -50%
+    .add('#brrl-events-desktop-img', {
+      translateX: '-150%',
+      rotate: '-10deg',
+      duration: 0
+    }, 0)
+    // desktop img slides in from the left
+    .add('#brrl-events-desktop-img', {
+      translateX: '-50%',
+      rotate: '0deg',
+      duration: 250,
+      ease: 'outBack'
+    }, 1)
+    // description fades away/slides up
+    .add('#events-description', {
+      translateY: ['0rem', '-5rem'],
+      opacity: [1, 0],
+      duration: 50,
+    }, 250)
+    // features header fades/moves in
+    .add('#events-features-header', {
+      opacity: [0, 1],
+      translateY: ['-15rem', '-10rem'],
+      duration: 100
+    }, 300)
+    // desktop img floats up as text becomes smaller
+    .add('#brrl-events-desktop-img', {
+      translateY: ['0rem', '-10rem'],
+      duration: 100
+    }, 300)
+    // staff home text fades in
+    .add('#staff-home-text', {
+      opacity: [0, 1],
+      translateY: ['0rem', '10rem'],
+      duration: 100
+    }, 300)
+
+    onScroll({
+        target: '#events-showcase',
+        axis: 'y',
+        enter: '50% 0%',
+        leave: '100% 100%',
+        sync: true
+      }).link(tl);
   }
   // used on click to enlarge image and move to middle of screen
   // Keep a map so each element remembers its own enlarge animation
