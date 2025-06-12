@@ -147,6 +147,10 @@
   border-radius: 20px;
 }
 
+.desktop-screenshot, .mobile-screenshot {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
 .desktop-screenshot {
   width: 40%;
 }
@@ -233,7 +237,7 @@
 }
 
 #events-description {
-  position: relative;
+  position: absolute;
   top: 0;
 }
 
@@ -296,7 +300,9 @@
   }
 
   #events-showcase-content {
-    margin: 18rem auto 0 auto;
+    position: relative;
+    top: 16rem;
+    margin: 0 auto;
     width: 90%;
     text-align: center;
     line-height: 1.2rem;

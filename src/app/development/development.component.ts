@@ -413,7 +413,7 @@ export class DevelopmentComponent implements AfterViewInit {
     // mobile img starting position
     .add('#brrl-events-mobile-img', {
       translateX: '-275%',
-      translateY: '-20rem',
+      translateY: '-10rem',
       rotate: '10deg',
       duration: 0
     }, 0)
@@ -427,43 +427,44 @@ export class DevelopmentComponent implements AfterViewInit {
     .add('#brrl-events-desktop-img', {
       translateX: '-50%',
       rotate: '0deg',
+      translateY: '14rem',
       duration: 250,
       ease: 'outBack'
     }, 1)
     // description fades away/slides up
     .add('#events-description', {
-      translateY: ['0rem', '-5rem'],
+      translateY:  '5rem',
       opacity: [1, 0],
       duration: 50,
     }, 250)
     // features header fades/moves in
     .add('#events-features-header', {
       opacity: [0, 1],
-      translateY: ['-15rem', '-10rem'],
+      translateY: ['-5rem', '0rem'],
       duration: 100
     }, 300)
     // desktop img floats up as text becomes smaller
     .add('#brrl-events-desktop-img', {
-      translateY: ['0rem', '-7rem'],
+      translateY: '3rem',
       duration: 100
     }, 300)
     // staff home text fades in
     .add('#staff-home-text', {
       opacity: [0, 1],
-      translateY: ['0rem', '10rem'],
+      translateY: ['10rem', '20rem'], 
       duration: 100
     }, 300)
     // desktop img floats away
     .add('#brrl-events-desktop-img', {
       translateX: ['110%'],
-      translateY: ['0rem'],
+      translateY: ['10rem'],
       rotate: ['10deg'],
       ease: 'inBack',
       duration: 200
     }, 400)
     .add('#brrl-events-mobile-img', {
       translateX: ['-50%'],
-      translateY: ['-9rem'],
+      translateY: ['1rem'],
       rotate: ['-0deg'],
       ease: 'outSine',
       duration: 200
@@ -498,7 +499,7 @@ export class DevelopmentComponent implements AfterViewInit {
     // event creation img floats in
     .add('#brrl-events-creation-img', {
       translateX: '-50%',
-      translateY: '-7rem',
+      translateY: '3rem', // was -7rem, now +10rem
       rotate: '0deg',
       duration: 250,
       ease: 'outBack'
