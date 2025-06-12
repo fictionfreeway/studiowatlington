@@ -410,6 +410,19 @@ export class DevelopmentComponent implements AfterViewInit {
       rotate: '-10deg',
       duration: 0
     }, 0)
+    // mobile img starting position
+    .add('#brrl-events-mobile-img', {
+      translateX: '-275%',
+      translateY: '-20rem',
+      rotate: '10deg',
+      duration: 0
+    }, 0)
+    // event creation starting position 
+    .add('#brrl-events-creation-img', {
+      translateX: '-175%',
+      rotate: '-10deg',
+      duration: 0
+    }, 0)
     // desktop img slides in from the left
     .add('#brrl-events-desktop-img', {
       translateX: '-50%',
@@ -431,7 +444,7 @@ export class DevelopmentComponent implements AfterViewInit {
     }, 300)
     // desktop img floats up as text becomes smaller
     .add('#brrl-events-desktop-img', {
-      translateY: ['0rem', '-10rem'],
+      translateY: ['0rem', '-7rem'],
       duration: 100
     }, 300)
     // staff home text fades in
@@ -440,6 +453,76 @@ export class DevelopmentComponent implements AfterViewInit {
       translateY: ['0rem', '10rem'],
       duration: 100
     }, 300)
+    // desktop img floats away
+    .add('#brrl-events-desktop-img', {
+      translateX: ['110%'],
+      translateY: ['0rem'],
+      rotate: ['10deg'],
+      ease: 'inBack',
+      duration: 200
+    }, 400)
+    .add('#brrl-events-mobile-img', {
+      translateX: ['-50%'],
+      translateY: ['-9rem'],
+      rotate: ['-0deg'],
+      ease: 'outSine',
+      duration: 200
+    }, 550)
+    // staff home text (brrl events feature text) fades out
+    .add('#staff-home-text', {
+      opacity: 0,
+      duration: 50
+    }, 550)
+    // set initial HTML (helps reset it upon scrolling up)
+    .add('#staff-home-text', {
+      innerHTML: 'A robust frontend for staff to manage every aspect of event hosting and communication',
+      duration: 0
+    }, 600)
+    // text fades back in
+    .add('#staff-home-text', {
+      opacity: 1,
+      duration: 50
+    }, 650)
+    // staff home text chages to next feature
+    .add('#staff-home-text', {
+      innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
+      duration: 0
+    }, 601)
+    // mobile img floats away
+    .add('#brrl-events-mobile-img', {
+      translateX: '200%',
+      rotate: '-10deg',
+      duration: 150,
+      ease: 'inBack'
+    }, 800)
+    // event creation img floats in
+    .add('#brrl-events-creation-img', {
+      translateX: '-50%',
+      translateY: '-7rem',
+      rotate: '0deg',
+      duration: 250,
+      ease: 'outBack'
+    }, 900)
+    // staff home text (brrl events feature text) fades out
+    .add('#staff-home-text', {
+      opacity: 0,
+      duration: 50
+    }, 850)
+    // set initial HTML (helps reset it upon scrolling up)
+    .add('#staff-home-text', {
+      innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
+      duration: 0
+    }, 900)
+    // text fades back in
+    .add('#staff-home-text', {
+      opacity: 1,
+      duration: 50
+    }, 950)
+    // staff home text chages to next feature
+    .add('#staff-home-text', {
+      innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
+      duration: 0
+    }, 901)
 
     onScroll({
         target: '#events-showcase',

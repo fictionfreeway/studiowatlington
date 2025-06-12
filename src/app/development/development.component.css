@@ -219,6 +219,14 @@
   top: 3rem;
 }
 
+#staff-home-text {
+  position: absolute;
+  width: 80%;
+  left: 0;
+  padding: 0 10%;
+  line-height: 1.5rem;
+}
+
 #events-scroll-container-1 {
   height: 100vh;
   position: relative;
@@ -227,7 +235,6 @@
 #events-description {
   position: relative;
   top: 0;
-
 }
 
 .events-img {
