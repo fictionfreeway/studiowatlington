@@ -241,6 +241,10 @@
   top: 0;
 }
 
+#events-features-header {
+  font-size: 1.5rem;
+}
+
 .events-img {
   border: solid 4px var(--pink);
   border-radius: 20px;
@@ -251,6 +255,19 @@
 
 #events-text-container h3 {
   opacity: 0;
+}
+
+#hanging-sign {
+  background-image: url('assets/showcases/hanging-sign.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60%;
+  height: 20rem;
+  left: 20%;
+  position: absolute;
+  bottom: 15rem;
+
 }
 
 @media (orientation: portrait) {

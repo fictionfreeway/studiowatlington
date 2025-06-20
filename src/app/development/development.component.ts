@@ -394,7 +394,7 @@ export class DevelopmentComponent implements AfterViewInit {
         target: '#events-showcase',
         axis: 'y',
         enter: '100% 0%',
-        leave: '100% 35%',
+        leave: '100% 20%',
         sync: true
       })
     })
@@ -419,6 +419,24 @@ export class DevelopmentComponent implements AfterViewInit {
     }, 0)
     // event creation starting position 
     .add('#brrl-events-creation-img', {
+      translateX: '-175%',
+      rotate: '-10deg',
+      duration: 0
+    }, 0)
+    // locations img starting position
+    .add('#brrl-events-locations-img', {
+      translateX: '-175%',
+      rotate: '-10deg',
+      duration: 0
+    }, 0)
+    // email img starting position
+    .add('#brrl-events-email-img', {
+      translateX: '-175%',
+      rotate: '-10deg',
+      duration: 0
+    }, 0)
+    // feedback img starting position
+    .add('#brrl-events-feedback-img', {
       translateX: '-175%',
       rotate: '-10deg',
       duration: 0
@@ -451,7 +469,7 @@ export class DevelopmentComponent implements AfterViewInit {
     // staff home text fades in
     .add('#staff-home-text', {
       opacity: [0, 1],
-      translateY: ['10rem', '20rem'], 
+      translateY: ['10rem', '18rem'], 
       duration: 100
     }, 300)
     // desktop img floats away
@@ -512,6 +530,7 @@ export class DevelopmentComponent implements AfterViewInit {
     // set initial HTML (helps reset it upon scrolling up)
     .add('#staff-home-text', {
       innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
+      translateY: '16rem',
       duration: 0
     }, 900)
     // text fades back in
@@ -524,14 +543,161 @@ export class DevelopmentComponent implements AfterViewInit {
       innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
       duration: 0
     }, 901)
-
+    // event creation img floats away
+    .add('#brrl-events-creation-img', {
+      translateX: '200%',
+      rotate: '10deg',
+      duration: 150,
+      ease: 'inBack'
+    }, 1200)
+    // locations img floats in
+    .add('#brrl-events-locations-img', {
+      translateX: '-50%',
+      translateY: '8rem',
+      rotate: '0deg',
+      duration: 250,
+      ease: 'outBack'
+    }, 1300)
+    // staff home text (brrl events feature text) fades out
+    .add('#staff-home-text', {
+      opacity: 0,
+      duration: 50
+    }, 1150)
+    // set initial HTML (helps reset it upon scrolling up) and move to upper position
+    .add('#staff-home-text', {
+      innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
+      translateY: '1rem',
+      duration: 0
+    }, 1200)
+    // text fades back in
+    .add('#staff-home-text', {
+      opacity: 1,
+      duration: 50
+    }, 1350)
+    // staff home text chages to next feature
+    .add('#staff-home-text', {
+      innerHTML: 'Support for multiple locations/branches, with embeddable schedules to add to any website',
+      translateY: '1rem',
+      duration: 0
+    }, 1201)
+    // locations img floats away
+    .add('#brrl-events-locations-img', {
+      translateX: '200%',
+      rotate: '-10deg',
+      duration: 150,
+      ease: 'inBack'
+    }, 1600)
+    // staff home text (brrl events feature text) fades out
+    .add('#staff-home-text', {
+      opacity: 0,
+      duration: 50
+    }, 1550)
+    // set initial HTML (helps reset it upon scrolling up)
+    .add('#staff-home-text', {
+      innerHTML: 'Support for multiple locations/branches, with embeddable schedules to add to any website',
+      translateY: '1rem',
+      duration: 0
+    }, 1600)
+    // text fades back in
+    .add('#staff-home-text', {
+      opacity: 1,
+      duration: 50
+    }, 1850)
+    // staff home text chages to next feature
+    .add('#staff-home-text', {
+      innerHTML: 'Automated, professional email notifications can be configured for event reminders, cancellations, and more',
+      translateY: '20rem',
+      duration: 0
+    }, 1601)
+    // email img floats in
+    .add('#brrl-events-email-img', {
+      translateX: '-50%',
+      translateY: '1rem',
+      rotate: '0deg',
+      duration: 250,
+      ease: 'outBack'
+    }, 1800)
+    // email img floats away
+    .add('#brrl-events-email-img', {
+      translateX: '200%',
+      rotate: '10deg',
+      duration: 150,
+      ease: 'inBack'
+    }, 2100)
+    // staff home text (brrl events feature text) fades out
+    .add('#staff-home-text', {
+      opacity: 0,
+      duration: 50
+    }, 2050)
+    // set initial HTML (helps reset it upon scrolling up)
+    .add('#staff-home-text', {
+      innerHTML: 'Automated, professional email notifications can be configured for event reminders, cancellations, and more',
+      translateY: '1rem',
+      duration: 0
+    }, 2100)
+    // text fades back in
+    .add('#staff-home-text', {
+      opacity: 1,
+      duration: 50
+    }, 2250)
+    // staff home text chages to next feature
+    .add('#staff-home-text', {
+      innerHTML: 'Post event surveys collect patron feedback and organize it into a easy-to-read feedback dashboard with analytics',
+      translateY: '16rem',
+      duration: 0
+    }, 2101)
+    // feedback img floats in
+    .add('#brrl-events-feedback-img', {
+      translateX: '-50%',
+      translateY: '3rem',
+      rotate: '0deg',
+      duration: 250,
+      ease: 'outBack'
+    }, 2200)
+    // feedback img floats away
+    .add('#brrl-events-feedback-img', {
+      translateX: '200%',
+      rotate: '-10deg',
+      duration: 150,
+      ease: 'inBack'
+    }, 2500)
+    // staff home text (brrl events feature text) fades out
+    .add('#staff-home-text', {
+      opacity: 0,
+      duration: 50
+    }, 2450)
+    // set initial HTML (helps reset it upon scrolling up)
+    .add('#staff-home-text', {
+      innerHTML: 'Post event surveys collect patron feedback and organize it into a easy-to-read feedback dashboard with analytics',
+      translateY: '1rem',
+      duration: 0
+    }, 2500)
+    // text fades back in
+    .add('#staff-home-text', {
+      opacity: 1,
+      duration: 50
+    }, 2650)
+    // staff home text chages to contact text
+    .add('#staff-home-text', {
+      innerHTML: 'Ready to take your organization&apos;s events to the next level? Contact Studio Watlington to take the first step',
+      translateY: '16rem',
+      duration: 0
+    }, 2501)
+    // contact text fades in
+    .add('#staff-home-text', {
+      opacity: 1,
+      translateY: '3rem',
+      duration: 100
+    }, 2700)
+    
+    
     onScroll({
         target: '#events-showcase',
         axis: 'y',
         enter: '50% 0%',
         leave: '100% 100%',
         sync: true
-      }).link(tl);
+    }).link(tl);
   }
   // used on click to enlarge image and move to middle of screen
   // Keep a map so each element remembers its own enlarge animation

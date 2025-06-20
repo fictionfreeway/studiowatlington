@@ -632,7 +632,7 @@
       </div>
       <div id="brrl-showcase-content">
         <img class="brrl-img zoomable desktop-screenshot" id="brrl-website-img" src="assets/images/brrl-website.png" (click)="enlargeImage('#brrl-website-img', 'landscape')">
-        <p class="showcase-text" id="brrl-text">The official website for BRRL was completely rebuilt from the ground up by William Watlington using PHP 8 to replace an outdated, static design. The new site introduces a modern event calendar, animated UI enhancements, interactive book previews, and automated workflows that reduce staff workload and improve patron engagement.</p>
+        <p class="showcase-text" id="brrl-text">The official website for BRRL was completely rebuilt from the ground up by William Watlington using PHP 8 to replace an outdated, static design (without any change to hosting or databases). The new site introduces a modern event calendar, animated UI enhancements, interactive book previews, and automated workflows that reduce staff workload and improve patron engagement.</p>
         <img class="brrl-img zoomable mobile-screenshot" id="brrl-mobile-img" src="assets/images/brrl-website-mobile.png" (click)="enlargeImage('#brrl-mobile-img', 'portrait')">
         <img class="brrl-img zoomable mobile-screenshot" id="brrl-menu-img" src="assets/images/brrl-mobile-menu.png" (click)="enlargeImage('#brrl-menu-img', 'portrait')">
       </div>
@@ -672,12 +672,19 @@
             A robust frontend for staff to manage every aspect of event hosting and communication
           </h3>
         </div>
+        
         <div id="events-images-container">
           <img class="zoomable desktop-screenshot events-img" id="brrl-events-desktop-img" src="assets/showcases/events-staff-img.webp" />
           <img class="zoomable mobile-screenshot events-img" id="brrl-events-mobile-img" src="assets/showcases/event-mobile-img.webp" />
           <img class="zoomable desktop-screenshot events-img" id="brrl-events-creation-img" src="assets/showcases/event-creation.webp" />
+          <img class="zoomable desktop-screenshot events-img" id="brrl-events-locations-img" src="assets/showcases/locations.webp" />
+          <img class="zoomable desktop-screenshot events-img" id="brrl-events-email-img" src="assets/showcases/events-email.webp" />
+          <img class="zoomable desktop-screenshot events-img" id="brrl-events-feedback-img" src="assets/showcases/events-feedback.webp" />
         </div>
       </div>
     </div>
+    <div id="events-contact-container">
+          <div routerLink="/contact" id="hanging-sign"></div>
+        </div>
   </div>
 </div>
