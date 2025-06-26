@@ -9,4 +9,5 @@ export const appRoutes: Routes = [
   { path: 'design', component: DesignComponent, data: { animation: 'AboutPage' } },
   { path: 'development', component: DevelopmentComponent, data: { animation: 'ContactPage' } },
   { path: 'dark-mode', component:  DarkModeButtonComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route - must be last
 ];
