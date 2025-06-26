@@ -202,7 +202,7 @@
 
 #events-showcase {
   position: relative;
-  height: 800vh;
+  height: 1400vh;
 }
 
 #events-showcase-header {
@@ -253,25 +253,50 @@
   transform: translateX(-50%);
 }
 
+.events-image-caption {
+  visibility: hidden;
+}
+
 #events-text-container h3 {
   opacity: 0;
 }
 
-#hanging-sign {
-  background-image: url('assets/showcases/hanging-sign.webp');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 60%;
-  height: 20rem;
-  left: 20%;
-  position: absolute;
-  bottom: 15rem;
+#contact-container {
+  height: 40vh;
+  top: 20rem;
+  max-width: 90vw;
+  margin: 0 auto;
+}
 
+#contact-header {
+  position: fixed;
+  width: 80%;
+  margin: 0 auto;
+  height: 40rem;
+  top: 4rem;
+  display: none;
+}
+
+.contact-button {
+    fill: #a1d9d6;
+    pointer-events: auto;
+    transition: all 0.2s ease-in-out;
+}
+
+.contact-button:hover, .contact-button:focus, .contact-button:active {
+    box-shadow: inset 0 -3.25rem 0 0 var(--deep-blue)
+}
+
+#footer-logo {
+  width: 80%;
+  position: fixed;
+  display: none;
+  top: 5rem;
+  left: 0rem;
 }
 
 @media (orientation: portrait) {
-  
+
   #sw-logo {
     width: 100%;
     top: -12rem;
@@ -324,6 +349,15 @@
     text-align: center;
     line-height: 1.2rem;
   }
+
+  #computer-desk {
+    display: block;
+    position: fixed;
+    width: 120%;
+    left: 0%;
+    bottom: 20rem;
+    z-index: 999;
+  }
 }
 
 @media (orientation: landscape) {
@@ -344,15 +378,7 @@
     z-index: 999;
   }
 
-  .contact-button {
-    fill: #a1d9d6;
-    pointer-events: auto;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .contact-button:hover {
-    box-shadow: inset 0 -3.25rem 0 0 var(--deep-blue)
-  }
+  
 
   #dev-header {
     display: block;
@@ -371,6 +397,35 @@
     position: fixed;
     top: 15rem;
     left: 20%;
+  }
+
+  #events-showcase {
+    height: 600vh;
+  }
+
+  #events-showcase-content {
+    min-height: 100vh;
+  }
+
+  #events-text-container {
+    max-width: 35vw;
+    height: fit-content;
+    position: sticky;
+    font-size: 1.8rem;
+    top: 40vh;
+    left: 10%;
+  }
+  
+  #events-description {
+    position: relative;
+  }
+  
+  #events-description span {
+    opacity: 0;
+  }
+
+  #events-features-header, #staff-home-text {
+    display: none;
   }
 }
   

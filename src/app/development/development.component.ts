@@ -50,6 +50,7 @@ export class DevelopmentComponent implements AfterViewInit {
     this.initIntroAnimations();
     this.initBrrlAnimations();
     this.initBrrlEventsAnimations();
+    this.initLastAnimations();
   }
 
   //organize animations into methods
@@ -398,307 +399,370 @@ export class DevelopmentComponent implements AfterViewInit {
         sync: true
       })
     })
-
-    // mobile timeline
     const tl = createTimeline({
       defaults: {}
     })
-    // desktop img starting position in center of screen
-    // set to left: 50% to center it at translateX: -50%
-    .add('#brrl-events-desktop-img', {
-      translateX: '-150%',
-      rotate: '-10deg',
-      duration: 0
-    }, 0)
-    // mobile img starting position
-    .add('#brrl-events-mobile-img', {
-      translateX: '-275%',
-      translateY: '-10rem',
-      rotate: '10deg',
-      duration: 0
-    }, 0)
-    // event creation starting position 
-    .add('#brrl-events-creation-img', {
-      translateX: '-175%',
-      rotate: '-10deg',
-      duration: 0
-    }, 0)
-    // locations img starting position
-    .add('#brrl-events-locations-img', {
-      translateX: '-175%',
-      rotate: '-10deg',
-      duration: 0
-    }, 0)
-    // email img starting position
-    .add('#brrl-events-email-img', {
-      translateX: '-175%',
-      rotate: '-10deg',
-      duration: 0
-    }, 0)
-    // feedback img starting position
-    .add('#brrl-events-feedback-img', {
-      translateX: '-175%',
-      rotate: '-10deg',
-      duration: 0
-    }, 0)
-    // desktop img slides in from the left
-    .add('#brrl-events-desktop-img', {
-      translateX: '-50%',
-      rotate: '0deg',
-      translateY: '14rem',
-      duration: 250,
-      ease: 'outBack'
-    }, 1)
-    // description fades away/slides up
-    .add('#events-description', {
-      translateY:  '5rem',
-      opacity: [1, 0],
-      duration: 50,
-    }, 250)
-    // features header fades/moves in
-    .add('#events-features-header', {
-      opacity: [0, 1],
-      translateY: ['-5rem', '0rem'],
-      duration: 100
-    }, 300)
-    // desktop img floats up as text becomes smaller
-    .add('#brrl-events-desktop-img', {
-      translateY: '3rem',
-      duration: 100
-    }, 300)
-    // staff home text fades in
-    .add('#staff-home-text', {
-      opacity: [0, 1],
-      translateY: ['10rem', '18rem'], 
-      duration: 100
-    }, 300)
-    // desktop img floats away
-    .add('#brrl-events-desktop-img', {
-      translateX: ['110%'],
-      translateY: ['10rem'],
-      rotate: ['10deg'],
-      ease: 'inBack',
-      duration: 200
-    }, 400)
-    .add('#brrl-events-mobile-img', {
-      translateX: ['-50%'],
-      translateY: ['1rem'],
-      rotate: ['-0deg'],
-      ease: 'outSine',
-      duration: 200
-    }, 550)
-    // staff home text (brrl events feature text) fades out
-    .add('#staff-home-text', {
-      opacity: 0,
-      duration: 50
-    }, 550)
-    // set initial HTML (helps reset it upon scrolling up)
-    .add('#staff-home-text', {
-      innerHTML: 'A robust frontend for staff to manage every aspect of event hosting and communication',
-      duration: 0
-    }, 600)
-    // text fades back in
-    .add('#staff-home-text', {
-      opacity: 1,
-      duration: 50
-    }, 650)
-    // staff home text chages to next feature
-    .add('#staff-home-text', {
-      innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
-      duration: 0
-    }, 601)
-    // mobile img floats away
-    .add('#brrl-events-mobile-img', {
-      translateX: '200%',
-      rotate: '-10deg',
-      duration: 150,
-      ease: 'inBack'
-    }, 800)
-    // event creation img floats in
-    .add('#brrl-events-creation-img', {
-      translateX: '-50%',
-      translateY: '3rem', // was -7rem, now +10rem
-      rotate: '0deg',
-      duration: 250,
-      ease: 'outBack'
-    }, 900)
-    // staff home text (brrl events feature text) fades out
-    .add('#staff-home-text', {
-      opacity: 0,
-      duration: 50
-    }, 850)
-    // set initial HTML (helps reset it upon scrolling up)
-    .add('#staff-home-text', {
-      innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
-      translateY: '16rem',
-      duration: 0
-    }, 900)
-    // text fades back in
-    .add('#staff-home-text', {
-      opacity: 1,
-      duration: 50
-    }, 950)
-    // staff home text chages to next feature
-    .add('#staff-home-text', {
-      innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
-      duration: 0
-    }, 901)
-    // event creation img floats away
-    .add('#brrl-events-creation-img', {
-      translateX: '200%',
-      rotate: '10deg',
-      duration: 150,
-      ease: 'inBack'
-    }, 1200)
-    // locations img floats in
-    .add('#brrl-events-locations-img', {
-      translateX: '-50%',
-      translateY: '8rem',
-      rotate: '0deg',
-      duration: 250,
-      ease: 'outBack'
-    }, 1300)
-    // staff home text (brrl events feature text) fades out
-    .add('#staff-home-text', {
-      opacity: 0,
-      duration: 50
-    }, 1150)
-    // set initial HTML (helps reset it upon scrolling up) and move to upper position
-    .add('#staff-home-text', {
-      innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
-      translateY: '1rem',
-      duration: 0
-    }, 1200)
-    // text fades back in
-    .add('#staff-home-text', {
-      opacity: 1,
-      duration: 50
-    }, 1350)
-    // staff home text chages to next feature
-    .add('#staff-home-text', {
-      innerHTML: 'Support for multiple locations/branches, with embeddable schedules to add to any website',
-      translateY: '1rem',
-      duration: 0
-    }, 1201)
-    // locations img floats away
-    .add('#brrl-events-locations-img', {
-      translateX: '200%',
-      rotate: '-10deg',
-      duration: 150,
-      ease: 'inBack'
-    }, 1600)
-    // staff home text (brrl events feature text) fades out
-    .add('#staff-home-text', {
-      opacity: 0,
-      duration: 50
-    }, 1550)
-    // set initial HTML (helps reset it upon scrolling up)
-    .add('#staff-home-text', {
-      innerHTML: 'Support for multiple locations/branches, with embeddable schedules to add to any website',
-      translateY: '1rem',
-      duration: 0
-    }, 1600)
-    // text fades back in
-    .add('#staff-home-text', {
-      opacity: 1,
-      duration: 50
-    }, 1850)
-    // staff home text chages to next feature
-    .add('#staff-home-text', {
-      innerHTML: 'Automated, professional email notifications can be configured for event reminders, cancellations, and more',
-      translateY: '20rem',
-      duration: 0
-    }, 1601)
-    // email img floats in
-    .add('#brrl-events-email-img', {
-      translateX: '-50%',
-      translateY: '1rem',
-      rotate: '0deg',
-      duration: 250,
-      ease: 'outBack'
-    }, 1800)
-    // email img floats away
-    .add('#brrl-events-email-img', {
-      translateX: '200%',
-      rotate: '10deg',
-      duration: 150,
-      ease: 'inBack'
-    }, 2100)
-    // staff home text (brrl events feature text) fades out
-    .add('#staff-home-text', {
-      opacity: 0,
-      duration: 50
-    }, 2050)
-    // set initial HTML (helps reset it upon scrolling up)
-    .add('#staff-home-text', {
-      innerHTML: 'Automated, professional email notifications can be configured for event reminders, cancellations, and more',
-      translateY: '1rem',
-      duration: 0
-    }, 2100)
-    // text fades back in
-    .add('#staff-home-text', {
-      opacity: 1,
-      duration: 50
-    }, 2250)
-    // staff home text chages to next feature
-    .add('#staff-home-text', {
-      innerHTML: 'Post event surveys collect patron feedback and organize it into a easy-to-read feedback dashboard with analytics',
-      translateY: '16rem',
-      duration: 0
-    }, 2101)
-    // feedback img floats in
-    .add('#brrl-events-feedback-img', {
-      translateX: '-50%',
-      translateY: '3rem',
-      rotate: '0deg',
-      duration: 250,
-      ease: 'outBack'
-    }, 2200)
-    // feedback img floats away
-    .add('#brrl-events-feedback-img', {
-      translateX: '200%',
-      rotate: '-10deg',
-      duration: 150,
-      ease: 'inBack'
-    }, 2500)
-    // staff home text (brrl events feature text) fades out
-    .add('#staff-home-text', {
-      opacity: 0,
-      duration: 50
-    }, 2450)
-    // set initial HTML (helps reset it upon scrolling up)
-    .add('#staff-home-text', {
-      innerHTML: 'Post event surveys collect patron feedback and organize it into a easy-to-read feedback dashboard with analytics',
-      translateY: '1rem',
-      duration: 0
-    }, 2500)
-    // text fades back in
-    .add('#staff-home-text', {
-      opacity: 1,
-      duration: 50
-    }, 2650)
-    // staff home text chages to contact text
-    .add('#staff-home-text', {
-      innerHTML: 'Ready to take your organization&apos;s events to the next level? Contact Studio Watlington to take the first step',
-      translateY: '16rem',
-      duration: 0
-    }, 2501)
-    // contact text fades in
-    .add('#staff-home-text', {
-      opacity: 1,
-      translateY: '3rem',
-      duration: 100
-    }, 2700)
-    
-    
+
+    if(window.matchMedia('(orientation: landscape)').matches) {
+      // desktop timeline
+      // dev hide everything while working
+      tl.add('.events-img', {
+        translateX: '-200vw',
+        duration: 0
+      }, 0)
+      // #events-description paragraphs fade in
+      tl.add('#events-description span', {
+        opacity: [0, 1],
+        translateY: ['-5rem', '0rem'],
+        duration: 100,
+        delay: stagger(50)
+      }, 0)
+
+
+
+    } else {       
+      // mobile timeline
+      // desktop img starting position in center of screen
+      // set to left: 50% to center it at translateX: -50%
+      tl.add('#brrl-events-desktop-img', {
+        translateX: '-150%',
+        rotate: '-10deg',
+        duration: 0
+      }, 0)
+      // mobile img starting position
+      .add('#brrl-events-mobile-img', {
+        translateX: '-275%',
+        translateY: '-10rem',
+        rotate: '10deg',
+        duration: 0
+      }, 0)
+      // event creation starting position 
+      .add('#brrl-events-creation-img', {
+        translateX: '-175%',
+        rotate: '-10deg',
+        duration: 0
+      }, 0)
+      // locations img starting position
+      .add('#brrl-events-locations-img', {
+        translateX: '-175%',
+        rotate: '-10deg',
+        duration: 0
+      }, 0)
+      // email img starting position
+      .add('#brrl-events-email-img', {
+        translateX: '-175%',
+        rotate: '-10deg',
+        duration: 0
+      }, 0)
+      // feedback img starting position
+      .add('#brrl-events-feedback-img', {
+        translateX: '-175%',
+        rotate: '-10deg',
+        duration: 0
+      }, 0)
+      // desktop img slides in from the left
+      .add('#brrl-events-desktop-img', {
+        translateX: '-50%',
+        rotate: '0deg',
+        translateY: '14rem',
+        duration: 250,
+        ease: 'outSine'
+      }, 1)
+      // description fades away/slides up
+      .add('#events-description', {
+        translateY:  '5rem',
+        opacity: [1, 0],
+        duration: 50,
+      }, 250)
+      // features header fades/moves in
+      .add('#events-features-header', {
+        opacity: [0, 1],
+        translateY: ['-5rem', '0rem'],
+        duration: 100
+      }, 300)
+      // desktop img floats up as text becomes smaller
+      .add('#brrl-events-desktop-img', {
+        translateY: '3rem',
+        duration: 100
+      }, 300)
+      // staff home text fades in
+      .add('#staff-home-text', {
+        opacity: [0, 1],
+        translateY: ['10rem', '18rem'], 
+        duration: 100
+      }, 300)
+      // desktop img floats away
+      .add('#brrl-events-desktop-img', {
+        translateX: ['110%'],
+        translateY: ['10rem'],
+        rotate: ['10deg'],
+        ease: 'inBack',
+        duration: 200
+      }, 400)
+      .add('#brrl-events-mobile-img', {
+        translateX: ['-50%'],
+        translateY: ['1rem'],
+        rotate: ['-0deg'],
+        ease: 'outSine',
+        duration: 200
+      }, 550)
+      // staff home text (brrl events feature text) fades out
+      .add('#staff-home-text', {
+        opacity: 0,
+        duration: 50
+      }, 550)
+      // set initial HTML (helps reset it upon scrolling up)
+      .add('#staff-home-text', {
+        innerHTML: 'A robust frontend for staff to manage every aspect of event hosting and communication',
+        duration: 0
+      }, 600)
+      // text fades back in
+      .add('#staff-home-text', {
+        opacity: 1,
+        duration: 50
+      }, 650)
+      // staff home text chages to next feature
+      .add('#staff-home-text', {
+        innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
+        duration: 0
+      }, 601)
+      // mobile img floats away
+      .add('#brrl-events-mobile-img', {
+        translateX: '200%',
+        rotate: '-10deg',
+        duration: 150,
+        ease: 'inBack'
+      }, 800)
+      // event creation img floats in
+      .add('#brrl-events-creation-img', {
+        translateX: '-50%',
+        translateY: '3rem', // was -7rem, now +10rem
+        rotate: '0deg',
+        duration: 250,
+        ease: 'outSine'
+      }, 900)
+      // staff home text (brrl events feature text) fades out
+      .add('#staff-home-text', {
+        opacity: 0,
+        duration: 50
+      }, 850)
+      // set initial HTML (helps reset it upon scrolling up)
+      .add('#staff-home-text', {
+        innerHTML: 'Fully responsive event pages for patrons to discover events, manage their registrations, pay event fees, and much more',
+        translateY: '16rem',
+        duration: 0
+      }, 900)
+      // text fades back in
+      .add('#staff-home-text', {
+        opacity: 1,
+        duration: 50
+      }, 950)
+      // staff home text chages to next feature
+      .add('#staff-home-text', {
+        innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
+        duration: 0
+      }, 901)
+      // event creation img floats away
+      .add('#brrl-events-creation-img', {
+        translateX: '200%',
+        rotate: '10deg',
+        duration: 150,
+        ease: 'inBack'
+      }, 1200)
+      // locations img floats in
+      .add('#brrl-events-locations-img', {
+        translateX: '-50%',
+        translateY: '8rem',
+        rotate: '0deg',
+        duration: 250,
+        ease: 'outSine'
+      }, 1300)
+      // staff home text (brrl events feature text) fades out
+      .add('#staff-home-text', {
+        opacity: 0,
+        duration: 50
+      }, 1150)
+      // set initial HTML (helps reset it upon scrolling up) and move to upper position
+      .add('#staff-home-text', {
+        innerHTML: 'Detailed event creation tools to handle age restrictions, custom registration opening/closing dates, promotional images, supply fees, and more',
+        translateY: '1rem',
+        duration: 0
+      }, 1200)
+      // text fades back in
+      .add('#staff-home-text', {
+        opacity: 1,
+        duration: 50
+      }, 1350)
+      // staff home text chages to next feature
+      .add('#staff-home-text', {
+        innerHTML: 'Support for multiple locations/branches, with embeddable schedules to add to any website',
+        translateY: '1rem',
+        duration: 0
+      }, 1201)
+      // locations img floats away
+      .add('#brrl-events-locations-img', {
+        translateX: '200%',
+        rotate: '-10deg',
+        duration: 150,
+        ease: 'inBack'
+      }, 1600)
+      // staff home text (brrl events feature text) fades out
+      .add('#staff-home-text', {
+        opacity: 0,
+        duration: 50
+      }, 1550)
+      // set initial HTML (helps reset it upon scrolling up)
+      .add('#staff-home-text', {
+        innerHTML: 'Support for multiple locations/branches, with embeddable schedules to add to any website',
+        translateY: '1rem',
+        duration: 0
+      }, 1600)
+      // text fades back in
+      .add('#staff-home-text', {
+        opacity: 1,
+        duration: 50
+      }, 1850)
+      // staff home text chages to next feature
+      .add('#staff-home-text', {
+        innerHTML: 'Automated, professional email notifications can be configured for event reminders, cancellations, and more',
+        translateY: '20rem',
+        duration: 0
+      }, 1601)
+      // email img floats in
+      .add('#brrl-events-email-img', {
+        translateX: '-50%',
+        translateY: '1rem',
+        rotate: '0deg',
+        duration: 250,
+        ease: 'outSine'
+      }, 1800)
+      // email img floats away
+      .add('#brrl-events-email-img', {
+        translateX: '200%',
+        rotate: '10deg',
+        duration: 150,
+        ease: 'inBack'
+      }, 2100)
+      // staff home text (brrl events feature text) fades out
+      .add('#staff-home-text', {
+        opacity: 0,
+        duration: 50
+      }, 2050)
+      // set initial HTML (helps reset it upon scrolling up)
+      .add('#staff-home-text', {
+        innerHTML: 'Automated, professional email notifications can be configured for event reminders, cancellations, and more',
+        translateY: '1rem',
+        duration: 0
+      }, 2100)
+      // text fades back in
+      .add('#staff-home-text', {
+        opacity: 1,
+        duration: 50
+      }, 2250)
+      // staff home text chages to next feature
+      .add('#staff-home-text', {
+        innerHTML: 'Post event surveys collect patron feedback and organize it into a easy-to-read feedback dashboard with analytics',
+        translateY: '16rem',
+        duration: 0
+      }, 2101)
+      // feedback img floats in
+      .add('#brrl-events-feedback-img', {
+        translateX: '-50%',
+        translateY: '3rem',
+        rotate: '0deg',
+        duration: 250,
+        ease: 'outSine'
+      }, 2200)
+      // feedback img floats away
+      .add('#brrl-events-feedback-img', {
+        translateX: '200%',
+        rotate: '-10deg',
+        duration: 150,
+        ease: 'inBack'
+      }, 2500)
+      // staff home text (brrl events feature text) fades out
+      .add('#staff-home-text', {
+        opacity: 0,
+        duration: 50
+      }, 2450)
+    }
     onScroll({
-        target: '#events-showcase',
+          target: '#events-showcase',
+          axis: 'y',
+          enter: '50% 0%',
+          leave: '100% 100%',
+          sync: true
+      }).link(tl);
+  }
+
+  // contact animations + any other ending animations at bottom of page
+  initLastAnimations() {
+    if(window.matchMedia('(orientation: landscape)').matches) {
+      const tl = createTimeline({
+        defaults: {}
+      })
+
+      onScroll({
+        target: '#contact-container',
         axis: 'y',
-        enter: '50% 0%',
+        enter: '100% 0%',
         leave: '100% 100%',
         sync: true
-    }).link(tl);
+      }).link(tl);
+
+    } else {
+      const tl = createTimeline({
+        defaults: {}
+      })
+      // contact container starting background properties
+      .add('#contact-container', {
+        background: 'linear-gradient(190deg, #011936 0%, #011936 22%, #57354c 50%, #f84be 100%)',
+      })
+      // computer desk starting position
+      .add('#computer-desk', {
+        left: '50%',
+        bottom: '-20rem',
+        scale: 1,
+        width: '300%',
+        duration: 0
+      }, 0)
+      // footer logo starting position
+      .add('#footer-logo', {
+        left: '-150%',
+        top: '-10rem',
+        rotate: '-10deg',
+        display: 'block',
+        duration: 0
+      }, 0)
+      // footer logo floats in
+      .add('#footer-logo', {
+        left: '1rem',
+        top: '5rem',
+        rotate: '0deg',
+        duration: 700,
+        ease: 'outBack'
+      }, 300)
+      // computer desk ending position
+      .add('#computer-desk', {
+        left: '-225%',
+        bottom: '-40vh',
+        width: '500%',
+        scale: 1,
+        ease: 'outCirc',
+        duration: 600
+      }, 1)
+
+      onScroll({
+        target: '#contact-container',
+        axis: 'y',
+        enter: '100% 0%',
+        leave: '100% 100%',
+        sync: true
+      }).link(tl);
+    }
   }
+
+
   // used on click to enlarge image and move to middle of screen
   // Keep a map so each element remembers its own enlarge animation
   private zoomMap = new Map<string, JSAnimation>();   // JSAnimation is Anime.js’ type
