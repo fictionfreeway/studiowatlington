@@ -410,6 +410,13 @@ export class DevelopmentComponent implements AfterViewInit {
         translateX: '-200vw',
         duration: 0
       }, 0)
+      // computer desk scales up/moves
+      tl.add('#computer-desk', {
+        translateX: '-6%',
+        translateY: '-10vh',
+        scale: [0.8, 1.2],
+        duration: 100
+      }, 0)
       // #events-description paragraphs fade in
       tl.add('#events-description span', {
         opacity: [0, 1],
@@ -417,6 +424,35 @@ export class DevelopmentComponent implements AfterViewInit {
         duration: 100,
         delay: stagger(50)
       }, 0)
+      // events descdription fades out
+      tl.add('#events-description', {
+        opacity: [1, 0],
+        duration: 50,
+      }, 250)
+      // events features header fades in
+      tl.add('#events-features-header', {
+        opacity: [0, 1],
+        visibility: 'visible',
+        translateY: ['-5rem', '0rem'],
+        duration: 100
+      }, 300)
+      // brrl events logo shrinks
+      .add('#brrl-events-header', {
+        width: '20%',
+        right: '5vw',
+        top: '1rem',
+        duration: 100,
+        ease: 'inOutSine'
+      }, 350)
+      // computer desk moves out of view
+      .add('#computer-desk', {
+        translateX: '80%',
+        translateY: '-10vh',
+        scale: 0.8,
+        ease: 'inBack',
+        duration: 100
+      }, 350)
+      //images float in
 
 
 
@@ -721,7 +757,7 @@ export class DevelopmentComponent implements AfterViewInit {
       // computer desk starting position
       .add('#computer-desk', {
         left: '50%',
-        bottom: '-20rem',
+        bottom: '-20vh',
         scale: 1,
         width: '300%',
         duration: 0

@@ -355,7 +355,6 @@
     position: fixed;
     width: 120%;
     left: 0%;
-    bottom: 20rem;
     z-index: 999;
   }
 }
@@ -378,8 +377,6 @@
     z-index: 999;
   }
 
-  
-
   #dev-header {
     display: block;
     margin: 5rem 0 0 4rem;
@@ -400,7 +397,7 @@
   }
 
   #events-showcase {
-    height: 600vh;
+    height: 1400vh;
   }
 
   #events-showcase-content {
@@ -410,14 +407,19 @@
   #events-text-container {
     max-width: 35vw;
     height: fit-content;
-    position: sticky;
+    position: relative;
     font-size: 1.8rem;
-    top: 40vh;
+    line-height: 2.2rem;
+    top: 30vh;
     left: 10%;
   }
   
-  #events-description {
-    position: relative;
+  .absolute-container {
+    position: absolute;
+  }
+
+  #events-features-header {
+    font-size: 2.4rem;
   }
   
   #events-description span {
@@ -425,7 +427,7 @@
   }
 
   #events-features-header, #staff-home-text {
-    display: none;
+    visibility: hidden;
   }
 }
   
