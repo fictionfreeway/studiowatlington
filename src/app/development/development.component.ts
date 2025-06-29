@@ -400,27 +400,50 @@ export class DevelopmentComponent implements AfterViewInit {
       })
     })
     const tl = createTimeline({
-      defaults: {}
+      defaults: {composition: 'blend'}
     })
 
     if(window.matchMedia('(orientation: landscape)').matches) {
+      this.addFloatAnimationToElement('#brrl-events-desktop-img');
+      this.addFloatAnimationToElement('#brrl-events-mobile-img');
+      this.addFloatAnimationToElement('#brrl-events-creation-img');
       // desktop timeline
       // dev hide everything while working
       tl.add('.events-img', {
-        translateX: '-200vw',
+        translateX: '-300vw',
         duration: 0
       }, 0)
+      // desktop img starting position
+      tl.add('#brrl-events-desktop-img', {
+        translateX: '-150rem',
+        duration: 0
+      }, 1)
+      // mobile img starting position
+      .add('#brrl-events-mobile-img', {
+        translateX: '20rem',
+        translateY: '120vh',
+        rotate: '10deg',
+        duration: 0
+      }, 1)
+      // event creation img starting position
+      .add('#brrl-events-creation-img', {
+        translateX: '50rem',
+        translateY: '-120vh',
+        scale: 0.7,
+        rotate: '-10deg',
+        duration: 0
+      }, 1)
       // computer desk scales up/moves
       tl.add('#computer-desk', {
-        translateX: '-6%',
-        translateY: '-10vh',
-        scale: [0.8, 1.2],
+        translateX: '-2%',
+        translateY: '2vh',
+        scale: [0.8, 1.1],
         duration: 100
       }, 0)
       // #events-description paragraphs fade in
       tl.add('#events-description span', {
         opacity: [0, 1],
-        translateY: ['-5rem', '0rem'],
+        translateY: ['-10rem', '-5rem'],
         duration: 100,
         delay: stagger(50)
       }, 0)
@@ -433,7 +456,8 @@ export class DevelopmentComponent implements AfterViewInit {
       tl.add('#events-features-header', {
         opacity: [0, 1],
         visibility: 'visible',
-        translateY: ['-5rem', '0rem'],
+        translateY: ['-11rem', '-10rem'],
+        translateX: ['19rem', '20rem'],
         duration: 100
       }, 300)
       // brrl events logo shrinks
@@ -449,10 +473,56 @@ export class DevelopmentComponent implements AfterViewInit {
         translateX: '80%',
         translateY: '-10vh',
         scale: 0.8,
-        ease: 'inBack',
+        ease: 'inCirc',
         duration: 100
-      }, 350)
-      //images float in
+      }, 375)
+      // images float in
+      // desktop img floats in
+      .add('#brrl-events-desktop-img', {
+        translateX: '5rem',
+        translateY: '14rem',
+        scale: 0.7,
+        rotate: '0deg',
+        duration: 250,
+        ease: 'outSine'
+      }, 300)
+      // mobile img floats in
+      .add('#brrl-events-mobile-img', {
+        translateX: '-50rem',
+        translateY: '14rem',
+        rotate: '-5deg',
+        duration: 200,
+        ease: 'outSine'
+      }, 550)
+      // staff home text fades in
+      .add('#desktop-features-text-1', {
+        visibility: 'visible',
+        opacity: 1,
+        duration: 0
+      }, 450)
+      // events creation img floats in
+      .add('#brrl-events-creation-img', {
+        translateX: '5rem',
+        translateY: '13rem',
+        rotate: '3deg',
+        duration: 250,
+        ease: 'outSine'
+      }, 750)
+      // desktop img shrinks and moves down
+      .add('#brrl-events-desktop-img', {
+        translateY: '25rem',
+        translateX: '8rem',
+        scale: 0.6,
+        rotate: '-3deg',
+        duration: 200
+      }, 800)
+      // individual feature text fades in on stagger
+      .add('#desktop-features-text-1 span', {
+        opacity: [0, 1],
+        duration: 100,
+        delay: stagger(200)
+      }, 550)
+
 
 
 

@@ -254,7 +254,16 @@
 }
 
 .events-image-caption {
-  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+#desktop-features-text {
+  display: none;
+}
+
+#desktop-caption {
+  opacity: 0;
 }
 
 #events-text-container h3 {
@@ -428,6 +437,28 @@
 
   #events-features-header, #staff-home-text {
     visibility: hidden;
+  }
+
+  #staff-home-text {
+    display: none;
+  }
+
+  #desktop-features-text-1, #desktop-features-text-2 {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 15vw;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  #desktop-features-text-1 span, #desktop-features-text-2 span {
+    opacity: 0;
+    position: relative;
+    
   }
 }
   
